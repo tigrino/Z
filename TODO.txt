@@ -1,0 +1,9 @@
+ - Store the timestamp in forms and make sure that the requests are neither submitted in a very short time e.g. < 2 sec nor after an extended waiting time > ? hours (csrf already expires after 1 hr though...)
+ - Keep a log of requests for a session and throw a captcha when something suspicious happens, like invalid login 3 times in a row...
+ - Get the 7 segments captcha (any other?) implemented and make it configurable
+ - Generally, see what has to be configurable and make it so
+ - Make all strings wear __() for translation support
+ - Admin interface for user management
+ - Support external authentication: Facebook, Google, ?..
+ - Additional cookie for "secure-only" to verify the session was not highjacked while on insecure channel
+ - "Remember me" function with proper multiple token+cookie management
