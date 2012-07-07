@@ -53,6 +53,12 @@ You can wait until I get around to making things configurable and
 more flexible. Or you can help making it better. Guess which 
 I will appreciate more?
 
+Problem is I did not do yet the configuration for it. So when you
+use it, please, go and change the Controller/Account.php to make
+sure you are sending e-mails from the right e-mail address and
+with the right text. Sorry about that, I know, I know, I need to
+learn urgently the layouts and the config.
+
 Installation
 ============
 
