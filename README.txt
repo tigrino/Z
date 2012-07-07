@@ -82,7 +82,7 @@ $this->Session->read('Auth.User') to get to the user data.
 
 For authentication forward people to /z/accounts/login
 and for logging them out - to /z/accounts/logout
-For registration forward them to /z/account/register
+For registration forward them to /z/accounts/register
 User info page is available at /z/users/view
 
 Good luck!
