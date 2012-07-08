@@ -3,7 +3,7 @@ $this->Html->addCrumb('Accounts', '/z/accounts');
 $this->Html->addCrumb('Login', '/z/accounts/login');
 ?>
 <div class="users form">
-<?php echo $this->Form->create('User');?>
+<?php echo $this->Form->create('User'); // Special case - for Auth module ?>
 	<fieldset>
 		<legend><?php echo __('Login'); ?></legend>
 	<?php

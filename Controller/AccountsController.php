@@ -27,17 +27,21 @@ class AccountsController extends ZAppController {
 	// User login function
 	// basically, use Auth, all the rest is just housekeeping
 	public function login() {
+		//
+		// Mind you, the view uses 'User' because
+		// that's what we need for Auth module
+		//
 		if ($this->request->is('post')) {
 			//
 			// Check the dummy field is empty
-			if ( !empty($this->request->data['Account']['ruhuman']) ) {
+			if ( !empty($this->request->data['User']['ruhuman']) ) {
 				$this->Session->setFlash(__('We do not accept registrations from bots.'));
 				$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
 				return; // just in case
 			}
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
-			$this->request->data['Account']['email'] = 
-				strtolower( trim( $this->request->data['Account']['email'] ) );
+			$this->request->data['User']['email'] = 
+				strtolower( trim( $this->request->data['User']['email'] ) );
 			if ($this->Auth->login()) {
 				$this->Session->setFlash(__('Logged in'), 'default', array(), 'auth');
 				$this->Account->id = $this->Auth->user('id');
