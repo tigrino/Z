@@ -7,3 +7,4 @@
  - Support external authentication: Facebook, Google, ?..
  - Additional cookie for "secure-only" to verify the session was not highjacked while on insecure channel
  - "Remember me" function with proper multiple token+cookie management
+ - Use Views for e-mail
