@@ -300,8 +300,10 @@ class AccountsController extends ZAppController {
 						$dataSource->commit();
 						$url = Router::url( array('action' => 'verify'), true );
 						$urltoken = $url.'/t:'.$this->data['AccountToken']['token'].'/n:'.$this->data['Account']['email'].'';
+						$frommail = Configure::read('Z.email_from');
+						$sitename = Configure::read('Z.site_title');
 						// and send an e-mail to the user
-						$msg = "Thank you for registering at Listroyer!\n";
+						$msg = "Thank you for registering at " . $sitename . "!\n";
 						$msg .= "\n";
 						$msg .= 'Click on the following link to complete registration ';
 						$msg .= $urltoken;
@@ -315,12 +317,12 @@ class AccountsController extends ZAppController {
 						$msg .= "\n";
 						$msg .= " to verify your account.\n";
 						$msg .= "\n";
-						$msg .= "Your Listroyer.\n";
+						$msg .= "Your " . $sitename . " team.\n";
 						$msg = wordwrap($msg,70);
 						$email = new CakeEmail();
-						$email->from(array('info@listroyer.com' => 'Listroyer'));
+						$email->from(array($frommail => $sitename));
 						$email->to($this->data['Account']['email']);
-						$email->subject('Confirm Registration for Listroyer');
+						$email->subject('Confirm Registration for ' . $sitename);
 						$email->send($msg);
 						$this->Session->setFlash('User created successfully. Please check your email for a validation link.');
 						$this->redirect(array('action' => 'verify'));
@@ -486,8 +488,10 @@ class AccountsController extends ZAppController {
 				if ( $this->Account->AccountToken->save(null, $options) ) {
 					$url = Router::url( array('action' => 'confirm'), true );
 					$urltoken = $url.'/t:'.$data['AccountToken']['token'].'/n:'.$this->request->data['Account']['email'].'';
+					$frommail = Configure::read('Z.email_from');
+					$sitename = Configure::read('Z.site_title');
 					// and send an e-mail to the user
-					$msg = "Thank you for requesting a password reset at Listroyer!\n";
+					$msg = "Thank you for requesting a password reset at " . $sitename . "!\n";
 					$msg .= "\n";
 					$msg .= 'Click on the following link to complete password reset: ';
 					$msg .= $urltoken;
@@ -501,12 +505,12 @@ class AccountsController extends ZAppController {
 					$msg .= "\n";
 					$msg .= " to verify your account.\n";
 					$msg .= "\n";
-					$msg .= "Your Listroyer.\n";
+					$msg .= "Your " . $sitename . " team.\n";
 					$msg = wordwrap($msg,70);
 					$email = new CakeEmail();
-					$email->from(array('info@listroyer.com' => 'Listroyer'));
+					$email->from(array($frommail => $sitename));
 					$email->to($this->request->data['Account']['email']);
-					$email->subject('Confirm Password Reset for Your Account at Listroyer');
+					$email->subject('Confirm Password Reset for Your Account at ' . $sitename);
 					$email->send($msg);
 					$this->Session->setFlash('Password reset request created successfully. Please check your email.');
 					$this->redirect(array('action' => 'confirm'));
