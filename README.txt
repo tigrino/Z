@@ -87,5 +87,9 @@ and for logging them out - to /z/accounts/logout
 For registration forward them to /z/accounts/register
 User info page is available at /z/users/view
 
+For clarity again, this is not authorization, this is only
+authentication. You have to set up authorization separately
+as usual.
+
 Good luck!
 
