@@ -59,5 +59,8 @@ $this->Html->addCrumb('View', '/z/users/view');
 		<li><?php echo $this->Html->link(__('Change Password'), array('controller' => 'accounts', 'action' => 'password', $user['User']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('controller' => 'accounts', 'action' => 'delete', $this->Form->value('User.id')), null, __('Are you sure you want to delete your user account %s?', $user['User']['email'])); ?></li>
 		<li><?php echo $this->Html->link(__('Logout'), array('controller' => 'accounts', 'action' => 'logout')); ?> </li>
+		<?php if ( $user['User']['user_admin'] == 1 ) { ?>
+		<li><?php echo $this->Html->link(__('Admin Panel'), array('controller' => 'controls', 'action' => 'index')); ?> </li>
+		<?php } ?>
 	</ul>
 </div>

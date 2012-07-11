@@ -278,6 +278,7 @@ class AccountsController extends ZAppController {
 			unset($this->request->data['AccountPassword']['id']);
 			unset($this->request->data['AccountPassword']['salt']);
 			$this->request->data['Account']['active'] = 0;
+			$this->request->data['AccountFlag']['agreement_date'] = DboSource::expression('NOW()');
 			$this->Account->create($this->request->data);
 			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
 				$this->Session->setFlash(__('Registration data validation failure. Please, check your input.'));
