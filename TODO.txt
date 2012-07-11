@@ -3,7 +3,6 @@
  - Get the 7 segments captcha (any other?) implemented and make it configurable
  - Generally, see what has to be configurable and make it so
  - Make all strings wear __() for translation support
- - Admin interface for user management
  - Support external authentication: Facebook, Google, ?..
  - Additional cookie for "secure-only" to verify the session was not highjacked while on insecure channel
  - "Remember me" function with proper multiple token+cookie management
