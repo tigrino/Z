@@ -3,20 +3,21 @@ App::uses('ZAppModel', 'Z.Model');
 App::import('Vendor', 'Z.zrandom');
 
 class Account extends ZAppModel {
+	public $validationDomain = 'z';
 	public $useTable='z_accounts';
 	public $displayField = 'email';
 	public $validate = array(
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				'message' => 'Please, enter a valid e-mail address here.',
+				'message' => 'email_need_valid_email',
 				'allowEmpty' => false,
 				'required' => true,
 			),
 		'unique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
-				'message' => 'This e-mail address has already been registered.'
+				'message' => 'email_already_registered'
 			),
 		),
 	);

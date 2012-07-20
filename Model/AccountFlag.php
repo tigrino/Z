@@ -6,6 +6,7 @@ App::uses('ZAppModel', 'Z.Model');
  * @property Account $Account
  */
 class AccountFlag extends ZAppModel {
+	public $validationDomain = 'z';
 	public $useTable = 'z_account_flags';
 	public $validate = array(
 		'agreement' => array(
@@ -13,7 +14,7 @@ class AccountFlag extends ZAppModel {
 				'rule'    => array('equalTo', '1'),
 				'required' => true,
 				'allowEmpty' => false,
-				'message' => 'The agreement to Terms of Service is required.',
+				'message' => 'tos_agreement_required',
 			),
 		),
 	);

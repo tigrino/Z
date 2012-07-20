@@ -6,6 +6,7 @@ App::import('Vendor', 'Z.zrandom');
  */
 class User extends ZAppModel {
 	public $name = 'User';
+	public $validationDomain = 'z';
 	public $useTable = 'users';
 	public $primaryKey = 'id';
 	public $displayField = 'email';

@@ -1,5 +1,5 @@
 <div class="tokens index">
-	<h2><?php echo __('Tokens'); ?></h2>
+	<h2><?php echo __d('z', 'Tokens'); ?></h2>
 	<?php //debug($tokens); ?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -9,7 +9,7 @@
 			<th><?php echo $this->Paginator->sort('expires'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th class="actions"><?php echo __d('z', 'Actions'); ?></th>
 	</tr>
 	<?php
 	foreach ($tokens as $token): ?>
@@ -21,7 +21,7 @@
 		<td><?php echo h($token['AccountToken']['created']); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $token['AccountToken']['id']), null, __('Are you sure you want to delete # %s?', $token['AccountToken']['id'])); ?>
+			<?php echo $this->Form->postLink(__d('z', 'Delete'), array('action' => 'delete', $token['AccountToken']['id']), null, __d('z', 'Are you sure you want to delete # %s?', $token['AccountToken']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -42,8 +42,8 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Accounts'), array('action' => 'accounts')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 	</ul>
 </div>

@@ -6,6 +6,7 @@ App::uses('ZAppModel', 'Z.Model');
  * @property Account $Account
  */
 class AccountToken extends ZAppModel {
+	public $validationDomain = 'z';
 	public $useTable = 'z_account_tokens';
 	public $validate = array(
 		'account_id' => array(

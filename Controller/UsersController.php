@@ -11,7 +11,8 @@ class UsersController extends ZAppController {
 		//debug($this->request);
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to login
-			$this->Session->setFlash(__('The requested action requires you to be logged in.'));
+			/// The requested action requires you to be logged in.
+			$this->Session->setFlash(__d('z', 'action_requires_login'));
 			$this->redirect(array('plugin' => 'z', 'controller' => 'accounts', 'action' => 'login'));
 		} else {
 			// User is logged in

@@ -3,6 +3,7 @@ App::uses('ZAppModel', 'Z.Model');
 App::import('Vendor', 'Z.zrandom');
 
 class AccountPassword extends ZAppModel {
+	public $validationDomain = 'z';
 	public $useTable = 'z_account_passwords';
 	var $name = 'AccountPassword';
 	public $displayField = 'password';
@@ -52,17 +53,17 @@ class AccountPassword extends ZAppModel {
 		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Empty passwords are not allowed here.',
+				'message' => 'password_empty_not_allowed',
 				'allowEmpty' => false,
 				'required' => true,
 			),
 			'minLength' => array(
 				'rule'    => array('minLength', 6),
-				'message' => 'Passwords must be at least 6 characters long.'
+				'message' => 'password_min_length %d'
 			),
 			'notInList' => array(
 				'rule'    => array('notInCommonWordList'),
-				'message' => 'The password is too common. Please, select another one.'
+				'message' => 'password_in_common_list'
 			),
 		),
 		/*'salt' => array(

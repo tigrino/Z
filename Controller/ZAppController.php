@@ -74,7 +74,8 @@ class ZAppController extends AppController {
 		if ( $type == 'secure' ) {
 			$this->redirect('https://' . env('SERVER_NAME') . $this->here);
 		} else if ( $type == 'csrf' ) {
-			$this->Session->setFlash('The authentication tokens mismatch.');
+			/// The authentication tokens mismatch.
+			$this->Session->setFlash(__d('z', 'authentication_tokens_mismatch'));
 			$this->redirect($this->referer());
 		}
 	}

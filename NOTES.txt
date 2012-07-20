@@ -1,0 +1,5 @@
+To pick up the i18n strings from the plugin use
+./Console/cake i18n extract --plugin Z --overwrite --extract-core no
+If just ./Console/cake i18n is used, Model strings are not picked.
+
+The "domain" for the plugin i18n must be lowercase, i.e. 'z'.

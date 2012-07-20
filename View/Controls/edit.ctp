@@ -2,23 +2,35 @@
 <?php //debug($this); ?>
 <?php echo $this->Form->create('Account'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Account'); ?></legend>
+		<legend><?php echo __d('z', 'Edit Account'); ?></legend>
 	<?php
 		echo $this->Form->hidden('Account.id');
 		echo $this->Form->hidden('AccountPassword.id');
 		echo $this->Form->hidden('AccountPassword.account_id');
-		echo $this->Form->input('Account.email');
-		echo $this->Form->input('AccountPassword.password');
-		echo $this->Form->input('Account.active');
+		echo $this->Form->input('Account.email',
+			array(
+				'label' => __d('z', 'label_email'),
+			)
+		);
+		echo $this->Form->input('AccountPassword.password',
+			array(
+				'label' => __d('z', 'label_password'),
+			)
+		);
+		echo $this->Form->input('Account.active',
+			array(
+				'label' => __d('z', 'label_activate'),
+			)
+		);
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__d('z', 'Submit')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Account.id')), null, __('Are you sure you want to permanently delete accout # %s?', $this->Form->value('Account.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Accounts'), array('action' => 'accounts')); ?></li>
+		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('action' => 'delete', $this->Form->value('Account.id')), null, __d('z', 'Are you sure you want to permanently delete accout # %s?', $this->Form->value('Account.id'))); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 	</ul>
 </div>

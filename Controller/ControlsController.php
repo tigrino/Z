@@ -50,7 +50,8 @@ class ControlsController extends ZAppController {
 	public function view($id = null) {
 		$this->Account->id = $id;
 		if (!$this->Account->exists()) {
-			throw new NotFoundException(__('Invalid account'));
+			/// Invalid account
+			throw new NotFoundException(__d('z', 'account_invalid'));
 		}
 		$this->set('Account', $this->Account->read(null, $id));
 	}
@@ -61,10 +62,12 @@ class ControlsController extends ZAppController {
 		if ($this->request->is('post')) {
 			$this->Account->create();
 			if ($this->Account->saveAssociated($this->request->data)) {
-				$this->Session->setFlash(__('The account has been saved'));
+				/// The account has been saved
+				$this->Session->setFlash(__d('z', 'account_saved_success'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The account could not be saved. Please, try again.'));
+				/// The account could not be saved. Please, try again.
+				$this->Session->setFlash(__d('z', 'account_save_problem'));
 			}
 		}
 	}
@@ -72,15 +75,18 @@ class ControlsController extends ZAppController {
 	public function edit($id = null) {
 		$this->Account->id = $id;
 		if (!$this->Account->exists()) {
-			throw new NotFoundException(__('Invalid account'));
+			/// Invalid account
+			throw new NotFoundException(__d('z', 'account_invalid'));
 		}
 		//debug($this->request->data);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Account->saveAssociated($this->request->data)) {
-				$this->Session->setFlash(__('The account has been saved'));
+				/// The account has been saved
+				$this->Session->setFlash(__d('z', 'account_saved_success'));
 				//$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The account could not be saved. Please, try again.'));
+				/// The account could not be saved. Please, try again.
+				$this->Session->setFlash(__d('z', 'account_save_problem'));
 			}
 		} else {
 			$this->request->data = $this->Account->read(null, $id);
@@ -97,13 +103,16 @@ class ControlsController extends ZAppController {
 		}
 		$this->Account->id = $id;
 		if (!$this->Account->exists()) {
-			throw new NotFoundException(__('Invalid account'));
+			/// Invalid account
+			throw new NotFoundException(__d('z', 'account_invalid'));
 		}
 		if ($this->Account->delete()) {
-			$this->Session->setFlash(__('Account deleted'));
+			/// Account deleted
+			$this->Session->setFlash(__d('z', 'account_deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Account was not deleted'));
+		/// Account was not deleted
+		$this->Session->setFlash(__d('z', 'account_delete_problem'));
 		$this->redirect(array('action' => 'index'));
 	}
 

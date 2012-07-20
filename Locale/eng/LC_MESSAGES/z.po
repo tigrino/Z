@@ -1,0 +1,374 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright 2012 Albert 'Tigr' Zenkoff <albert@tigr.net>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Z 1.0\n"
+"POT-Creation-Date: 2012-07-20 20:34+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Controller/AccountsController.php:39;254;387;463;558
+msgid "bots_are_not_welcome"
+msgstr "We do not accept registrations from bots."
+
+#: Controller/AccountsController.php:48
+msgid "logged_in"
+msgstr "Logged in"
+
+#: Controller/AccountsController.php:107;200
+msgid "incorrect_credentials"
+msgstr "User name or password is incorrect."
+
+#: Controller/AccountsController.php:125
+#: Controller/UsersController.php:15
+msgid "action_requires_login"
+msgstr "The requested action requires login."
+
+#: Controller/AccountsController.php:156
+msgid "your_account_deleted_success"
+msgstr "Your account was successfully deleted. Good-bye!"
+
+#: Controller/AccountsController.php:164
+msgid "not_logged_in_reset_password"
+msgstr "You are not logged in. Please, use this form to reset your password."
+
+#: Controller/AccountsController.php:176;202
+msgid "credentials_mismatch_logout"
+msgstr "The user name or password mismatch. You have been logged out for security reasons."
+
+#: Controller/AccountsController.php:183;184
+msgid "passwords_must_match"
+msgstr "The passwords must match."
+
+#: Controller/AccountsController.php:186
+msgid "passwords_do_not_match"
+msgstr "The passwords do not match."
+
+#: Controller/AccountsController.php:194
+msgid "password_existential_fault_logout"
+msgstr "Password system existential fault. You have been logged out for security reasons."
+
+#: Controller/AccountsController.php:215
+msgid "bad_password_choose_another"
+msgstr "The password is not allowed. Please, choose a different password."
+
+#: Controller/AccountsController.php:226
+msgid "password_update_success"
+msgstr "Password successfully updated."
+
+#: Controller/AccountsController.php:230
+msgid "password_not_saved_problem"
+msgstr "Password was not saved. Please, try again."
+
+#: Controller/AccountsController.php:264;266
+msgid "incorrect_captcha_try_again"
+msgstr "The CAPTCHA code was incorrect. Please, try again."
+
+#: Controller/AccountsController.php:275
+msgid "tos_agreement_confirm"
+msgstr "Please, confirm your agreement to the Terms of Service."
+
+#: Controller/AccountsController.php:285;286
+msgid "Passwords must match"
+msgstr ""
+
+#: Controller/AccountsController.php:287
+msgid "The passwords did not match up."
+msgstr ""
+
+#: Controller/AccountsController.php:302
+msgid "Registration data validation failure. Please, check your input."
+msgstr ""
+
+#: Controller/AccountsController.php:354;358;362;437
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/AccountsController.php:441
+msgid "Your e-mail was successfully verified."
+msgstr ""
+
+#: Controller/AccountsController.php:444
+msgid "User e-mail verification failed."
+msgstr ""
+
+#: Controller/AccountsController.php:455
+msgid "You are already logged in, use this form to change your password."
+msgstr ""
+
+#: Controller/AccountsController.php:473
+msgid "The CAPTCHA code is incorrect. Please, try again."
+msgstr ""
+
+#: Controller/AccountsController.php:475
+msgid "CAPTCHA code is incorrect"
+msgstr ""
+
+#: Controller/AccountsController.php:488;490
+msgid "email_not_registered"
+msgstr "This e-mail address is not registered."
+
+#: Controller/AccountsController.php:541
+msgid "Password reset request created successfully. Please check your email."
+msgstr ""
+
+#: Controller/AccountsController.php:544
+msgid "The request could not be approved. Please, try again."
+msgstr ""
+
+#: Controller/AccountsController.php:570;575;580;585
+msgid "Please, enter values to all required fields."
+msgstr ""
+
+#: Controller/AccountsController.php:571;576;581;586
+msgid "Missing a required value."
+msgstr ""
+
+#: Controller/AccountsController.php:590
+msgid "The passwords are different."
+msgstr ""
+
+#: Controller/AccountsController.php:591;592
+msgid "Passwords must match."
+msgstr ""
+
+#: Controller/AccountsController.php:603
+msgid "Token verification failed."
+msgstr ""
+
+#: Controller/AccountsController.php:604
+msgid "Missing a correct token."
+msgstr ""
+
+#: Controller/AccountsController.php:615
+msgid "Retrieval of user record during password update failed."
+msgstr ""
+
+#: Controller/AccountsController.php:622
+msgid "User password was successfully changed."
+msgstr ""
+
+#: Controller/AccountsController.php:625
+msgid "Password update failed."
+msgstr ""
+
+#: Controller/ControlsController.php:54;79;107
+msgid "account_invalid"
+msgstr "Invalid account."
+
+#: Controller/ControlsController.php:66;85
+msgid "account_saved_success"
+msgstr "Account was successfully saved."
+
+#: Controller/ControlsController.php:70;89
+msgid "account_save_problem"
+msgstr "Account was not saved. Please, try again."
+
+#: Controller/ControlsController.php:111
+msgid "account_deleted"
+msgstr "Account was successfully deleted."
+
+#: Controller/ControlsController.php:115
+msgid "account_delete_problem"
+msgstr "There was a problem saving the account. Please, try again."
+
+#: Controller/ZAppController.php:78
+msgid "authentication_tokens_mismatch"
+msgstr "Authentication tokens mismatch. Please, try again."
+
+#: View/Accounts/confirm.ctp:8
+msgid "Confirm Password Reset"
+msgstr ""
+
+#: View/Accounts/confirm.ctp:27
+#: View/Accounts/login.ctp:21
+#: View/Accounts/password.ctp:31
+#: View/Accounts/register.ctp:55
+#: View/Accounts/reset.ctp:37
+#: View/Accounts/verify.ctp:21
+msgid "Submit"
+msgstr ""
+
+#: View/Accounts/confirm.ctp:30
+#: View/Accounts/login.ctp:24
+#: View/Accounts/password.ctp:34
+#: View/Accounts/register.ctp:58
+#: View/Accounts/reset.ctp:40
+#: View/Accounts/verify.ctp:24
+#: View/Users/view.ctp:57
+msgid "Actions"
+msgstr "Actions"
+
+#: View/Accounts/confirm.ctp:32
+#: View/Accounts/login.ctp:8
+#: View/Accounts/register.ctp:60
+#: View/Accounts/reset.ctp:42
+#: View/Accounts/verify.ctp:26
+msgid "Login"
+msgstr "Login"
+
+#: View/Accounts/confirm.ctp:33
+#: View/Accounts/login.ctp:27
+msgid "Reset account"
+msgstr ""
+
+#: View/Accounts/login.ctp:26
+#: View/Accounts/register.ctp:8
+#: View/Accounts/verify.ctp:27
+msgid "Register"
+msgstr ""
+
+#: View/Accounts/password.ctp:9
+#: View/Users/view.ctp:59
+msgid "Change Password"
+msgstr "Change Password"
+
+#: View/Accounts/password.ctp:37
+msgid "View Account"
+msgstr ""
+
+#: View/Accounts/password.ctp:38
+#: View/Users/view.ctp:60
+msgid "Delete"
+msgstr "Delete"
+
+#: View/Accounts/password.ctp:38
+#: View/Users/view.ctp:60
+msgid "Are you sure you want to delete your user account %s?"
+msgstr "Are you sure you want to delete your user account %s?"
+
+#: View/Accounts/password.ctp:39
+#: View/Users/view.ctp:61
+msgid "Logout"
+msgstr "Logout"
+
+#: View/Accounts/register.ctp:28
+#: View/Accounts/reset.ctp:18
+msgid "Enter the given code: "
+msgstr ""
+
+#: View/Accounts/register.ctp:34
+#: View/Accounts/reset.ctp:24
+msgid "into the following field:"
+msgstr ""
+
+#: View/Accounts/register.ctp:42
+#: View/Accounts/reset.ctp:32
+msgid "The validation of the CAPTCHA code did not succeed."
+msgstr ""
+
+#: View/Accounts/register.ctp:49
+msgid "I confirm that I agree to "
+msgstr ""
+
+#: View/Accounts/register.ctp:49
+msgid "the Terms of Service and User Agreement"
+msgstr ""
+
+#: View/Accounts/register.ctp:50
+msgid "The acceptance is mandatory."
+msgstr ""
+
+#: View/Accounts/register.ctp:61
+#: View/Accounts/verify.ctp:8
+msgid "Verify e-mail"
+msgstr ""
+
+#: View/Accounts/register.ctp:62
+#: View/Accounts/reset.ctp:8
+msgid "Reset password"
+msgstr "Reset password"
+
+#: View/Accounts/reset.ctp:43
+msgid "Confirm password"
+msgstr "Confirm password"
+
+#: View/Users/view.ctp:6
+msgid "User"
+msgstr "User Account"
+
+#: View/Users/view.ctp:14
+msgid "Id"
+msgstr "Id"
+
+#: View/Users/view.ctp:19
+msgid "Email"
+msgstr "Email"
+
+#: View/Users/view.ctp:24
+msgid "Created"
+msgstr "Created"
+
+#: View/Users/view.ctp:29
+msgid "Modified"
+msgstr "Modified"
+
+#: View/Users/view.ctp:34
+msgid "Last Login"
+msgstr "Last Login"
+
+#: View/Users/view.ctp:39;49
+msgid "From"
+msgstr "From"
+
+#: View/Users/view.ctp:44
+msgid "Last Failed Login"
+msgstr "Last Failed Login"
+
+#: View/Users/view.ctp:63
+msgid "Admin Panel"
+msgstr "Admin Panel"
+
+#: Model/Account.php:validation
+#: for field email
+msgid "email_need_valid_email"
+msgstr "Please, enter a valid e-mail address."
+
+#: Model/Account.php:validation
+#: for field email
+msgid "email_already_registered"
+msgstr "This e-mail address is already registered."
+
+#: Model/AccountFlag.php:validation
+#: for field agreement
+msgid "tos_agreement_required"
+msgstr "Your agreement to the Terms of Service is required."
+
+#: Model/AccountLogin.php:validation
+#: for field account_id
+#: Model/AccountToken.php:validation
+#: token
+msgid "notempty"
+msgstr "This field cannot be left empty."
+
+#: Model/AccountPassword.php:validation
+#: for field password
+msgid "password_empty_not_allowed"
+msgstr "Empty passwords are not allowed."
+
+#: Model/AccountPassword.php:validation
+#: for field password
+msgid "password_min_length %d"
+msgstr "The password must be at least %d characters long."
+
+#: Model/AccountPassword.php:validation
+#: for field password
+msgid "password_in_common_list"
+msgstr "This password is too common. Please, choose another password."
+
+#: Model/AccountToken.php:validation
+#: for field account_id;validation purpose
+msgid "numeric"
+msgstr "This value must be numeric."
+
+#~ msgid "The agreement to Terms of Service is required."
+#~ msgstr "The agreement to Terms of Service is required."
