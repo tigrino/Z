@@ -321,32 +321,28 @@ class AccountsController extends ZAppController {
 					$this->_clean_old_tokens();
 					if ( $this->Account->AccountToken->save($this->request->data) ) {
 						$dataSource->commit();
+						$fromurl = Router::url( array('action' => 'register'), true );
 						$url = Router::url( array('action' => 'verify'), true );
 						$urltoken = $url.'/t:'.$this->data['AccountToken']['token'].'/n:'.$this->data['Account']['email'].'';
 						$frommail = Configure::read('Z.email_from');
 						$sitename = Configure::read('Z.site_title');
 						// and send an e-mail to the user
-						$msg = "Thank you for registering at " . $sitename . "!\n";
-						$msg .= "\n";
-						$msg .= 'Click on the following link to complete registration ';
-						$msg .= $urltoken;
-						$msg .= "\n";
-						$msg .= "\n";
-						$msg .= 'Alternatively you can go to '.$url.' and enter your e-mail address and the following verification token: ';
-						$msg .= "\n";
-						$msg .= "\n";
-						$msg .= "          " . $this->data['AccountToken']['token'];
-						$msg .= "\n";
-						$msg .= "\n";
-						$msg .= " to verify your account.\n";
-						$msg .= "\n";
-						$msg .= "Your " . $sitename . " team.\n";
-						$msg = wordwrap($msg,70);
 						$email = new CakeEmail();
+						$email->viewVars(array(
+							'sitename' => $sitename,
+							'email' => $this->data['Account']['email'],
+							'fromurl' => $fromurl,
+							'token' => $this->data['AccountToken']['token'],
+							'url' => $url,
+							'urltoken' => $urltoken,
+							));
+						$email->emailFormat('text');
+						$email->template('Z.verify', 'Z.comeclick');
 						$email->from(array($frommail => $sitename));
 						$email->to($this->data['Account']['email']);
 						$email->subject('Confirm Registration for ' . $sitename);
-						$email->send($msg);
+						//$email->send($msg);
+						$email->send();
 						$this->Session->setFlash('User created successfully. Please check your email for a validation link.');
 						$this->redirect(array('action' => 'verify'));
 					} else {
@@ -513,32 +509,27 @@ class AccountsController extends ZAppController {
 					)
 				);
 				if ( $this->Account->AccountToken->save(null, $options) ) {
+					$fromurl = Router::url( array('action' => 'reset'), true );
 					$url = Router::url( array('action' => 'confirm'), true );
 					$urltoken = $url.'/t:'.$data['AccountToken']['token'].'/n:'.$this->request->data['Account']['email'].'';
 					$frommail = Configure::read('Z.email_from');
 					$sitename = Configure::read('Z.site_title');
 					// and send an e-mail to the user
-					$msg = "Thank you for requesting a password reset at " . $sitename . "!\n";
-					$msg .= "\n";
-					$msg .= 'Click on the following link to complete password reset: ';
-					$msg .= $urltoken;
-					$msg .= "\n";
-					$msg .= "\n";
-					$msg .= 'Alternatively you can go to '.$url.' and enter your e-mail address and the following verification token: ';
-					$msg .= "\n";
-					$msg .= "\n";
-					$msg .= "          " . $data['AccountToken']['token'];
-					$msg .= "\n";
-					$msg .= "\n";
-					$msg .= " to verify your account.\n";
-					$msg .= "\n";
-					$msg .= "Your " . $sitename . " team.\n";
-					$msg = wordwrap($msg,70);
 					$email = new CakeEmail();
+					$email->viewVars(array(
+						'sitename' => $sitename,
+						'email' => $this->request->data['Account']['email'],
+						'fromurl' => $fromurl,
+						'token' => $data['AccountToken']['token'],
+						'url' => $url,
+						'urltoken' => $urltoken,
+						));
+					$email->emailFormat('text');
+					$email->template('Z.reset', 'Z.comeclick');
 					$email->from(array($frommail => $sitename));
 					$email->to($this->request->data['Account']['email']);
 					$email->subject('Confirm Password Reset for Your Account at ' . $sitename);
-					$email->send($msg);
+					$email->send();
 					$this->Session->setFlash(__d('z', 'Password reset request created successfully. Please check your email.'));
 					$this->redirect(array('action' => 'confirm'));
 				} else {
