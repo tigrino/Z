@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z\n"
-"POT-Creation-Date: 2012-07-20 21:08+0200\n"
-"PO-Revision-Date: 2012-07-20 21:11+0100\n"
+"POT-Creation-Date: 2012-07-20 21:25+0200\n"
+"PO-Revision-Date: 2012-07-20 21:27+0100\n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Tigr[ino] <albert@tigr.net>\n"
 "Language: \n"
@@ -104,11 +104,11 @@ msgstr "Адрес электронной почты не прошел пров�
 
 #: Controller/AccountsController.php:455
 msgid "You are already logged in, use this form to change your password."
-msgstr ""
+msgstr "Вы уже в системе, воспользуйтесь сменой пароля."
 
 #: Controller/AccountsController.php:473
 msgid "The CAPTCHA code is incorrect. Please, try again."
-msgstr ""
+msgstr "Неверный код CAPTCHA, попробуйте заново."
 
 #: Controller/AccountsController.php:475
 msgid "CAPTCHA code is incorrect"
@@ -120,39 +120,39 @@ msgstr "Этот адрес электронной почты не зареги�
 
 #: Controller/AccountsController.php:541
 msgid "Password reset request created successfully. Please check your email."
-msgstr ""
+msgstr "Запрос на смену пароля создан. Инструкции высланы на электронную почту."
 
 #: Controller/AccountsController.php:544
 msgid "The request could not be approved. Please, try again."
-msgstr ""
+msgstr "Ваш запрос не был одобрен системой. Попробуйте еще раз."
 
 #: Controller/AccountsController.php:570;575;580;585
 msgid "Please, enter values to all required fields."
-msgstr ""
+msgstr "Введите значения во все требуемые поля."
 
 #: Controller/AccountsController.php:571;576;581;586
 msgid "Missing a required value."
-msgstr ""
+msgstr "Отсутствует обязательное для ввода поле."
 
 #: Controller/AccountsController.php:590
 msgid "The passwords are different."
-msgstr ""
+msgstr "Пароли отличны друг от друга."
 
 #: Controller/AccountsController.php:591;592
 msgid "Passwords must match."
-msgstr ""
+msgstr "Пароли должны совпадать."
 
 #: Controller/AccountsController.php:603
 msgid "Token verification failed."
-msgstr ""
+msgstr "Жетон не прошел проверку."
 
 #: Controller/AccountsController.php:604
 msgid "Missing a correct token."
-msgstr ""
+msgstr "Не хватает необходимого жетона."
 
 #: Controller/AccountsController.php:615
 msgid "Retrieval of user record during password update failed."
-msgstr ""
+msgstr "Произошел сбой чтения пользовательской информации при обновлении."
 
 #: Controller/AccountsController.php:622
 msgid "User password was successfully changed."
@@ -243,7 +243,7 @@ msgstr "Вперед"
 #: View/Accounts/register.ctp:60
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
-#: View/Controls/accounts.ctp:46
+#: View/Controls/accounts.ctp:11;46
 #: View/Controls/add.ctp:26
 #: View/Controls/edit.ctp:30
 #: View/Controls/tokens.ctp:12;45
@@ -358,6 +358,21 @@ msgstr "Изменить"
 #: View/Controls/view.ctp:113;145
 msgid "Are you sure you want to delete # %s?"
 msgstr "Вы уверены, что хотите удалить учетную запись %s?"
+
+#: View/Controls/accounts.ctp:33
+#: View/Controls/tokens.ctp:32
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Страница {:page} из {:pages}, показано {:current} записей из {:count}, начиная {:start}, заканчивая {:end}"
+
+#: View/Controls/accounts.ctp:39
+#: View/Controls/tokens.ctp:38
+msgid "previous"
+msgstr "назад"
+
+#: View/Controls/accounts.ctp:41
+#: View/Controls/tokens.ctp:40
+msgid "next"
+msgstr "вперед"
 
 #: View/Controls/accounts.ctp:48
 #: View/Controls/view.ctp:115

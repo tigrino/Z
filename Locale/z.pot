@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-20 21:08+0200\n"
+"POT-Creation-Date: 2012-07-20 21:25+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -240,7 +240,7 @@ msgstr ""
 #: View/Accounts/register.ctp:60
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
-#: View/Controls/accounts.ctp:46
+#: View/Controls/accounts.ctp:11;46
 #: View/Controls/add.ctp:26
 #: View/Controls/edit.ctp:30
 #: View/Controls/tokens.ctp:12;45
@@ -354,6 +354,21 @@ msgstr ""
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
 msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/Controls/accounts.ctp:33
+#: View/Controls/tokens.ctp:32
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr ""
+
+#: View/Controls/accounts.ctp:39
+#: View/Controls/tokens.ctp:38
+msgid "previous"
+msgstr ""
+
+#: View/Controls/accounts.ctp:41
+#: View/Controls/tokens.ctp:40
+msgid "next"
 msgstr ""
 
 #: View/Controls/accounts.ctp:48
