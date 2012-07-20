@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z 1.0\n"
-"POT-Creation-Date: 2012-07-20 20:34+0200\n"
+"POT-Creation-Date: 2012-07-20 21:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: \n"
@@ -189,41 +189,84 @@ msgstr "Authentication tokens mismatch. Please, try again."
 msgid "Confirm Password Reset"
 msgstr ""
 
+#: View/Accounts/confirm.ctp:12
+#: View/Accounts/login.ctp:12
+#: View/Accounts/register.ctp:10
+#: View/Accounts/reset.ctp:12
+#: View/Accounts/verify.ctp:12
+#: View/Controls/add.ctp:8
+#: View/Controls/edit.ctp:12
+msgid "label_email"
+msgstr "Email"
+
+#: View/Accounts/confirm.ctp:17
+#: View/Accounts/verify.ctp:17
+msgid "label_token"
+msgstr "Token"
+
+#: View/Accounts/confirm.ctp:22
+#: View/Accounts/login.ctp:17
+#: View/Accounts/register.ctp:15
+#: View/Controls/add.ctp:13
+#: View/Controls/edit.ctp:17
+msgid "label_password"
+msgstr "Password"
+
 #: View/Accounts/confirm.ctp:27
-#: View/Accounts/login.ctp:21
+#: View/Accounts/register.ctp:19
+msgid "label_password_confirm"
+msgstr "Confirm password"
+
+#: View/Accounts/confirm.ctp:35
+#: View/Accounts/login.ctp:24
+#: View/Accounts/register.ctp:27
+#: View/Accounts/reset.ctp:19
+#: View/Accounts/verify.ctp:24
+msgid "Please enter something into the following field if you are not human:"
+msgstr ""
+
+#: View/Accounts/confirm.ctp:40
+#: View/Accounts/login.ctp:29
 #: View/Accounts/password.ctp:31
-#: View/Accounts/register.ctp:55
-#: View/Accounts/reset.ctp:37
-#: View/Accounts/verify.ctp:21
+#: View/Accounts/register.ctp:57
+#: View/Accounts/reset.ctp:41
+#: View/Accounts/verify.ctp:29
+#: View/Controls/add.ctp:23
+#: View/Controls/edit.ctp:27
 msgid "Submit"
 msgstr ""
 
-#: View/Accounts/confirm.ctp:30
-#: View/Accounts/login.ctp:24
+#: View/Accounts/confirm.ctp:43
+#: View/Accounts/login.ctp:32
 #: View/Accounts/password.ctp:34
-#: View/Accounts/register.ctp:58
-#: View/Accounts/reset.ctp:40
-#: View/Accounts/verify.ctp:24
+#: View/Accounts/register.ctp:60
+#: View/Accounts/reset.ctp:44
+#: View/Accounts/verify.ctp:32
+#: View/Controls/accounts.ctp:11;46
+#: View/Controls/add.ctp:26
+#: View/Controls/edit.ctp:30
+#: View/Controls/tokens.ctp:12;45
+#: View/Controls/view.ctp:110;131
 #: View/Users/view.ctp:57
 msgid "Actions"
 msgstr "Actions"
 
-#: View/Accounts/confirm.ctp:32
+#: View/Accounts/confirm.ctp:45
 #: View/Accounts/login.ctp:8
-#: View/Accounts/register.ctp:60
-#: View/Accounts/reset.ctp:42
-#: View/Accounts/verify.ctp:26
+#: View/Accounts/register.ctp:62
+#: View/Accounts/reset.ctp:46
+#: View/Accounts/verify.ctp:34
 msgid "Login"
 msgstr "Login"
 
-#: View/Accounts/confirm.ctp:33
-#: View/Accounts/login.ctp:27
+#: View/Accounts/confirm.ctp:46
+#: View/Accounts/login.ctp:35
 msgid "Reset account"
 msgstr ""
 
-#: View/Accounts/login.ctp:26
+#: View/Accounts/login.ctp:34
 #: View/Accounts/register.ctp:8
-#: View/Accounts/verify.ctp:27
+#: View/Accounts/verify.ctp:35
 msgid "Register"
 msgstr ""
 
@@ -237,6 +280,10 @@ msgid "View Account"
 msgstr ""
 
 #: View/Accounts/password.ctp:38
+#: View/Controls/accounts.ctp:25
+#: View/Controls/edit.ctp:33
+#: View/Controls/tokens.ctp:24
+#: View/Controls/view.ctp:113;145
 #: View/Users/view.ctp:60
 msgid "Delete"
 msgstr "Delete"
@@ -251,66 +298,206 @@ msgstr "Are you sure you want to delete your user account %s?"
 msgid "Logout"
 msgstr "Logout"
 
-#: View/Accounts/register.ctp:28
-#: View/Accounts/reset.ctp:18
+#: View/Accounts/register.ctp:30
+#: View/Accounts/reset.ctp:22
 msgid "Enter the given code: "
 msgstr ""
 
-#: View/Accounts/register.ctp:34
-#: View/Accounts/reset.ctp:24
+#: View/Accounts/register.ctp:36
+#: View/Accounts/reset.ctp:28
 msgid "into the following field:"
 msgstr ""
 
-#: View/Accounts/register.ctp:42
-#: View/Accounts/reset.ctp:32
+#: View/Accounts/register.ctp:44
+#: View/Accounts/reset.ctp:36
 msgid "The validation of the CAPTCHA code did not succeed."
 msgstr ""
 
-#: View/Accounts/register.ctp:49
+#: View/Accounts/register.ctp:51
 msgid "I confirm that I agree to "
 msgstr ""
 
-#: View/Accounts/register.ctp:49
+#: View/Accounts/register.ctp:51
 msgid "the Terms of Service and User Agreement"
 msgstr ""
 
-#: View/Accounts/register.ctp:50
+#: View/Accounts/register.ctp:52
 msgid "The acceptance is mandatory."
 msgstr ""
 
-#: View/Accounts/register.ctp:61
+#: View/Accounts/register.ctp:63
 #: View/Accounts/verify.ctp:8
 msgid "Verify e-mail"
 msgstr ""
 
-#: View/Accounts/register.ctp:62
+#: View/Accounts/register.ctp:64
 #: View/Accounts/reset.ctp:8
 msgid "Reset password"
 msgstr "Reset password"
 
-#: View/Accounts/reset.ctp:43
+#: View/Accounts/reset.ctp:47
 msgid "Confirm password"
 msgstr "Confirm password"
 
+#: View/Controls/accounts.ctp:2
+msgid "Accounts List"
+msgstr ""
+
+#: View/Controls/accounts.ctp:23
+msgid "View"
+msgstr ""
+
+#: View/Controls/accounts.ctp:24
+#: View/Controls/view.ctp:112
+msgid "Edit"
+msgstr ""
+
+#: View/Controls/accounts.ctp:25
+#: View/Controls/tokens.ctp:24
+#: View/Controls/view.ctp:113;145
+msgid "Are you sure you want to delete # %s?"
+msgstr "Are you sure you want to delete # %s?"
+
+#: View/Controls/accounts.ctp:33
+#: View/Controls/tokens.ctp:32
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr ""
+
+#: View/Controls/accounts.ctp:39
+#: View/Controls/tokens.ctp:38
+msgid "previous"
+msgstr ""
+
+#: View/Controls/accounts.ctp:41
+#: View/Controls/tokens.ctp:40
+msgid "next"
+msgstr ""
+
+#: View/Controls/accounts.ctp:48
+#: View/Controls/view.ctp:115
+msgid "New Account"
+msgstr ""
+
+#: View/Controls/accounts.ctp:49
+#: View/Controls/add.ctp:30
+#: View/Controls/tokens.ctp:2
+#: View/Controls/view.ctp:116;120
+msgid "Tokens"
+msgstr ""
+
+#: View/Controls/add.ctp:4
+msgid "Add Account"
+msgstr ""
+
+#: View/Controls/add.ctp:18
+#: View/Controls/edit.ctp:22
+msgid "label_activate"
+msgstr "Active"
+
+#: View/Controls/add.ctp:29
+#: View/Controls/edit.ctp:34
+#: View/Controls/tokens.ctp:47
+#: View/Controls/view.ctp:114
+msgid "Accounts"
+msgstr ""
+
+#: View/Controls/edit.ctp:5
+msgid "Edit Account"
+msgstr ""
+
+#: View/Controls/edit.ctp:33
+msgid "Are you sure you want to permanently delete accout # %s?"
+msgstr "Are you sure you want to permanently delete account # %s?"
+
+#: View/Controls/view.ctp:2
 #: View/Users/view.ctp:6
 msgid "User"
 msgstr "User Account"
 
+#: View/Controls/view.ctp:4;33;62;124
 #: View/Users/view.ctp:14
 msgid "Id"
 msgstr "Id"
 
+#: View/Controls/view.ctp:9
 #: View/Users/view.ctp:19
 msgid "Email"
 msgstr "Email"
 
+#: View/Controls/view.ctp:14
+msgid "Active"
+msgstr "Active"
+
+#: View/Controls/view.ctp:19;49;98;129
 #: View/Users/view.ctp:24
 msgid "Created"
 msgstr "Created"
 
+#: View/Controls/view.ctp:24;53;102;130
 #: View/Users/view.ctp:29
 msgid "Modified"
 msgstr "Modified"
+
+#: View/Controls/view.ctp:30;45
+msgid "Password"
+msgstr "Password"
+
+#: View/Controls/view.ctp:37;66;125
+msgid "Account Id"
+msgstr ""
+
+#: View/Controls/view.ctp:41
+msgid "Salt"
+msgstr ""
+
+#: View/Controls/view.ctp:59
+msgid "Flags"
+msgstr ""
+
+#: View/Controls/view.ctp:70
+msgid "User Admin"
+msgstr ""
+
+#: View/Controls/view.ctp:74
+msgid "Agreement"
+msgstr ""
+
+#: View/Controls/view.ctp:78
+msgid "Agreement Date"
+msgstr ""
+
+#: View/Controls/view.ctp:82
+msgid "Email Verified"
+msgstr ""
+
+#: View/Controls/view.ctp:86
+msgid "Email Verified Date"
+msgstr ""
+
+#: View/Controls/view.ctp:90
+#, fuzzy
+msgid "Deleted"
+msgstr "Delete"
+
+#: View/Controls/view.ctp:94
+msgid "Deleted Date"
+msgstr "Deleted Date"
+
+#: View/Controls/view.ctp:126
+msgid "Token"
+msgstr ""
+
+#: View/Controls/view.ctp:127
+msgid "Purpose"
+msgstr ""
+
+#: View/Controls/view.ctp:128
+msgid "Expires"
+msgstr ""
+
+#: View/Controls/view.ctp:154
+msgid "New Account Token"
+msgstr ""
 
 #: View/Users/view.ctp:34
 msgid "Last Login"

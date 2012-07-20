@@ -93,3 +93,5 @@ as usual.
 
 Good luck!
 
+P.S. For extra info on various subjects in software security
+     head over to http://holyhash.wordpress.com/

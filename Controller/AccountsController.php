@@ -396,6 +396,7 @@ class AccountsController extends ZAppController {
 			$token = null;
 		}
 		$this->_clean_old_tokens(); // first remove expired tokens
+		$this->_clean_old_registrations(); // remove expired registration requests
 		if ( !empty($token) ) {
 			$result = $this->Account->AccountToken->find('first', array(
 				'conditions' => array(
@@ -646,16 +647,18 @@ class AccountsController extends ZAppController {
 	}
 
 	protected function _clean_old_tokens( ) {
-		// THIS IS WRONG
-		// check for the actual status flags 
-		// whether the token should be removed or the whole user record
-		// record is removed only when the first e-mail verification fails
-		// otherwise it is soft-deleted and we clean tokens only
-		// How do we delete user records that have expired verification?
+		// check and remove the expired tokens
 		$this->Account->recursive = 1;
 		$this->Account->AccountToken->deleteAll( array(
 			'AccountToken.expires <' => date('Y-m-d H:i:s')
 			), true );
+	}
+	protected function _clean_old_registrations( ) {
+		// Here we need to find all user records that are
+		// - not active
+		// - with e-mail not verified
+		// - with no outstanding e-mail tokens
+		// and delete them.
 	}
 
 }
