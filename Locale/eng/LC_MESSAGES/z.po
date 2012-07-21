@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z Authentication Plugin for CakePHP\n"
-"POT-Creation-Date: 2012-07-20 21:25+0200\n"
+"POT-Creation-Date: 2012-07-21 08:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Albert 'Tigr' Zenkoff <albert@tigr.net>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Controller/AccountsController.php:39;254;387;463;558
+#: Controller/AccountsController.php:39;254;383;460;550
 msgid "bots_are_not_welcome"
 msgstr "We do not accept registrations from bots."
 
@@ -89,95 +89,95 @@ msgstr "The passwords did not match up."
 msgid "Registration data validation failure. Please, check your input."
 msgstr "Registration data validation failure. Please, check your input."
 
-#: Controller/AccountsController.php:354;358;362;437
+#: Controller/AccountsController.php:350;354;358;434
 msgid "The user could not be saved. Please, try again."
 msgstr "The user could not be saved. Please, try again."
 
-#: Controller/AccountsController.php:441
+#: Controller/AccountsController.php:438
 msgid "Your e-mail was successfully verified."
 msgstr "Your e-mail was successfully verified."
 
-#: Controller/AccountsController.php:444
+#: Controller/AccountsController.php:441
 msgid "User e-mail verification failed."
 msgstr "User e-mail verification failed."
 
-#: Controller/AccountsController.php:455
+#: Controller/AccountsController.php:452
 msgid "You are already logged in, use this form to change your password."
 msgstr "You are already logged in, use this form to change your password."
 
-#: Controller/AccountsController.php:473
+#: Controller/AccountsController.php:470
 msgid "The CAPTCHA code is incorrect. Please, try again."
 msgstr "The CAPTCHA code is incorrect. Please, try again."
 
-#: Controller/AccountsController.php:475
+#: Controller/AccountsController.php:472
 msgid "CAPTCHA code is incorrect"
 msgstr "CAPTCHA code is incorrect"
 
-#: Controller/AccountsController.php:488;490
+#: Controller/AccountsController.php:485;487
 msgid "email_not_registered"
 msgstr "This e-mail address is not registered."
 
-#: Controller/AccountsController.php:541
+#: Controller/AccountsController.php:533
 msgid "Password reset request created successfully. Please check your email."
 msgstr "Password reset request created successfully. Please check your email."
 
-#: Controller/AccountsController.php:544
+#: Controller/AccountsController.php:536
 msgid "The request could not be approved. Please, try again."
 msgstr "The request could not be approved. Please, try again."
 
-#: Controller/AccountsController.php:570;575;580;585
+#: Controller/AccountsController.php:562;567;572;577
 msgid "Please, enter values to all required fields."
 msgstr "Please, enter values to all required fields."
 
-#: Controller/AccountsController.php:571;576;581;586
+#: Controller/AccountsController.php:563;568;573;578
 msgid "Missing a required value."
 msgstr "Missing a required value."
 
-#: Controller/AccountsController.php:590
+#: Controller/AccountsController.php:582
 msgid "The passwords are different."
 msgstr "The passwords are different."
 
-#: Controller/AccountsController.php:591;592
+#: Controller/AccountsController.php:583;584
 msgid "Passwords must match."
 msgstr "Passwords must match."
 
-#: Controller/AccountsController.php:603
+#: Controller/AccountsController.php:595
 msgid "Token verification failed."
 msgstr "Token verification failed."
 
-#: Controller/AccountsController.php:604
+#: Controller/AccountsController.php:596
 msgid "Missing a correct token."
 msgstr "Missing a correct token."
 
-#: Controller/AccountsController.php:615
+#: Controller/AccountsController.php:607
 msgid "Retrieval of user record during password update failed."
 msgstr "Retrieval of user record during password update failed."
 
-#: Controller/AccountsController.php:622
+#: Controller/AccountsController.php:614
 msgid "User password was successfully changed."
 msgstr "User password was successfully changed."
 
-#: Controller/AccountsController.php:625
+#: Controller/AccountsController.php:617
 msgid "Password update failed."
 msgstr "Password update failed."
 
-#: Controller/ControlsController.php:54;79;107
+#: Controller/ControlsController.php:54;80;108
 msgid "account_invalid"
 msgstr "Invalid account."
 
-#: Controller/ControlsController.php:66;85
+#: Controller/ControlsController.php:67;86
 msgid "account_saved_success"
 msgstr "Account was successfully saved."
 
-#: Controller/ControlsController.php:70;89
+#: Controller/ControlsController.php:71;90
 msgid "account_save_problem"
 msgstr "Account was not saved. Please, try again."
 
-#: Controller/ControlsController.php:111
+#: Controller/ControlsController.php:112
 msgid "account_deleted"
 msgstr "Account was successfully deleted."
 
-#: Controller/ControlsController.php:115
+#: Controller/ControlsController.php:116
 msgid "account_delete_problem"
 msgstr "There was a problem saving the account. Please, try again."
 
@@ -231,7 +231,7 @@ msgstr "Please enter something into the following field if you are not human:"
 #: View/Accounts/register.ctp:57
 #: View/Accounts/reset.ctp:41
 #: View/Accounts/verify.ctp:29
-#: View/Controls/add.ctp:23
+#: View/Controls/add.ctp:28
 #: View/Controls/edit.ctp:27
 msgid "Submit"
 msgstr "Submit"
@@ -243,7 +243,7 @@ msgstr "Submit"
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
 #: View/Controls/accounts.ctp:11;46
-#: View/Controls/add.ctp:26
+#: View/Controls/add.ctp:31
 #: View/Controls/edit.ctp:30
 #: View/Controls/tokens.ctp:12;45
 #: View/Controls/view.ctp:110;131
@@ -379,7 +379,7 @@ msgid "New Account"
 msgstr "New Account"
 
 #: View/Controls/accounts.ctp:49
-#: View/Controls/add.ctp:30
+#: View/Controls/add.ctp:35
 #: View/Controls/tokens.ctp:2
 #: View/Controls/view.ctp:116;120
 msgid "Tokens"
@@ -394,7 +394,11 @@ msgstr "Add Account"
 msgid "label_activate"
 msgstr "Active"
 
-#: View/Controls/add.ctp:29
+#: View/Controls/add.ctp:23
+msgid "label_user_admin"
+msgstr "User Administrator"
+
+#: View/Controls/add.ctp:34
 #: View/Controls/edit.ctp:34
 #: View/Controls/tokens.ctp:47
 #: View/Controls/view.ctp:114

@@ -15,6 +15,7 @@ class AccountFlag extends ZAppModel {
 				'required' => true,
 				'allowEmpty' => false,
 				'message' => 'tos_agreement_required',
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);

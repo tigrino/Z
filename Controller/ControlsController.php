@@ -60,7 +60,19 @@ class ControlsController extends ZAppController {
 	// Add a new user to the system
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->Account->create();
+			//debug($this->request->data);
+			$this->request->data['Account']['email'] =
+				strtolower( trim( $this->request->data['Account']['email'] ) );
+			unset($this->request->data['Account']['id']);
+			unset($this->request->data['AccountPassword']['id']);
+			unset($this->request->data['AccountFlag']['id']);
+			unset($this->request->data['AccountPassword']['salt']);
+			$this->Account->create($this->request->data);
+			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
+				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
+				debug($this->Account->validationErrors);
+				return;
+			}
 			if ($this->Account->saveAssociated($this->request->data)) {
 				/// The account has been saved
 				$this->Session->setFlash(__d('z', 'account_saved_success'));
@@ -80,6 +92,12 @@ class ControlsController extends ZAppController {
 		}
 		//debug($this->request->data);
 		if ($this->request->is('post') || $this->request->is('put')) {
+			$this->Account->create($this->request->data);
+			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
+				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
+				debug($this->Account->validationErrors);
+				return;
+			}
 			if ($this->Account->saveAssociated($this->request->data)) {
 				/// The account has been saved
 				$this->Session->setFlash(__d('z', 'account_saved_success'));
@@ -89,6 +107,7 @@ class ControlsController extends ZAppController {
 				$this->Session->setFlash(__d('z', 'account_save_problem'));
 			}
 		} else {
+			$this->Account->recursive = 0;
 			$this->request->data = $this->Account->read(null, $id);
 			//$this->set($this->Account->read(null, $id));
 			unset($this->request->data['AccountPassword']['password']);

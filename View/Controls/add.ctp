@@ -18,6 +18,19 @@
 				'label' => __d('z', 'label_activate'),
 			)
 		);
+		echo $this->Form->input('AccountFlag.user_admin',
+			array(
+				'label' => __d('z', 'label_user_admin'),
+			)
+		);
+		echo $this->Form->input('AccountFlag.agreement', 
+			array(
+				'hiddenField' => false,
+				'div' => 'required',
+				'label' => __d('z', 'I confirm that the user agrees to ').$this->Html->link(__d('z', 'the Terms of Service and User Agreement'), array('plugin' => null, 'controller' => 'pages', 'action' => 'tos')),
+				'error'=>__d('z', 'The acceptance is mandatory.',true)
+				)
+			);
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__d('z', 'Submit')); ?>

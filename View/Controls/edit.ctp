@@ -7,6 +7,8 @@
 		echo $this->Form->hidden('Account.id');
 		echo $this->Form->hidden('AccountPassword.id');
 		echo $this->Form->hidden('AccountPassword.account_id');
+		echo $this->Form->hidden('AccountFlag.id');
+		echo $this->Form->hidden('AccountFlag.account_id');
 		echo $this->Form->input('Account.email',
 			array(
 				'label' => __d('z', 'label_email'),
@@ -20,6 +22,11 @@
 		echo $this->Form->input('Account.active',
 			array(
 				'label' => __d('z', 'label_activate'),
+			)
+		);
+		echo $this->Form->input('AccountFlag.user_admin',
+			array(
+				'label' => __d('z', 'label_user_admin'),
 			)
 		);
 	?>
