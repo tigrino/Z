@@ -16,7 +16,7 @@
 		);
 		echo $this->Form->input('AccountPassword.password',
 			array(
-				'label' => __d('z', 'label_password'),
+				'label' => __d('z', 'label_password_new_or_empty'),
 			)
 		);
 		echo $this->Form->input('Account.active',

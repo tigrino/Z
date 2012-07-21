@@ -70,7 +70,7 @@ class ControlsController extends ZAppController {
 			$this->Account->create($this->request->data);
 			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
 				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
-				debug($this->Account->validationErrors);
+				//debug($this->Account->validationErrors);
 				return;
 			}
 			if ($this->Account->saveAssociated($this->request->data)) {
@@ -92,10 +92,15 @@ class ControlsController extends ZAppController {
 		}
 		//debug($this->request->data);
 		if ($this->request->is('post') || $this->request->is('put')) {
+			if ( empty($this->request->data['AccountPassword']['password']) ) {
+				// unset all password data
+				unset($this->request->data['AccountPassword']);
+			}
+			//debug($this->request->data);
 			$this->Account->create($this->request->data);
 			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
 				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
-				debug($this->Account->validationErrors);
+				//debug($this->Account->validationErrors);
 				return;
 			}
 			if ($this->Account->saveAssociated($this->request->data)) {

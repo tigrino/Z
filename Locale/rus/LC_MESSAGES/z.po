@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z Authentication Plugin for CakePHP\n"
-"POT-Creation-Date: 2012-07-21 08:38+0200\n"
-"PO-Revision-Date: 2012-07-21 08:39+0100\n"
+"POT-Creation-Date: 2012-07-21 14:28+0200\n"
+"PO-Revision-Date: 2012-07-21 14:31+0100\n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Albert 'Tigr' Zenkoff <albert@tigr.net>\n"
 "Language: \n"
@@ -87,6 +87,7 @@ msgid "The passwords did not match up."
 msgstr "Пароли не совпали."
 
 #: Controller/AccountsController.php:302
+#: Controller/ControlsController.php:72;102
 msgid "Registration data validation failure. Please, check your input."
 msgstr "Регистрационные данные не прошли проверку. Пожалуйста, проверьте введенные данные."
 
@@ -162,23 +163,23 @@ msgstr "Пароль успешно изменен."
 msgid "Password update failed."
 msgstr "Обновление пароля не сработало."
 
-#: Controller/ControlsController.php:54;80;108
+#: Controller/ControlsController.php:54;91;131
 msgid "account_invalid"
 msgstr "Несуществующая запись пользователя."
 
-#: Controller/ControlsController.php:67;86
+#: Controller/ControlsController.php:78;108
 msgid "account_saved_success"
 msgstr "Ваша учетная запись сохранена."
 
-#: Controller/ControlsController.php:71;90
+#: Controller/ControlsController.php:82;112
 msgid "account_save_problem"
 msgstr "Возникла проблема при сохранении учетной записи. Попробуйте еще раз."
 
-#: Controller/ControlsController.php:112
+#: Controller/ControlsController.php:135
 msgid "account_deleted"
 msgstr "Учетная запись удалена успешно."
 
-#: Controller/ControlsController.php:116
+#: Controller/ControlsController.php:139
 msgid "account_delete_problem"
 msgstr "Возникли проблемы с удалением учетной записи. Попробуйте еще раз."
 
@@ -196,7 +197,7 @@ msgstr "Подтверждение сброса пароля"
 #: View/Accounts/reset.ctp:12
 #: View/Accounts/verify.ctp:12
 #: View/Controls/add.ctp:8
-#: View/Controls/edit.ctp:12
+#: View/Controls/edit.ctp:14
 msgid "label_email"
 msgstr "Адрес электронной почты"
 
@@ -209,7 +210,6 @@ msgstr "Жетон"
 #: View/Accounts/login.ctp:17
 #: View/Accounts/register.ctp:15
 #: View/Controls/add.ctp:13
-#: View/Controls/edit.ctp:17
 msgid "label_password"
 msgstr "Пароль"
 
@@ -232,8 +232,8 @@ msgstr "Введите сюда что-нибудь если Вы не чело�
 #: View/Accounts/register.ctp:57
 #: View/Accounts/reset.ctp:41
 #: View/Accounts/verify.ctp:29
-#: View/Controls/add.ctp:28
-#: View/Controls/edit.ctp:27
+#: View/Controls/add.ctp:36
+#: View/Controls/edit.ctp:34
 msgid "Submit"
 msgstr "Вперед"
 
@@ -244,8 +244,8 @@ msgstr "Вперед"
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
 #: View/Controls/accounts.ctp:11;46
-#: View/Controls/add.ctp:31
-#: View/Controls/edit.ctp:30
+#: View/Controls/add.ctp:39
+#: View/Controls/edit.ctp:37
 #: View/Controls/tokens.ctp:12;45
 #: View/Controls/view.ctp:110;131
 #: View/Users/view.ctp:57
@@ -282,7 +282,7 @@ msgstr "Учетная Запись"
 
 #: View/Accounts/password.ctp:38
 #: View/Controls/accounts.ctp:25
-#: View/Controls/edit.ctp:33
+#: View/Controls/edit.ctp:40
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
 #: View/Users/view.ctp:60
@@ -319,10 +319,12 @@ msgid "I confirm that I agree to "
 msgstr "Я подтверждаю своё согласие на "
 
 #: View/Accounts/register.ctp:51
+#: View/Controls/add.ctp:30
 msgid "the Terms of Service and User Agreement"
 msgstr "Условия Обслуживания и Пользовательское Соглашение"
 
 #: View/Accounts/register.ctp:52
+#: View/Controls/add.ctp:31
 msgid "The acceptance is mandatory."
 msgstr "Принятие обязательно."
 
@@ -380,7 +382,7 @@ msgid "New Account"
 msgstr "Создать"
 
 #: View/Controls/accounts.ctp:49
-#: View/Controls/add.ctp:35
+#: View/Controls/add.ctp:43
 #: View/Controls/tokens.ctp:2
 #: View/Controls/view.ctp:116;120
 msgid "Tokens"
@@ -391,16 +393,21 @@ msgid "Add Account"
 msgstr "Создать учетную запись пользователя"
 
 #: View/Controls/add.ctp:18
-#: View/Controls/edit.ctp:22
+#: View/Controls/edit.ctp:24
 msgid "label_activate"
 msgstr "Активировать"
 
 #: View/Controls/add.ctp:23
+#: View/Controls/edit.ctp:29
 msgid "label_user_admin"
 msgstr "Администратор"
 
-#: View/Controls/add.ctp:34
-#: View/Controls/edit.ctp:34
+#: View/Controls/add.ctp:30
+msgid "I confirm that the user agrees to "
+msgstr "Я подтверждаю согласие пользователя на "
+
+#: View/Controls/add.ctp:42
+#: View/Controls/edit.ctp:41
 #: View/Controls/tokens.ctp:47
 #: View/Controls/view.ctp:114
 msgid "Accounts"
@@ -410,7 +417,11 @@ msgstr "Пользователи"
 msgid "Edit Account"
 msgstr "Изменить"
 
-#: View/Controls/edit.ctp:33
+#: View/Controls/edit.ctp:19
+msgid "label_password_new_or_empty"
+msgstr "Новый пароль (или оставьте поле пустым чтобы не менять)"
+
+#: View/Controls/edit.ctp:40
 msgid "Are you sure you want to permanently delete accout # %s?"
 msgstr "Вы уверены, что хотите удалить учетную запись № %s?"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-21 08:38+0200\n"
+"POT-Creation-Date: 2012-07-21 14:28+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -84,6 +84,7 @@ msgid "The passwords did not match up."
 msgstr ""
 
 #: Controller/AccountsController.php:302
+#: Controller/ControlsController.php:72;102
 msgid "Registration data validation failure. Please, check your input."
 msgstr ""
 
@@ -159,23 +160,23 @@ msgstr ""
 msgid "Password update failed."
 msgstr ""
 
-#: Controller/ControlsController.php:54;80;108
+#: Controller/ControlsController.php:54;91;131
 msgid "account_invalid"
 msgstr ""
 
-#: Controller/ControlsController.php:67;86
+#: Controller/ControlsController.php:78;108
 msgid "account_saved_success"
 msgstr ""
 
-#: Controller/ControlsController.php:71;90
+#: Controller/ControlsController.php:82;112
 msgid "account_save_problem"
 msgstr ""
 
-#: Controller/ControlsController.php:112
+#: Controller/ControlsController.php:135
 msgid "account_deleted"
 msgstr ""
 
-#: Controller/ControlsController.php:116
+#: Controller/ControlsController.php:139
 msgid "account_delete_problem"
 msgstr ""
 
@@ -193,7 +194,7 @@ msgstr ""
 #: View/Accounts/reset.ctp:12
 #: View/Accounts/verify.ctp:12
 #: View/Controls/add.ctp:8
-#: View/Controls/edit.ctp:12
+#: View/Controls/edit.ctp:14
 msgid "label_email"
 msgstr ""
 
@@ -206,7 +207,6 @@ msgstr ""
 #: View/Accounts/login.ctp:17
 #: View/Accounts/register.ctp:15
 #: View/Controls/add.ctp:13
-#: View/Controls/edit.ctp:17
 msgid "label_password"
 msgstr ""
 
@@ -229,8 +229,8 @@ msgstr ""
 #: View/Accounts/register.ctp:57
 #: View/Accounts/reset.ctp:41
 #: View/Accounts/verify.ctp:29
-#: View/Controls/add.ctp:28
-#: View/Controls/edit.ctp:27
+#: View/Controls/add.ctp:36
+#: View/Controls/edit.ctp:34
 msgid "Submit"
 msgstr ""
 
@@ -241,8 +241,8 @@ msgstr ""
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
 #: View/Controls/accounts.ctp:11;46
-#: View/Controls/add.ctp:31
-#: View/Controls/edit.ctp:30
+#: View/Controls/add.ctp:39
+#: View/Controls/edit.ctp:37
 #: View/Controls/tokens.ctp:12;45
 #: View/Controls/view.ctp:110;131
 #: View/Users/view.ctp:57
@@ -279,7 +279,7 @@ msgstr ""
 
 #: View/Accounts/password.ctp:38
 #: View/Controls/accounts.ctp:25
-#: View/Controls/edit.ctp:33
+#: View/Controls/edit.ctp:40
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
 #: View/Users/view.ctp:60
@@ -316,10 +316,12 @@ msgid "I confirm that I agree to "
 msgstr ""
 
 #: View/Accounts/register.ctp:51
+#: View/Controls/add.ctp:30
 msgid "the Terms of Service and User Agreement"
 msgstr ""
 
 #: View/Accounts/register.ctp:52
+#: View/Controls/add.ctp:31
 msgid "The acceptance is mandatory."
 msgstr ""
 
@@ -377,7 +379,7 @@ msgid "New Account"
 msgstr ""
 
 #: View/Controls/accounts.ctp:49
-#: View/Controls/add.ctp:35
+#: View/Controls/add.ctp:43
 #: View/Controls/tokens.ctp:2
 #: View/Controls/view.ctp:116;120
 msgid "Tokens"
@@ -388,16 +390,21 @@ msgid "Add Account"
 msgstr ""
 
 #: View/Controls/add.ctp:18
-#: View/Controls/edit.ctp:22
+#: View/Controls/edit.ctp:24
 msgid "label_activate"
 msgstr ""
 
 #: View/Controls/add.ctp:23
+#: View/Controls/edit.ctp:29
 msgid "label_user_admin"
 msgstr ""
 
-#: View/Controls/add.ctp:34
-#: View/Controls/edit.ctp:34
+#: View/Controls/add.ctp:30
+msgid "I confirm that the user agrees to "
+msgstr ""
+
+#: View/Controls/add.ctp:42
+#: View/Controls/edit.ctp:41
 #: View/Controls/tokens.ctp:47
 #: View/Controls/view.ctp:114
 msgid "Accounts"
@@ -407,7 +414,11 @@ msgstr ""
 msgid "Edit Account"
 msgstr ""
 
-#: View/Controls/edit.ctp:33
+#: View/Controls/edit.ctp:19
+msgid "label_password_new_or_empty"
+msgstr ""
+
+#: View/Controls/edit.ctp:40
 msgid "Are you sure you want to permanently delete accout # %s?"
 msgstr ""
 
