@@ -34,12 +34,7 @@ class AccountsController extends ZAppController {
 		if ($this->request->is('post')) {
 			//
 			// Check the dummy field is empty
-			if ( !empty($this->request->data['User']['ruhuman']) ) {
-				/// We do not accept registrations from bots.
-				$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
-				$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
-				return; // just in case
-			}
+			if ( $this->_block_robots() ) return;
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 			$this->request->data['User']['email'] = 
 				strtolower( trim( $this->request->data['User']['email'] ) );
@@ -249,12 +244,7 @@ class AccountsController extends ZAppController {
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 			//
 			// Check the dummy field is empty
-			if ( !empty($this->request->data['Account']['ruhuman']) ) {
-				/// We do not accept registrations from bots.
-				$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
-				$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
-				return; // just in case
-			}
+			if ( $this->_block_robots() ) return;
 			//
 			// Check the CAPTCHA is correct
 			if ( (! $this->Session->check('captcha_code')) ||
@@ -378,12 +368,7 @@ class AccountsController extends ZAppController {
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 			//
 			// Check the dummy field is empty
-			if ( !empty($this->request->data['Account']['ruhuman']) ) {
-				/// We do not accept registrations from bots.
-				$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
-				$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
-				return; // just in case
-			}
+			if ( $this->_block_robots() ) return;
 			$this->request->data['Account']['email'] = 
 				strtolower( trim( $this->request->data['Account']['email'] ) );
 			$email = $this->request->data['Account']['email'];
@@ -434,7 +419,7 @@ class AccountsController extends ZAppController {
 					$this->Session->setFlash(__d('z', 'The user could not be saved. Please, try again.'));
 					return;
 				}
-				$this->Account->AccountToken->delete($result['AccountToken']['token']);
+				$this->Account->AccountToken->delete($result['AccountToken']['id']);
 				$this->Session->setFlash(__d('z', 'Your e-mail was successfully verified.'));
 				$this->redirect(array('action' => 'login'));
 			} else {
@@ -455,12 +440,8 @@ class AccountsController extends ZAppController {
 		if ($this->request->is('post')) {
 			//
 			// Check the dummy field is empty
-			if ( !empty($this->request->data['Account']['ruhuman']) ) {
-				/// We do not accept registrations from bots.
-				$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
-				$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
-				return; // just in case
-			}
+			if ( $this->_block_robots() ) return;
+			// Sanitize data
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 			//
 			// Check the CAPTCHA is correct
@@ -545,12 +526,7 @@ class AccountsController extends ZAppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			//
 			// Check the dummy field is empty
-			if ( !empty($this->request->data['Account']['ruhuman']) ) {
-				/// We do not accept registrations from bots.
-				$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
-				$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
-				return; // just in case
-			}
+			if ( $this->_block_robots() ) return;
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 			$this->request->data['Account']['email'] = 
 				strtolower( trim( $this->request->data['Account']['email'] ) );
@@ -650,6 +626,19 @@ class AccountsController extends ZAppController {
 		// - with e-mail not verified
 		// - with no outstanding e-mail tokens
 		// and delete them.
+	}
+	protected function _block_robots() {
+		// The forms have a hidden field that is supposed
+		// to be left empty. If it is filled in, we are
+		// dealing with an overzealous robot.
+		if ( !empty($this->request->data['Account']['ruhuman']) ) {
+			/// We do not accept registrations from bots.
+			$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
+			$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
+			return true; // just in case
+		} else {
+			return false;
+		}
 	}
 
 }
