@@ -29,6 +29,11 @@
 				'label' => __d('z', 'label_user_admin'),
 			)
 		);
+		echo $this->Form->input('AccountFlag.deleted',
+			array(
+				'label' => __d('z', 'label_user_deleted'),
+			)
+		);
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__d('z', 'Submit')); ?>

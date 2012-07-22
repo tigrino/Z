@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-21 14:28+0200\n"
+"POT-Creation-Date: 2012-07-22 10:35+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,150 +14,150 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/AccountsController.php:39;254;383;460;550
-msgid "bots_are_not_welcome"
-msgstr ""
-
-#: Controller/AccountsController.php:48
+#: Controller/AccountsController.php:43
 msgid "logged_in"
 msgstr ""
 
-#: Controller/AccountsController.php:107;200
+#: Controller/AccountsController.php:102;195
 msgid "incorrect_credentials"
 msgstr ""
 
-#: Controller/AccountsController.php:125
+#: Controller/AccountsController.php:120
 #: Controller/UsersController.php:15
 msgid "action_requires_login"
 msgstr ""
 
-#: Controller/AccountsController.php:156
+#: Controller/AccountsController.php:151
 msgid "your_account_deleted_success"
 msgstr ""
 
-#: Controller/AccountsController.php:164
+#: Controller/AccountsController.php:159
 msgid "not_logged_in_reset_password"
 msgstr ""
 
-#: Controller/AccountsController.php:176;202
+#: Controller/AccountsController.php:171;197
 msgid "credentials_mismatch_logout"
 msgstr ""
 
-#: Controller/AccountsController.php:183;184
+#: Controller/AccountsController.php:178;179
 msgid "passwords_must_match"
 msgstr ""
 
-#: Controller/AccountsController.php:186
+#: Controller/AccountsController.php:181
 msgid "passwords_do_not_match"
 msgstr ""
 
-#: Controller/AccountsController.php:194
+#: Controller/AccountsController.php:189
 msgid "password_existential_fault_logout"
 msgstr ""
 
-#: Controller/AccountsController.php:215
+#: Controller/AccountsController.php:210
 msgid "bad_password_choose_another"
 msgstr ""
 
-#: Controller/AccountsController.php:226
+#: Controller/AccountsController.php:221
 msgid "password_update_success"
 msgstr ""
 
-#: Controller/AccountsController.php:230
+#: Controller/AccountsController.php:225
 msgid "password_not_saved_problem"
 msgstr ""
 
-#: Controller/AccountsController.php:264;266
+#: Controller/AccountsController.php:254;256
 msgid "incorrect_captcha_try_again"
 msgstr ""
 
-#: Controller/AccountsController.php:275
+#: Controller/AccountsController.php:265
 msgid "tos_agreement_confirm"
 msgstr ""
 
-#: Controller/AccountsController.php:285;286
+#: Controller/AccountsController.php:275;276
 msgid "Passwords must match"
 msgstr ""
 
-#: Controller/AccountsController.php:287
+#: Controller/AccountsController.php:277
 msgid "The passwords did not match up."
 msgstr ""
 
-#: Controller/AccountsController.php:302
+#: Controller/AccountsController.php:292
 #: Controller/ControlsController.php:72;102
 msgid "Registration data validation failure. Please, check your input."
 msgstr ""
 
-#: Controller/AccountsController.php:350;354;358;434
+#: Controller/AccountsController.php:340;344;348;419
 msgid "The user could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/AccountsController.php:438
+#: Controller/AccountsController.php:423
 msgid "Your e-mail was successfully verified."
 msgstr ""
 
-#: Controller/AccountsController.php:441
+#: Controller/AccountsController.php:426
 msgid "User e-mail verification failed."
 msgstr ""
 
-#: Controller/AccountsController.php:452
+#: Controller/AccountsController.php:437
 msgid "You are already logged in, use this form to change your password."
 msgstr ""
 
-#: Controller/AccountsController.php:470
+#: Controller/AccountsController.php:451
 msgid "The CAPTCHA code is incorrect. Please, try again."
 msgstr ""
 
-#: Controller/AccountsController.php:472
+#: Controller/AccountsController.php:453
 msgid "CAPTCHA code is incorrect"
 msgstr ""
 
-#: Controller/AccountsController.php:485;487
+#: Controller/AccountsController.php:466;468
 msgid "email_not_registered"
 msgstr ""
 
-#: Controller/AccountsController.php:533
+#: Controller/AccountsController.php:514
 msgid "Password reset request created successfully. Please check your email."
 msgstr ""
 
-#: Controller/AccountsController.php:536
+#: Controller/AccountsController.php:517
 msgid "The request could not be approved. Please, try again."
 msgstr ""
 
-#: Controller/AccountsController.php:562;567;572;577
+#: Controller/AccountsController.php:538;543;548;553
 msgid "Please, enter values to all required fields."
 msgstr ""
 
-#: Controller/AccountsController.php:563;568;573;578
+#: Controller/AccountsController.php:539;544;549;554
 msgid "Missing a required value."
 msgstr ""
 
-#: Controller/AccountsController.php:582
+#: Controller/AccountsController.php:558
 msgid "The passwords are different."
 msgstr ""
 
-#: Controller/AccountsController.php:583;584
+#: Controller/AccountsController.php:559;560
 msgid "Passwords must match."
 msgstr ""
 
-#: Controller/AccountsController.php:595
+#: Controller/AccountsController.php:571
 msgid "Token verification failed."
 msgstr ""
 
-#: Controller/AccountsController.php:596
+#: Controller/AccountsController.php:572
 msgid "Missing a correct token."
 msgstr ""
 
-#: Controller/AccountsController.php:607
+#: Controller/AccountsController.php:583
 msgid "Retrieval of user record during password update failed."
 msgstr ""
 
-#: Controller/AccountsController.php:614
+#: Controller/AccountsController.php:590
 msgid "User password was successfully changed."
 msgstr ""
 
-#: Controller/AccountsController.php:617
+#: Controller/AccountsController.php:593
 msgid "Password update failed."
+msgstr ""
+
+#: Controller/AccountsController.php:636
+msgid "bots_are_not_welcome"
 msgstr ""
 
 #: Controller/ControlsController.php:54;91;131
@@ -230,7 +230,7 @@ msgstr ""
 #: View/Accounts/reset.ctp:41
 #: View/Accounts/verify.ctp:29
 #: View/Controls/add.ctp:36
-#: View/Controls/edit.ctp:34
+#: View/Controls/edit.ctp:39
 msgid "Submit"
 msgstr ""
 
@@ -242,7 +242,7 @@ msgstr ""
 #: View/Accounts/verify.ctp:32
 #: View/Controls/accounts.ctp:11;46
 #: View/Controls/add.ctp:39
-#: View/Controls/edit.ctp:37
+#: View/Controls/edit.ctp:42
 #: View/Controls/tokens.ctp:12;45
 #: View/Controls/view.ctp:110;131
 #: View/Users/view.ctp:57
@@ -279,7 +279,7 @@ msgstr ""
 
 #: View/Accounts/password.ctp:38
 #: View/Controls/accounts.ctp:25
-#: View/Controls/edit.ctp:40
+#: View/Controls/edit.ctp:45
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
 #: View/Users/view.ctp:60
@@ -404,7 +404,7 @@ msgid "I confirm that the user agrees to "
 msgstr ""
 
 #: View/Controls/add.ctp:42
-#: View/Controls/edit.ctp:41
+#: View/Controls/edit.ctp:46
 #: View/Controls/tokens.ctp:47
 #: View/Controls/view.ctp:114
 msgid "Accounts"
@@ -418,7 +418,11 @@ msgstr ""
 msgid "label_password_new_or_empty"
 msgstr ""
 
-#: View/Controls/edit.ctp:40
+#: View/Controls/edit.ctp:34
+msgid "label_user_deleted"
+msgstr ""
+
+#: View/Controls/edit.ctp:45
 msgid "Are you sure you want to permanently delete accout # %s?"
 msgstr ""
 

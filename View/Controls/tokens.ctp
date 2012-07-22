@@ -18,8 +18,8 @@
 		<td><?php echo h($token['AccountToken']['account_id']); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['purpose']); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['expires']); ?>&nbsp;</td>
-		<td><?php echo h($token['AccountToken']['created']); ?>&nbsp;</td>
-		<td><?php echo h($token['AccountToken']['modified']); ?>&nbsp;</td>
+		<td><?php echo h(date('Y-m-d', strtotime($token['AccountToken']['created']))); ?>&nbsp;</td>
+		<td><?php echo h(date('Y-m-d', strtotime($token['AccountToken']['modified']))); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Form->postLink(__d('z', 'Delete'), array('action' => 'delete', $token['AccountToken']['id']), null, __d('z', 'Are you sure you want to delete # %s?', $token['AccountToken']['id'])); ?>
 		</td>

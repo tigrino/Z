@@ -4,8 +4,9 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('active'); ?></th>
+			<th><?php echo $this->Paginator->sort('active', 'Active'); ?></th>
 			<th><?php echo $this->Paginator->sort('AccountFlag.user_admin', 'Admin'); ?></th>
+			<th><?php echo $this->Paginator->sort('AccountFlag.deleted', 'Deleted'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __d('z', 'Actions'); ?></th>
@@ -17,8 +18,9 @@
 		<td><?php echo h($account['Account']['email']); ?>&nbsp;</td>
 		<td><?php echo h($account['Account']['active']); ?>&nbsp;</td>
 		<td><?php echo h($account['AccountFlag']['user_admin']); ?>&nbsp;</td>
-		<td><?php echo h($account['Account']['created']); ?>&nbsp;</td>
-		<td><?php echo h($account['Account']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($account['AccountFlag']['deleted']); ?>&nbsp;</td>
+		<td><?php echo h(date('Y-m-d', strtotime($account['Account']['created']))); ?>&nbsp;</td>
+		<td><?php echo h(date('Y-m-d', strtotime($account['Account']['modified']))); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__d('z', 'View'), array('action' => 'view', $account['Account']['id'])); ?>
 			<?php echo $this->Html->link(__d('z', 'Edit'), array('action' => 'edit', $account['Account']['id'])); ?>
