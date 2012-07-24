@@ -1,3 +1,8 @@
+ - Shot myself in the foot: tokens must be stored in binary, max length of varbinary is 255, we do not need to store a hex interpretation, just do hexing on retrieval and de-hexing on storage in the model - then can do much longer tokens. Maybe switch to blobs to allow 512 byte tokens? I am going nuts here. 1024 bits is what... 128 bytes. Ok, 256 bytes is enough... why the hell did they have to do a limit of 255 and not 256?
+ - Normally we need to detect failures of the RNG... but we do not want to do statistical testing every time, do we?
+ - Make SSL configurable (switch off/enforce/combined(like now))
+ - Add a component for filtering and immediately comparing the length to return whether filtering affected an input string. This will make checking for invalid input characters and throwing errors easy. Otherwise "clean" may change your password and you would not know.
+
  - Store the timestamp in forms and make sure that the requests are neither submitted in a very short time e.g. < 2 sec nor after an extended waiting time > ? hours (csrf already expires after 1 hr though...)
  - Keep a log of requests for a session and throw a captcha when something suspicious happens, like invalid login 3 times in a row...
  - Get the 7 segments captcha (any other?) implemented and make it configurable

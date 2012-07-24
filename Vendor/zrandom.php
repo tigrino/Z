@@ -43,13 +43,39 @@
 		// 32 hex characters (16 byte) random string
 		return bin2hex(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()));
 	};
-	function z_hash_hex_512(mixed $data) {
+	function z_random_hex_64() {
+		// 64 hex characters (32 byte) random string
+		return bin2hex(pack('N8', mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand()));
+	};
+	function z_random_hex_128() {
+		// 128 hex characters (64 byte) random string
+		return bin2hex(pack('N16', mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(),
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand()));
+	};
+	function z_random_hex_256() {
+		// 256 hex characters (128 byte) random string
+		return bin2hex(pack('N32', mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(),
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(),
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(),
+					mt_rand(), mt_rand(), mt_rand(), mt_rand(), 
+					mt_rand(), mt_rand(), mt_rand(), mt_rand()));
+	};
+	function z_hash_hex_512($data) {
 		return hash('sha512', $data, FALSE);
 	};
-	function z_hash_hex_sha1(mixed $data) {
+	function z_hash_hex_sha1($data) {
 		return hash('sha1', $data, FALSE);
 	};
 	//$r = z_random_64();
 	//$r = z_random_base64_64();
+	//$r = z_hash_hex_sha1(z_random_base64_64());
+	//$r = z_random_hex_64();
+	//$r = z_random_hex_256();
 	//printf ("[%u]:[%s]\n", strlen($r), $r);
 ?>

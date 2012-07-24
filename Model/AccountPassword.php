@@ -57,6 +57,10 @@ class AccountPassword extends ZAppModel {
 				'allowEmpty' => false,
 				'required' => true,
 			),
+			'maxLength' => array(
+				'rule'    => array('maxLength', 255),
+				'message' => 'password_max_length %d'
+			),
 			'minLength' => array(
 				'rule'    => array('minLength', 6),
 				'message' => 'password_min_length %d'

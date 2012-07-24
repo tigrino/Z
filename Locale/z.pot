@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-22 10:35+0200\n"
+"POT-Creation-Date: 2012-07-24 22:34+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -240,7 +240,7 @@ msgstr ""
 #: View/Accounts/register.ctp:60
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
-#: View/Controls/accounts.ctp:11;46
+#: View/Controls/accounts.ctp:12;48
 #: View/Controls/add.ctp:39
 #: View/Controls/edit.ctp:42
 #: View/Controls/tokens.ctp:12;45
@@ -278,7 +278,7 @@ msgid "View Account"
 msgstr ""
 
 #: View/Accounts/password.ctp:38
-#: View/Controls/accounts.ctp:25
+#: View/Controls/accounts.ctp:27
 #: View/Controls/edit.ctp:45
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
@@ -343,42 +343,42 @@ msgstr ""
 msgid "Accounts List"
 msgstr ""
 
-#: View/Controls/accounts.ctp:23
+#: View/Controls/accounts.ctp:25
 msgid "View"
 msgstr ""
 
-#: View/Controls/accounts.ctp:24
+#: View/Controls/accounts.ctp:26
 #: View/Controls/view.ctp:112
 msgid "Edit"
 msgstr ""
 
-#: View/Controls/accounts.ctp:25
+#: View/Controls/accounts.ctp:27
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
 msgid "Are you sure you want to delete # %s?"
 msgstr ""
 
-#: View/Controls/accounts.ctp:33
+#: View/Controls/accounts.ctp:35
 #: View/Controls/tokens.ctp:32
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr ""
 
-#: View/Controls/accounts.ctp:39
+#: View/Controls/accounts.ctp:41
 #: View/Controls/tokens.ctp:38
 msgid "previous"
 msgstr ""
 
-#: View/Controls/accounts.ctp:41
+#: View/Controls/accounts.ctp:43
 #: View/Controls/tokens.ctp:40
 msgid "next"
 msgstr ""
 
-#: View/Controls/accounts.ctp:48
+#: View/Controls/accounts.ctp:50
 #: View/Controls/view.ctp:115
 msgid "New Account"
 msgstr ""
 
-#: View/Controls/accounts.ctp:49
+#: View/Controls/accounts.ctp:51
 #: View/Controls/add.ctp:43
 #: View/Controls/tokens.ctp:2
 #: View/Controls/view.ctp:116;120
@@ -531,6 +531,14 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
+#: Model/Account.php:validation for field maxLength
+msgid "email_max_length %d"
+msgstr ""
+
+#: Model/Account.php:validation for field minLength
+msgid "email_min_length %d"
+msgstr ""
+
 #: Model/Account.php:validation for field email
 msgid "email_need_valid_email"
 msgstr ""
@@ -550,6 +558,10 @@ msgstr ""
 
 #: Model/AccountPassword.php:validation for field password
 msgid "password_empty_not_allowed"
+msgstr ""
+
+#: Model/AccountPassword.php:validation for field password
+msgid "password_max_length %d"
 msgstr ""
 
 #: Model/AccountPassword.php:validation for field password

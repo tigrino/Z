@@ -7,6 +7,14 @@ class Account extends ZAppModel {
 	public $useTable='z_accounts';
 	public $displayField = 'email';
 	public $validate = array(
+		'maxLength' => array(
+			'rule'    => array('maxLength', 255),
+			'message' => 'email_max_length %d'
+		),
+		'minLength' => array(
+			'rule'    => array('minLength', 5),
+			'message' => 'email_min_length %d'
+		),
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z Authentication Plugin for CakePHP\n"
-"POT-Creation-Date: 2012-07-22 10:35+0200\n"
-"PO-Revision-Date: 2012-07-22 10:39+0100\n"
+"POT-Creation-Date: 2012-07-24 22:34+0200\n"
+"PO-Revision-Date: 2012-07-24 22:36+0100\n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Albert 'Tigr' Zenkoff <albert@tigr.net>\n"
 "Language: \n"
@@ -243,7 +243,7 @@ msgstr "Вперед"
 #: View/Accounts/register.ctp:60
 #: View/Accounts/reset.ctp:44
 #: View/Accounts/verify.ctp:32
-#: View/Controls/accounts.ctp:11;46
+#: View/Controls/accounts.ctp:12;48
 #: View/Controls/add.ctp:39
 #: View/Controls/edit.ctp:42
 #: View/Controls/tokens.ctp:12;45
@@ -281,7 +281,7 @@ msgid "View Account"
 msgstr "Учетная Запись"
 
 #: View/Accounts/password.ctp:38
-#: View/Controls/accounts.ctp:25
+#: View/Controls/accounts.ctp:27
 #: View/Controls/edit.ctp:45
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
@@ -346,42 +346,42 @@ msgstr "Подтвердите пароль"
 msgid "Accounts List"
 msgstr "Список пользователей"
 
-#: View/Controls/accounts.ctp:23
+#: View/Controls/accounts.ctp:25
 msgid "View"
 msgstr "Просмотреть"
 
-#: View/Controls/accounts.ctp:24
+#: View/Controls/accounts.ctp:26
 #: View/Controls/view.ctp:112
 msgid "Edit"
 msgstr "Изменить"
 
-#: View/Controls/accounts.ctp:25
+#: View/Controls/accounts.ctp:27
 #: View/Controls/tokens.ctp:24
 #: View/Controls/view.ctp:113;145
 msgid "Are you sure you want to delete # %s?"
 msgstr "Вы уверены, что хотите удалить учетную запись %s?"
 
-#: View/Controls/accounts.ctp:33
+#: View/Controls/accounts.ctp:35
 #: View/Controls/tokens.ctp:32
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr "Страница {:page} из {:pages}, показано {:current} записей из {:count}, начиная {:start}, заканчивая {:end}"
 
-#: View/Controls/accounts.ctp:39
+#: View/Controls/accounts.ctp:41
 #: View/Controls/tokens.ctp:38
 msgid "previous"
 msgstr "назад"
 
-#: View/Controls/accounts.ctp:41
+#: View/Controls/accounts.ctp:43
 #: View/Controls/tokens.ctp:40
 msgid "next"
 msgstr "вперед"
 
-#: View/Controls/accounts.ctp:48
+#: View/Controls/accounts.ctp:50
 #: View/Controls/view.ctp:115
 msgid "New Account"
 msgstr "Создать"
 
-#: View/Controls/accounts.ctp:49
+#: View/Controls/accounts.ctp:51
 #: View/Controls/add.ctp:43
 #: View/Controls/tokens.ctp:2
 #: View/Controls/view.ctp:116;120
@@ -535,6 +535,16 @@ msgid "Admin Panel"
 msgstr "Панель админа"
 
 #: Model/Account.php:validation
+#: for field maxLength
+msgid "email_max_length %d"
+msgstr "Адрес почты должен состоять не больше чем из %d знаков."
+
+#: Model/Account.php:validation
+#: for field minLength
+msgid "email_min_length %d"
+msgstr "Адрес почты должны быть как минимум из %d знаков."
+
+#: Model/Account.php:validation
 #: for field email
 msgid "email_need_valid_email"
 msgstr "Пожалуйста введите адрес электронной почты."
@@ -560,6 +570,11 @@ msgstr "Это поле не может быть пустым."
 #: for field password
 msgid "password_empty_not_allowed"
 msgstr "Пустые пароли не разрешены."
+
+#: Model/AccountPassword.php:validation
+#: for field password
+msgid "password_max_length %d"
+msgstr "Пароли должны быть не более чем из %d знаков."
 
 #: Model/AccountPassword.php:validation
 #: for field password
