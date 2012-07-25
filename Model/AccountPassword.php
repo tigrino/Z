@@ -1,6 +1,7 @@
 <?php
 App::uses('ZAppModel', 'Z.Model');
 App::import('Vendor', 'Z.zrandom');
+App::import('Vendor', 'Z.zpasswords');
 
 class AccountPassword extends ZAppModel {
 	public $validationDomain = 'z';
@@ -97,58 +98,6 @@ class AccountPassword extends ZAppModel {
 	);
 
 	public function notInCommonWordList($check) {
-		$commonwords = array(
-			'12',
-			'123',
-			'1234',
-			'12345',
-			'123456',
-			'1234567',
-			'12345678',
-			'123456789',
-			'1234567890',
-			'11',
-			'111',
-			'1111',
-			'11111',
-			'111111',
-			'1111111',
-			'11111111',
-			'123123',
-			'21',
-			'321',
-			'4321',
-			'54321',
-			'654321',
-			'7654321',
-			'87654321',
-			'987654321',
-			'0987654321',
-			'7777777',
-			'112233',
-			'abc123',
-			'password', 'qwerty', 'monkey', 'letmein',
-			'trustno1', 'dragon', 'baseball', 'iloveyou',
-			'master', 'sunshine', 'ashley', 'bailey',
-			'passwOrd', 'shadow', 'superman', 'qazwsx',
-			'michael', 'football', 'jesus', 'love',
-			'christ', 'jesus1', 'princess', 'blessed',
-			'sunshine', 'faith', 'angel', 'single',
-			'lovely', 'freedom', 'blessing', 'grace',
-			'heaven', 'angels', 'shadow', 'tigger',
-			'summer', 'hope', 'looking', 'peace',
-			'mother', 'shalom', 'rotimi', 'victory',
-			'happy', 'purple', 'john316', 'joshua',
-			'london', 'church', 'loving', 'computer',
-			'mylove', 'praise', 'saved', 'richard',
-			'pastor', 'test', 'letmein', 'trustno1',
-			'dragon', 'hello', 'monkey', 'master',
-			'killer', 'computer', 'asdf', 'internet',
-			'whatever', 'starwars', 'cheese', 'cocacola',
-			'none', 'god', 'emmanuel', 'fuckoff',
-			'john', '1q2w3e4r', 'red123', 'blabla',
-			'qwert', 'angel1', 'hallo', 'hotdog',
-		);
-		return ! in_array($check['password'], $commonwords);
+		return ! z_password_listed($check['password']);
 	}
 }

@@ -49,5 +49,6 @@
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'New Account'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Tokens'), array('action' => 'tokens')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
 	</ul>
 </div>

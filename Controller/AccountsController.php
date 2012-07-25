@@ -306,7 +306,7 @@ class AccountsController extends ZAppController {
 					// User needs sometimes to copy/paste this
 					// do not make the token too long
 					$this->request->data['AccountToken']['purpose'] = PLUGIN_Z_TOKEN_MAIL_VERIFY;
-					$this->request->data['AccountToken']['token'] = z_random_hex_32();
+					$this->request->data['AccountToken']['token'] = z_random_hex(PLUGIN_Z_TOKEN_LENGTH);
 					$this->request->data['AccountToken']['expires'] = date('Y-m-d H:i:s', strtotime('+4 hours'));
 					$this->_clean_old_tokens();
 					if ( $this->Account->AccountToken->save($this->request->data) ) {
@@ -475,7 +475,7 @@ class AccountsController extends ZAppController {
 						'purpose' => PLUGIN_Z_TOKEN_RESET_CONFIRM,
 						// User needs sometimes to copy/paste this
 						// do not make the token too long
-						'token' => z_random_hex_32(),
+						'token' => z_random_hex(PLUGIN_Z_TOKEN_LENGTH),
 						'expires' => date('Y-m-d H:i:s', strtotime('+4 hours'))
 						));
 				$this->Account->AccountToken->create($data);

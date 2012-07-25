@@ -4,6 +4,11 @@
 	define('PLUGIN_Z_TOKEN_RESET_CONFIRM',	2);
 
 	//
+	// Cryptography control
+	define('PLUGIN_Z_TOKEN_LENGTH',		32); // in hex characters, 32 = 128 bit
+	define('PLUGIN_Z_PASSWORD_HASH_COST',	10); // logarithmic scale, 4-31
+
+	//
 	// Language configuration
 	if ( !defined('DEFAULT_LANGUAGE') ) {
 		define('DEFAULT_LANGUAGE', 'en');

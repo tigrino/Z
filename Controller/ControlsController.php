@@ -3,6 +3,7 @@ App::uses('ZAppController', 'Z.Controller');
 App::uses('Sanitize', 'Utility');
 App::uses('CakeEmail', 'Network/Email');
 App::uses('Account', 'Z.Model');
+App::import('Vendor', 'Z.PasswordHash');
 
 class ControlsController extends ZAppController {
 	public $uses = array('Z.Account');
@@ -35,6 +36,10 @@ class ControlsController extends ZAppController {
 	// List the users of the system
 	public function index() {
 		return $this->redirect(Router::url( array('action' => 'accounts'), true ));
+	}
+	public function dashboard() {
+	}
+	public function cryptotest() {
 	}
 	public function accounts() {
 		$this->Account->recursive = 0;
