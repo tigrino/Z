@@ -23,6 +23,21 @@ class ControlsController extends ZAppController {
 		//$this->Auth->allow(array('help'));
 		//$this->Auth->allow();
 		//
+		// Verify that we are coming from either this
+		// controller or the login page.
+		// As a precaution, if we come from anywhere
+		// else (direct link, page in application)
+		// require a re-authentication.
+		$location = parse_url($this->referer());
+		$from_route = Router::parse($location['path']);
+		if ( 
+			($from_route['plugin'] != 'z') ||
+			! ( ($from_route['controller'] == 'controls') ||
+			    ( ($from_route['controller'] == 'accounts') && ($from_route['action'] == 'login') ) )
+			) {
+				$this->redirect($this->Auth->logout());
+		}
+		//
 		// Verify that we have an admin here
 		$id = $this->Auth->user('id');
 		$is_admin = $this->Auth->user('user_admin');

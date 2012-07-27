@@ -1,3 +1,5 @@
+ - Use String::truncate to truncate long user emails
+
  - Normally we need to detect failures of the RNG... but we do not want to do statistical testing every time, do we?
  - Make SSL configurable (switch off/enforce/combined(like now))
  - Add a component for filtering and immediately comparing the length to return whether filtering affected an input string. This will make checking for invalid input characters and throwing errors easy. Otherwise "clean" may change your password and you would not know.

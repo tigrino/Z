@@ -50,7 +50,9 @@ class ZAppController extends AppController {
 		//debug($this->request->here());
 		//debug(Router::parse($this->request->here()));
 
+		//
 		// Keep a record of a logged in user whereabouts
+		//$this->Session->write('Z.LastURI', $this->request->here);
 		/*$user = $this->Auth->user();
 		$IgnoreControllerList = array( 'pages', 'img' );
 		$location = Router::parse($this->request->here());

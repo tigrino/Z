@@ -8,11 +8,14 @@
 	//
 	// Return the specified number of hex digits
 	function z_random_hex($len = 32) {
-		return bin2hex(z_random($len/2));
+		return substr(bin2hex(z_random($len/2)), 0, ceil($len));
 	}
 	//
 	// Return the specified number of bytes
 	function z_random($len = 16) {
+		// Do we need to round it up or not?
+		// Do we need it right away for everything?
+		$len = ceil($len);
 		// if a secure randomness generator exists and we don't have a buggy PHP version use it.
 		if (function_exists('openssl_random_pseudo_bytes') &&
 			(version_compare(PHP_VERSION, '5.3.4') >= 0 || substr(PHP_OS, 0, 3) !== 'WIN')) {

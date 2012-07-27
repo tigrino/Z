@@ -1,0 +1,16 @@
+This file is to document funny design decisions that may be 
+non-obvious from the code.
+=====================================================================
+The length of database identifiers is set to 20 digits using
+MySQL's bigint. We do not need to do any arithmetic on the ids
+in the application and making them big prevents any such attempts
+from being straightforward as a bonus. The long ids mean that we
+have less of a concern for things like brute-forcing the whole
+id space and have less chance of collisions when using random ids.
+At the same time the DB works with those quite nicely.
+
+The plugin has several tables to try and keep different conserns 
+separated. For the application, the plugin exposes a special
+read-only model that works off a database view combining the
+necessary (or, rather, desired) fields for easier access.
+
