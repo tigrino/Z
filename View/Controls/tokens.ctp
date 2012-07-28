@@ -5,6 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('account_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('Account.email', 'Email'); ?></th>
 			<th><?php echo $this->Paginator->sort('purpose'); ?></th>
 			<th><?php echo $this->Paginator->sort('expires'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -15,7 +16,10 @@
 	foreach ($tokens as $token): ?>
 	<tr>
 		<td><?php echo h($token['AccountToken']['id']); ?>&nbsp;</td>
-		<td><?php echo h($token['AccountToken']['account_id']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($token['AccountToken']['account_id']), 
+			array('action' => 'view', $token['Account']['id'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($token['Account']['email']),
+			array('action' => 'view', $token['Account']['id'])); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['purpose']); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['expires']); ?>&nbsp;</td>
 		<td><?php echo h(date('Y-m-d', strtotime($token['AccountToken']['created']))); ?>&nbsp;</td>

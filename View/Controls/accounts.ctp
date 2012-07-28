@@ -14,8 +14,10 @@
 	<?php
 	foreach ($accounts as $account): ?>
 	<tr>
-		<td><?php echo h($account['Account']['id']); ?>&nbsp;</td>
-		<td><?php echo h($account['Account']['email']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($account['Account']['id']),
+			array('action' => 'view', $account['Account']['id'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($account['Account']['email']),
+			array('action' => 'view', $account['Account']['id'])); ?>&nbsp;</td>
 		<td><?php echo h($account['Account']['active']); ?>&nbsp;</td>
 		<td><?php echo h($account['AccountFlag']['user_admin']); ?>&nbsp;</td>
 		<td><?php echo h($account['AccountFlag']['deleted']); ?>&nbsp;</td>

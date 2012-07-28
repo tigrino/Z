@@ -35,6 +35,7 @@ class ControlsController extends ZAppController {
 			! ( ($from_route['controller'] == 'controls') ||
 			    ( ($from_route['controller'] == 'accounts') && ($from_route['action'] == 'login') ) )
 			) {
+				$this->Session->setFlash(__d('z', 'action_requires_reauthorization'));
 				$this->redirect($this->Auth->logout());
 		}
 		//
