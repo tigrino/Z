@@ -14,3 +14,8 @@ separated. For the application, the plugin exposes a special
 read-only model that works off a database view combining the
 necessary (or, rather, desired) fields for easier access.
 
+The hashing of passwords is done with the phpass library available
+from http://www.openwall.com/phpass/ simply because I found it
+the most suitable implementation of bcrypt. For more information:
+http://holyhash.wordpress.com/2012/07/22/speaking-of-passwords/
+
