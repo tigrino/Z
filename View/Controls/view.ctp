@@ -38,13 +38,9 @@
 		<dd>
 	<?php echo $Account['AccountPassword']['account_id']; ?>
 &nbsp;</dd>
-		<dt><?php echo __d('z', 'Salt'); ?></dt>
-		<dd>
-	<?php echo $Account['AccountPassword']['salt']; ?>
-&nbsp;</dd>
 		<dt><?php echo __d('z', 'Password'); ?></dt>
 		<dd>
-	<?php echo $Account['AccountPassword']['password']; ?>
+	<?php echo String::truncate($Account['AccountPassword']['password'], 30); ?>
 &nbsp;</dd>
 		<dt><?php echo __d('z', 'Created'); ?></dt>
 		<dd>

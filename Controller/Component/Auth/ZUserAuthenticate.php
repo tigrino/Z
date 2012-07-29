@@ -1,5 +1,6 @@
 <?php
 App::uses('BaseAuthenticate', 'Controller/Component/Auth');
+App::import('Vendor', 'Z.PasswordHash');
 
 class ZUserAuthenticate extends BaseAuthenticate {
 	public $components = array('Session');
@@ -12,11 +13,15 @@ class ZUserAuthenticate extends BaseAuthenticate {
 				'conditions' => array('User.email' => $request->data['User']['email'])
 				));
 			if ( ! empty($credentials) ) {
-				if ( $credentials['User']['password'] == AuthComponent::password( $credentials['User']['salt'] . $request->data['User']['password']) ) {
+				//if ( $credentials['User']['password'] == AuthComponent::password( $credentials['User']['salt'] . $request->data['User']['password']) ) {
+				$hasher = new PasswordHash(PLUGIN_Z_PASSWORD_HASH_COST, FALSE);
+				if ( $hasher->CheckPassword($request->data['User']['password'], $credentials['User']['password']) ) {
 					unset($credentials['User']['password']);
 					unset($credentials['User']['salt']);
+					unset( $hasher );
 					return($credentials['User']);
 				}
+				unset( $hasher );
 			}
 		}
 		return false;
