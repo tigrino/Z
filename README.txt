@@ -14,7 +14,8 @@ secure but I intend to make it even more so.
 
 What's so different?
  - it disposes with the MD5 hashing of passwords with a fixed salt 
-   in favor of the SHA512 hashing with a randomly generated salt.
+   in favor of using a professionally done bcrypt library that uses
+   key stretching and random salts.
    The former is ... funny, the latter is fairly secure even if your
    password database is stolen (and that happens more often than you
    think).
@@ -71,6 +72,8 @@ I install like this:
 	Configure::write ('Z.email_from', 'info@yoursite.com');
 	Configure::write ('Z.site_title', 'Your Site');
 
+   Additional configuration is in Plugin/Z/Config/bootstrap.php
+
 3. Use the schemas in the plugin's Config/Schema directory
    to create the tables and add the first user
    user name is YOURNAME@EXAMPLE.COM
@@ -86,6 +89,7 @@ For authentication forward people to /z/accounts/login
 and for logging them out - to /z/accounts/logout
 For registration forward them to /z/accounts/register
 User info page is available at /z/users/view
+Account management is at /z/controls/accounts
 
 For clarity again, this is not authorization, this is only
 authentication. You have to set up authorization separately
