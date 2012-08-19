@@ -2,6 +2,11 @@
 $this->Html->addCrumb('Accounts', '/z/accounts');
 $this->Html->addCrumb('Login', '/z/accounts/login');
 ?>
+<?php
+/*	debug( RequestHandlerComponent::getClientIP() );
+	debug( microtime() );
+	debug( microtime() * 1000000 );*/
+?>
 <div class="users form">
 <?php echo $this->Form->create('User'); // Special case - for Auth module ?>
 	<fieldset>

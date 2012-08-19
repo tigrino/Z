@@ -3,9 +3,13 @@
  - Add a component for filtering and immediately comparing the length to return whether filtering affected an input string. This will make checking for invalid input characters and throwing errors easy. Otherwise "clean" may change your password and you would not know.
 
  - Store the timestamp in forms and make sure that the requests are neither submitted in a very short time e.g. < 2 sec nor after an extended waiting time > ? hours (csrf already expires after 1 hr though...)
- - Keep a log of requests for a session and throw a captcha when something suspicious happens, like invalid login 3 times in a row...
+ - Keep a log of requests for a session and throw a captcha when something suspicious happens, like invalid login 3 times in a row, block an account for a few minutes after 5 attempts or so etc.
  - Get the 7 segments captcha (any other?) implemented and make it configurable
- - Generally, see what has to be configurable and make it so
+ - Configuration: both in file and overriding settings in a DB table
+     use of bcrypt vs CakePHP standard
+     minimal length of password (maybe other restrictions?)
+     config of bcrypt (complexity parameter)
+ - Keep stats of how long it takes to send a mail with the deviation, then use to generate a random delay within the probability corridor for when the user is not found vs. user is found and actually sending an e-mail (curb timing attacks)
  - Support external authentication: Facebook, Google, ?..
  - Additional cookie for "secure-only" to verify the session was not highjacked while on insecure channel
  - "Remember me" function with proper multiple token+cookie management

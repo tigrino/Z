@@ -35,7 +35,7 @@ class ZAppController extends AppController {
 		$this->Cookie->secure = false;
 		// Enforce SSL on required controllers
 		$location = Router::parse($this->request->here());
-		$SecureControllerList = array( 'users', 'accounts' );
+		$SecureControllerList = array( 'users', 'accounts', 'controls' );
 		if ( in_array( $location['controller'], $SecureControllerList ) ) { 
 			$this->Security->requireSecure();
 		}
