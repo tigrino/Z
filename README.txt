@@ -78,8 +78,11 @@ I install like this:
    to create the tables and add the first user
    user name is YOURNAME@EXAMPLE.COM
    password is 'password'
-   Don't forget to change the name and the password!
-   That'll be your user admin.
+   Log in as this admin user and create another admin user
+   that will be your regular admin.
+   Logout and login as the newly created admin.
+   Delete the YOURNAME@EXAMPLE.COM admin user through the user
+   admin panel.
 
 The authentication is done through the standard CakePHP Auth module,
 so you just call on the things like $this->Auth->user() and
