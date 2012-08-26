@@ -69,13 +69,19 @@ class AccountsController extends ZAppController {
 				//
 				// if the user is admin forward him to the control panel
 				if ( $this->Auth->user('user_admin') == 1 ) {
-					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), true ));
+					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 				} else {
-					if ( $this->Auth->redirect() == Router::url( array('action' => 'login'), true ) ) {
-						return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'index'), true ));
-					} else {
+					//$redirect_url = $this->Auth->redirect();
+					//$url_components = parse_url($redirect_url);
+					//$redirect_url = $url_components['path'];
+					//debug($redirect_url);
+					//$route_url = Router::url( array('action' => 'login'), false );
+					//debug($route_url);
+					//if ( $redirect_url == $route_url ) {
+					//	return $this->redirect(Router::url( array('plugin' => 'z', 'controller' => 'users', 'action' => 'index'), false ));
+					//} else {
 						return $this->redirect($this->Auth->redirect());
-					}
+					//}
 				}
 			} else {
 				if ( !empty($this->request->data['User']['email']) ) {

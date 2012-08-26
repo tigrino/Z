@@ -9,7 +9,7 @@ have less of a concern for things like brute-forcing the whole
 id space and have less chance of collisions when using random ids.
 At the same time the DB works with those quite nicely.
 
-The plugin has several tables to try and keep different conserns 
+The plugin has several tables to try and keep different concerns 
 separated. For the application, the plugin exposes a special
 read-only model that works off a database view combining the
 necessary (or, rather, desired) fields for easier access.

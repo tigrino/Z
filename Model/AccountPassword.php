@@ -1,6 +1,5 @@
 <?php
 App::uses('ZAppModel', 'Z.Model');
-App::import('Vendor', 'Z.zrandom');
 App::import('Vendor', 'Z.zpasswordblacklist');
 App::import('Vendor', 'Z.PasswordHash');
 
@@ -9,6 +8,12 @@ class AccountPassword extends ZAppModel {
 	public $useTable = 'z_account_passwords';
 	var $name = 'AccountPassword';
 	public $displayField = 'password';
+	var $actsAs = array(
+		'Z.RandomId' => array(
+			'id_field' => 'id',
+			'id_length' => 19
+		),
+	);
 
 	public function beforeSave($options = array()) {
 		// Hash the password
@@ -16,18 +21,6 @@ class AccountPassword extends ZAppModel {
 		$this->data['AccountPassword']['password'] = 
 			$hasher->HashPassword($this->data['AccountPassword']['password']);
 		unset( $hasher );
-		if ( empty( $this->data['AccountPassword']['id'] ) ) {
-			// A new record, generate ID
-			do {
-				$ready_id = z_random_64();
-				// MAKE SURE IT DOES NOT EXIST YET
-				// Otherwise we risk overwriting an existing record
-				$existing_id = $this->find('first', array('recursive' => -1, 'conditions' => array('AccountPassword.id' => $ready_id)));
-			} while (!empty($existing_id));
-			$this->id = $ready_id;
-			$this->data['AccountPassword']['id'] = $ready_id;
-		}
-		//debug($this->data);
 		return parent::beforeSave();
 	}
 /**

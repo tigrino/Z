@@ -56,11 +56,11 @@ $this->Html->addCrumb('View', '/z/users/view');
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__d('z', 'Change Password'), array('controller' => 'accounts', 'action' => 'password', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('controller' => 'accounts', 'action' => 'delete', $this->Form->value('User.id')), null, __d('z', 'Are you sure you want to delete your user account %s?', $user['User']['email'])); ?></li>
-		<li><?php echo $this->Html->link(__d('z', 'Logout'), array('controller' => 'accounts', 'action' => 'logout')); ?> </li>
+		<li><?php echo $this->Html->link(__d('z', 'Change Password'), array('plugin' => 'z', 'controller' => 'accounts', 'action' => 'password', $user['User']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('plugin' => 'z', 'controller' => 'accounts', 'action' => 'delete', $this->Form->value('User.id')), null, __d('z', 'Are you sure you want to delete your user account %s?', $user['User']['email'])); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Logout'), array('plugin' => 'z', 'controller' => 'accounts', 'action' => 'logout')); ?> </li>
 		<?php if ( $user['User']['user_admin'] == 1 ) { ?>
-		<li><?php echo $this->Html->link(__d('z', 'Admin Panel'), array('controller' => 'controls', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__d('z', 'Admin Panel'), array('plugin' => 'z', 'controller' => 'controls', 'action' => 'index')); ?> </li>
 		<?php } ?>
 	</ul>
 </div>

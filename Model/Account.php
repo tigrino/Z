@@ -1,11 +1,17 @@
 <?php
 App::uses('ZAppModel', 'Z.Model');
-App::import('Vendor', 'Z.zrandom');
+//App::import('Vendor', 'Z.zrandom');
 
 class Account extends ZAppModel {
 	public $validationDomain = 'z';
 	public $useTable='z_accounts';
 	public $displayField = 'email';
+	public $actsAs = array(
+		'Z.RandomId' => array(
+			'id_field' => 'id',
+			'id_length' => 19
+		)
+	);
 	public $validate = array(
 		'maxLength' => array(
 			'rule'    => array('maxLength', 255),
@@ -75,7 +81,7 @@ class Account extends ZAppModel {
 	public function beforeSave() {
 		//debug($this);
 		parent::beforeSave();
-		if ( empty( $this->data['Account']['id'] ) ) {
+		/*if ( empty( $this->data['Account']['id'] ) ) {
 			do {
 				// A new record, generate ID
 				$ready_id = z_random_64();
@@ -85,7 +91,7 @@ class Account extends ZAppModel {
 			} while ((!empty($existing_id)) || ($ready_id == '00000000000000000000'));
 			$this->id = $ready_id;
 			$this->data['Account']['id'] = $ready_id;
-		}
+		}*/
 	}
 
 	public function beforeFind( $queryData ) {

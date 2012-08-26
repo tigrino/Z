@@ -8,6 +8,7 @@ App::uses('ZAppModel', 'Z.Model');
 class AccountToken extends ZAppModel {
 	public $validationDomain = 'z';
 	public $useTable = 'z_account_tokens';
+	var $actsAs = array('Z.RandomId');
 	public $validate = array(
 		'account_id' => array(
 			'numeric' => array(

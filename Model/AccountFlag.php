@@ -8,6 +8,7 @@ App::uses('ZAppModel', 'Z.Model');
 class AccountFlag extends ZAppModel {
 	public $validationDomain = 'z';
 	public $useTable = 'z_account_flags';
+	var $actsAs = array('Z.RandomId');
 	public $validate = array(
 		'agreement' => array(
 			'set' => array(
