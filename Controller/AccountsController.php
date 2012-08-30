@@ -3,6 +3,7 @@ App::uses('ZAppController', 'Z.Controller');
 App::uses('Sanitize', 'Utility');
 App::uses('CakeEmail', 'Network/Email');
 App::import('Vendor', 'Z.zcaptcha');
+App::import('Vendor', 'Z.PasswordHash');
 
 /**
  * Accounts Controller
@@ -48,16 +49,6 @@ class AccountsController extends ZAppController {
 				$saveData['AccountLogin']['account_id'] = $this->Auth->user('id');
 				$saveData['AccountLogin']['good_from_ip'] = $this->RequestHandler->getClientIp();
 				$saveData['AccountLogin']['good_login'] = DboSource::expression('NOW()');
-				//$this->Account->create($saveData);
-				//if (! $this->Account->saveAssociated(null,
-				//	array(  'fieldList' => array(
-				//	    'AccountLogin' => array('account_id', 'good_from_ip', 'good_login'),
-				//		),
-				//		'verify' => true
-				//	))) {
-				//	debug($this->Account->validationErrors);
-				//	debug($this->Account->AccountLogin->validationErrors);
-				//}
 				if (! $this->Account->AccountLogin->save($saveData,
 					array(  'fieldList' => array(
 					    'AccountLogin' => array('account_id', 'good_from_ip', 'good_login'),
@@ -71,17 +62,7 @@ class AccountsController extends ZAppController {
 				if ( $this->Auth->user('user_admin') == 1 ) {
 					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 				} else {
-					//$redirect_url = $this->Auth->redirect();
-					//$url_components = parse_url($redirect_url);
-					//$redirect_url = $url_components['path'];
-					//debug($redirect_url);
-					//$route_url = Router::url( array('action' => 'login'), false );
-					//debug($route_url);
-					//if ( $redirect_url == $route_url ) {
-					//	return $this->redirect(Router::url( array('plugin' => 'z', 'controller' => 'users', 'action' => 'index'), false ));
-					//} else {
-						return $this->redirect($this->Auth->redirect());
-					//}
+					return $this->redirect($this->Auth->redirect());
 				}
 			} else {
 				if ( !empty($this->request->data['User']['email']) ) {
@@ -92,14 +73,6 @@ class AccountsController extends ZAppController {
 						$saveData['AccountLogin']['account_id'] = $saveData['Account']['id'];
 						$saveData['AccountLogin']['bad_from_ip'] = $this->RequestHandler->getClientIp();
 						$saveData['AccountLogin']['bad_login'] = DboSource::expression('NOW()');
-						//$this->Account->create($saveData);
-						//if (! $this->Account->saveAssociated(null,
-						//	array(  'fieldList' => array(
-						//	    'AccountLogin' => array('account_id', 'bad_from_ip', 'bad_login'),
-						//		),
-						//		'verify' => true
-						//	))) {
-						//}
 						if (! $this->Account->AccountLogin->save($saveData,
 							array(  'fieldList' => array(
 							    'AccountLogin' => array('account_id', 'bad_from_ip', 'bad_login'),
@@ -164,6 +137,9 @@ class AccountsController extends ZAppController {
 			$this->redirect($this->Auth->logout());
 		}
 	}
+
+	//
+	// Request to change a password
 	public function password($id=null) {
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to reset password
@@ -194,22 +170,17 @@ class AccountsController extends ZAppController {
 					return;
 				}
 				// Verify that user password is correct
-				$salt = $this->Account->AccountPassword->field('salt', array('AccountPassword.account_id' => $id));
-				if ( ! $salt ) {
-					// password record not found?
-					/// Password system existential fault, you have been logged out for security reasons.
-					$this->Session->setFlash(__d('z', 'password_existential_fault_logout'));
-					$this->redirect($this->Auth->logout());
-					return; // just in case :)
-				}
-				if ($this->Account->AccountPassword->field('password', array('AccountPassword.account_id' => $id)) != AuthComponent::password($salt . $this->request->data['AccountPassword']['old_password'])) {
-					/// Password incorrect
-					$this->Account->AccountPassword->invalidate('old_password', __d('z', 'incorrect_credentials', true));
-					/// Login data mismatch, you have been logged out for security reasons.
+				$password_hash = $this->Account->AccountPassword->field('password', array('AccountPassword.account_id' => $id));
+				$hasher = new PasswordHash(PLUGIN_Z_PASSWORD_HASH_COST, FALSE);
+				if ( ! $hasher->CheckPassword($this->request->data['AccountPassword']['old_password'], $password_hash) ) {
+					unset($password_hash);
+					unset($hasher);
 					$this->Session->setFlash(__d('z', 'credentials_mismatch_logout'));
 					$this->redirect($this->Auth->logout());
 					return; // just in case :)
 				}
+				unset($password_hash);
+				unset($hasher);
 				$this->request->data['AccountPassword']['account_id'] = $id;
 				unset($this->request->data['AccountPassword']['old_password']);
 				unset($this->request->data['AccountPassword']['confirm_password']);
@@ -225,7 +196,7 @@ class AccountsController extends ZAppController {
 				// Ok, update the user's password
 				if ($this->Account->saveAssociated($this->request->data,
 					array(  'fieldList' => array(
-					    'AccountPassword' => array('account_id', 'password', 'salt'),
+					    'AccountPassword' => array('account_id', 'password'),
 						),
 						'verify' => true
 					))) {
@@ -242,7 +213,6 @@ class AccountsController extends ZAppController {
 				$this->Account->recursive = 0;
 				$this->request->data = $this->Account->read(null, $id);
 				unset($this->request->data['AccountPassword']['password']);
-				unset($this->request->data['AccountPassword']['salt']);
 			}
 		}
 	}
@@ -296,7 +266,6 @@ class AccountsController extends ZAppController {
 				strtolower( trim( $this->request->data['Account']['email'] ) );
 			unset($this->request->data['Account']['id']);
 			unset($this->request->data['AccountPassword']['id']);
-			unset($this->request->data['AccountPassword']['salt']);
 			$this->request->data['Account']['active'] = 0;
 			$this->request->data['AccountFlag']['agreement_date'] = DboSource::expression('NOW()');
 			$this->Account->create($this->request->data);
@@ -343,7 +312,6 @@ class AccountsController extends ZAppController {
 						$email->from(array($frommail => $sitename));
 						$email->to($this->data['Account']['email']);
 						$email->subject('Confirm Registration for ' . $sitename);
-						//$email->send($msg);
 						$email->send();
 						$this->Session->setFlash('User created successfully. Please check your email for a validation link.');
 						$this->redirect(array('action' => 'verify'));
@@ -362,7 +330,6 @@ class AccountsController extends ZAppController {
 		}
 		$this->request->data['AccountPassword']['password'] = '';
 		$this->request->data['AccountPassword']['confirm_password'] = '';
-		$this->request->data['AccountPassword']['salt'] = '';
 		$this->request->data['Account']['captcha'] = '';
 		$this->request->data['Account']['ruhuman'] = '';
 	}
@@ -373,7 +340,6 @@ class AccountsController extends ZAppController {
 	public function verify() {
 		if (isset($this->passedArgs['t']) && isset($this->passedArgs['n'])){
 			$this->passedArgs = Sanitize::clean($this->passedArgs, array('encode' => false));
-			//debug($this->passedArgs);
 			$token = $this->passedArgs['t'];
 			$email = $this->passedArgs['n'];
 		} else if ($this->request->is('post')) {
@@ -596,7 +562,7 @@ class AccountsController extends ZAppController {
 				return;
 			}
 			$result['AccountPassword']['password'] = $password1;
-			unset($result['AccountPassword']['salt']);
+			//unset($result['AccountPassword']['salt']);
 			if ( $this->Account->AccountPassword->save($result) ) {
 				$this->Account->AccountToken->delete($token_id);
 				$this->Session->setFlash(__d('z', 'User password was successfully changed.'));
@@ -633,6 +599,7 @@ class AccountsController extends ZAppController {
 			), true );
 	}
 	protected function _clean_old_registrations( ) {
+		// XXX TODO
 		// Here we need to find all user records that are
 		// - not active
 		// - with e-mail not verified

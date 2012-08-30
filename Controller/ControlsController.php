@@ -20,9 +20,6 @@ class ControlsController extends ZAppController {
 	//
 	// executed before each request
 	public function beforeFilter() {
-		//$this->Auth->allow(array('help'));
-		//$this->Auth->allow();
-		//
 		// Verify that we are coming from either this
 		// controller or the login page.
 		// As a precaution, if we come from anywhere
@@ -135,11 +132,9 @@ class ControlsController extends ZAppController {
 		} else {
 			$this->Account->recursive = 0;
 			$this->request->data = $this->Account->read(null, $id);
-			//$this->set($this->Account->read(null, $id));
 			unset($this->request->data['AccountPassword']['password']);
 			unset($this->request->data['AccountPassword']['salt']);
 		}
-		//debug($this->Account->data);
 	}
 
 	public function delete($id = null) {

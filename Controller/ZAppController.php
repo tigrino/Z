@@ -47,9 +47,6 @@ class ZAppController extends AppController {
 	public function afterFilter() {
 		parent::afterFilter();
 
-		//debug($this->request->here());
-		//debug(Router::parse($this->request->here()));
-
 		//
 		// Keep a record of a logged in user whereabouts
 		//$this->Session->write('Z.LastURI', $this->request->here);

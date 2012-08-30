@@ -8,17 +8,25 @@ class ZUserAuthenticate extends BaseAuthenticate {
 	public function authenticate(CakeRequest $request, CakeResponse $response) {
 		if ( (! empty($request->data['User']['email'])) &&
 			(! empty($request->data['User']['password'])) ) {
+			// The request contains an email and password
+			// Load the 'User' model
 			Controller::loadModel('User');
+			// Find a record with the given e-mail address
 			$credentials = $this->User->find('first', array(
 				'conditions' => array('User.email' => $request->data['User']['email'])
 				));
 			if ( ! empty($credentials) ) {
-				//if ( $credentials['User']['password'] == AuthComponent::password( $credentials['User']['salt'] . $request->data['User']['password']) ) {
+				// Create an instance of bcrypt password hasher
 				$hasher = new PasswordHash(PLUGIN_Z_PASSWORD_HASH_COST, FALSE);
+				// Request the hasher to check the password
+				// The salt is kept together with the password hash
+				// in the same field
 				if ( $hasher->CheckPassword($request->data['User']['password'], $credentials['User']['password']) ) {
+					// On success
+					// return the user record from the DB
+					// less the password info
 					unset($credentials['User']['password']);
-					unset($credentials['User']['salt']);
-					unset( $hasher );
+					unset($hasher);
 					return($credentials['User']);
 				}
 				unset( $hasher );
