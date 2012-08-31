@@ -66,7 +66,7 @@ class RandomIdBehavior extends ModelBehavior
 					'conditions' => array($model->alias . '.' . $this->settings[$model->alias]['id_field'] => $ready_id)
 				)
 			);
-		} while ((!empty($existing_id)) || ($ready_id == '00000000000000000000'));
+		} while ((!empty($existing_id)) || ($ready_id == str_repeat('0', strlen($ready_id))));
 		$model->data[$model->alias][$this->settings[$model->alias]['id_field']] = $ready_id;
 	}
 	/*
