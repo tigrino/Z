@@ -81,17 +81,6 @@ class Account extends ZAppModel {
 	public function beforeSave() {
 		//debug($this);
 		parent::beforeSave();
-		/*if ( empty( $this->data['Account']['id'] ) ) {
-			do {
-				// A new record, generate ID
-				$ready_id = z_random_64();
-				// MAKE SURE IT DOES NOT EXIST YET
-				// Otherwise we risk overwriting an existing account
-				$existing_id = $this->find('first', array('recursive' => -1, 'conditions' => array('Account.id' => $ready_id)));
-			} while ((!empty($existing_id)) || ($ready_id == '00000000000000000000'));
-			$this->id = $ready_id;
-			$this->data['Account']['id'] = $ready_id;
-		}*/
 	}
 
 	public function beforeFind( $queryData ) {
