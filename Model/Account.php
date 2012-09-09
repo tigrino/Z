@@ -10,8 +10,9 @@ class Account extends ZAppModel {
 		'Z.RandomId' => array(
 			'id_field' => 'id',
 			'id_length' => 19
-		)
+		),
 	);
+
 	public $validate = array(
 		'maxLength' => array(
 			'rule'    => array('maxLength', 255),

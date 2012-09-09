@@ -10,6 +10,7 @@ class ZAppController extends AppController {
 		'Session',
 		'Cookie',
 		'RequestHandler',
+		//'Recaptcha.Recaptcha',
 		'Auth' => array(
 			'loginAction' => array(
 				'controller' => 'accounts',
