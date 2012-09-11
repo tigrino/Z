@@ -29,6 +29,13 @@ class AccountsController extends ZAppController {
 	// User login function
 	// basically, use Auth, all the rest is just housekeeping
 	public function login() {
+		if ( $this->Auth->user('id') ) {
+			// If user is logged in already
+			// we redirect him to the "home page"
+			// that is hopefully set in the
+			// Auth configuration
+			return $this->redirect($this->Auth->redirect());
+		}
 		//
 		// Mind you, the view uses 'User' because
 		// that's what we need for Auth module

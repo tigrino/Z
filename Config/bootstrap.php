@@ -1,4 +1,8 @@
 <?php
+	// Operational settings - overwrite in application bootstrap
+	// where we redirect on successful login
+	define('PLUGIN_Z_ON_LOGIN', '/z/users/');
+
 	// Plugin constant definitions
 	define('PLUGIN_Z_TOKEN_MAIL_VERIFY',	1);
 	define('PLUGIN_Z_TOKEN_RESET_CONFIRM',	2);

@@ -41,7 +41,6 @@ class ZAppController extends AppController {
 			$this->Security->requireSecure();
 		}
 		$this->Security->blackHoleCallback = 'blackhole';
-		$this->Auth->loginRedirect = $this->referer();
 		$this->set('authUser', $this->Auth->user());
 	}
 
