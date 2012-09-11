@@ -4,6 +4,7 @@ App::uses('Sanitize', 'Utility');
 App::uses('CakeEmail', 'Network/Email');
 App::import('Vendor', 'Z.zcaptcha');
 App::import('Vendor', 'Z.PasswordHash');
+App::import('Vendor', 'Z.zrandom');
 
 /**
  * Accounts Controller
