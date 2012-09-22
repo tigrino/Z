@@ -22,7 +22,33 @@ class AccountsController extends ZAppController {
 	//
 	// Redirect index requests
 	public function index() {
-		return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'index'), true ));
+		//return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'index'), true ));
+		return $this->redirect(Router::url( array('action' => 'view'), true ));
+	}
+
+	//
+	// Redirect index requests
+	public function view() {
+		//return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'view'), true ));
+		if ( ! $this->Auth->user('id') ) {
+			// User is not logged in, forward to login
+			/// The requested action requires you to be logged in.
+			$this->Session->setFlash(__d('z', 'action_requires_login'));
+			$this->redirect(array('action' => 'login'));
+		} else {
+			// User is logged in
+			Controller::loadModel('User');
+			$id = $this->Auth->user('id');
+			$this->User->id = $id;
+			if (!$this->User->exists()) {
+				// A strange situation when the logged in
+				// user actually does not exist
+				// but maybe he was blocked? Log him out.
+				$this->redirect($this->Auth->logout());
+				//throw new NotFoundException(__('Invalid user'));
+			}
+			$this->set('user', $this->User->read(null, $id));
+		}
 	}
 
 	//
@@ -321,7 +347,7 @@ class AccountsController extends ZAppController {
 						$email->to($this->data['Account']['email']);
 						$email->subject('Confirm Registration for ' . $sitename);
 						$email->send();
-						$this->Session->setFlash('User created successfully. Please check your email for a validation link.');
+						$this->Session->setFlash(__d('z', 'User created successfully. Please check your email for a validation link.'));
 						$this->redirect(array('action' => 'verify'));
 					} else {
 						$dataSource->rollback();

@@ -51,6 +51,7 @@ class ControlsController extends ZAppController {
 		return $this->redirect(Router::url( array('action' => 'accounts'), true ));
 	}
 	public function dashboard() {
+		$this->set('z_version', Configure::read('z.version'));
 	}
 	public function cryptotest() {
 	}

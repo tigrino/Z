@@ -3,6 +3,7 @@ App::import('Vendor', 'Z.PasswordHash');
 ?>
 <div class="accounts index">
 	<h2><?php echo __d('z', 'Settings and Dashboard'); ?></h2>
+	<li>version=<?php echo $z_version; ?>
 	<li>mt_getrandmax=<?php echo mt_getrandmax(); ?>
 </pre>
 </div>

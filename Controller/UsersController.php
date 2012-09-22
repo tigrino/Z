@@ -8,7 +8,8 @@ class UsersController extends ZAppController {
 	}
 
 	public function view() {
-		//debug($this->request);
+		$this->redirect(array('plugin' => 'z', 'controller' => 'accounts', 'action' => 'view'));
+		/*//debug($this->request);
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to login
 			/// The requested action requires you to be logged in.
@@ -26,7 +27,7 @@ class UsersController extends ZAppController {
 				//throw new NotFoundException(__('Invalid user'));
 			}
 			$this->set('user', $this->User->read(null, $id));
-		}
+		}*/
 	}
 
 }
