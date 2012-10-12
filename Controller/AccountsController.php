@@ -82,7 +82,7 @@ class AccountsController extends ZAppController {
 				//$saveData['Account']['id'] = $this->Auth->user('id');
 				$saveData['AccountLogin']['account_id'] = $this->Auth->user('id');
 				$saveData['AccountLogin']['good_from_ip'] = $this->RequestHandler->getClientIp();
-				$saveData['AccountLogin']['good_login'] = DboSource::expression('NOW()');
+				$saveData['AccountLogin']['good_login'] = $this->Account->getDataSource()->expression('NOW()');
 				if (! $this->Account->AccountLogin->save($saveData,
 					array(  'fieldList' => array(
 					    'AccountLogin' => array('account_id', 'good_from_ip', 'good_login'),
@@ -94,7 +94,9 @@ class AccountsController extends ZAppController {
 				//
 				// if the user is admin forward him to the control panel
 				if ( $this->Auth->user('user_admin') == 1 ) {
-					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
+					debug(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
+					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), true ));
+					//return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 				} else {
 					return $this->redirect($this->Auth->redirect());
 				}
@@ -106,7 +108,7 @@ class AccountsController extends ZAppController {
 						$saveData = $this->Account->find('first', $options);
 						$saveData['AccountLogin']['account_id'] = $saveData['Account']['id'];
 						$saveData['AccountLogin']['bad_from_ip'] = $this->RequestHandler->getClientIp();
-						$saveData['AccountLogin']['bad_login'] = DboSource::expression('NOW()');
+						$saveData['AccountLogin']['bad_login'] = $this->Account->getDataSource()->expression('NOW()');
 						if (! $this->Account->AccountLogin->save($saveData,
 							array(  'fieldList' => array(
 							    'AccountLogin' => array('account_id', 'bad_from_ip', 'bad_login'),
@@ -151,7 +153,7 @@ class AccountsController extends ZAppController {
 					'id' => $this->Account->data['AccountFlag']['id'],
 					'account_id' => $this->Account->data['AccountFlag']['account_id'],
 					'deleted' => true,
-					'deleted_date' => DboSource::expression('NOW()')
+					'deleted_date' => $this->Account->getDataSource()->expression('NOW()')
 					));
 			$this->Account->create($data);
 			$options = array(
@@ -301,7 +303,7 @@ class AccountsController extends ZAppController {
 			unset($this->request->data['Account']['id']);
 			unset($this->request->data['AccountPassword']['id']);
 			$this->request->data['Account']['active'] = 0;
-			$this->request->data['AccountFlag']['agreement_date'] = DboSource::expression('NOW()');
+			$this->request->data['AccountFlag']['agreement_date'] = $this->Account->getDataSource()->expression('NOW()');
 			$this->Account->create($this->request->data);
 			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
 				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
@@ -412,7 +414,7 @@ class AccountsController extends ZAppController {
 						'id' => $this->Account->data['AccountFlag']['id'],
 						'account_id' => $this->Account->data['Account']['id'],
 						'email_verified' => 1,
-						'email_verified_date' => DboSource::expression('NOW()')
+						'email_verified_date' => $this->Account->getDataSource()->expression('NOW()')
 					)
 				);
 				$this->Account->create($data);

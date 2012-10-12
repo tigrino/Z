@@ -79,9 +79,9 @@ class Account extends ZAppModel {
 			'dependent'    => true
 		),
 	);
-	public function beforeSave() {
+	public function beforeSave($options = array()) {
 		//debug($this);
-		parent::beforeSave();
+		parent::beforeSave($options);
 	}
 
 	public function beforeFind( $queryData ) {

@@ -10,7 +10,7 @@ class ZUserAuthenticate extends BaseAuthenticate {
 			(! empty($request->data['User']['password'])) ) {
 			// The request contains an email and password
 			// Load the 'User' model
-			Controller::loadModel('User');
+			$this->User = ClassRegistry::init('User');
 			// Find a record with the given e-mail address
 			$credentials = $this->User->find('first', array(
 				'conditions' => array('User.email' => $request->data['User']['email'])

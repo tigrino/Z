@@ -13,7 +13,7 @@ class RandomIdBehavior extends ModelBehavior
 {
 	public $settings = array();
 	
-	public function setup(&$model, $settings)
+	public function setup(Model $model, $settings = array())
 	{
 		if (!isset($this->settings[$model->alias])) {
 			$this->settings[$model->alias] = array(
@@ -31,7 +31,7 @@ class RandomIdBehavior extends ModelBehavior
 	/*
 	 * Check if the id field is empty and if so - generates a random id.
 	 */
-	public function beforeValidate(&$model) {
+	public function beforeValidate(Model $model) {
 		if ($this->_record_needs_id($model)){
 			$this->_generate_id($model);
 		}

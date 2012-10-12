@@ -35,7 +35,7 @@ class ZAppController extends AppController {
 		Security::setHash('sha512');
 		$this->Cookie->secure = false;
 		// Enforce SSL on required controllers
-		$location = Router::parse($this->request->here());
+		$location = Router::parse(Router::normalize($this->request->here()));
 		$SecureControllerList = array( 'users', 'accounts', 'controls' );
 		if ( in_array( $location['controller'], $SecureControllerList ) ) { 
 			$this->Security->requireSecure();
@@ -52,7 +52,7 @@ class ZAppController extends AppController {
 		//$this->Session->write('Z.LastURI', $this->request->here);
 		/*$user = $this->Auth->user();
 		$IgnoreControllerList = array( 'pages', 'img' );
-		$location = Router::parse($this->request->here());
+		$location = Router::parse(Router::normalize($this->request->here()));
 		if ( ! in_array( $location['controller'], $IgnoreControllerList ) ) { 
 			$this->loadModel('Visit');
 			$this->Visit->recursive = -1;

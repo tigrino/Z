@@ -26,7 +26,13 @@ class ControlsController extends ZAppController {
 		// else (direct link, page in application)
 		// require a re-authentication.
 		$location = parse_url($this->referer());
-		$from_route = Router::parse($location['path']);
+		$normal_url = Router::normalize($location['path']);
+		$from_route = Router::parse($normal_url);
+		//debug($this->referer());
+		//debug($location);
+		//debug($normal_url);
+		//debug($from_route);
+		//return;
 		if ( 
 			($from_route['plugin'] != 'z') ||
 			! ( ($from_route['controller'] == 'controls') ||
