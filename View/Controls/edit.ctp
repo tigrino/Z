@@ -12,6 +12,7 @@
 		echo $this->Form->input('Account.email',
 			array(
 				'label' => __d('z', 'label_email'),
+				'type' => 'email',
 			)
 		);
 		echo $this->Form->input('AccountPassword.password',

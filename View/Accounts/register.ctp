@@ -7,7 +7,7 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 	<fieldset>
 		<legend><?php echo __d('z', 'Register'); ?></legend>
 	<?php
-		echo $this->Form->input('email', array('label' => __d('z', 'label_email')));
+		echo $this->Form->input('email', array('label' => __d('z', 'label_email'), 'type' => 'email'));
 		echo $this->Form->input('AccountPassword.password',
 			array(
                                 'type' => 'password',

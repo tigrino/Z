@@ -10,6 +10,7 @@ $this->Html->addCrumb('Reset', '/z/accounts/reset');
 		echo $this->Form->input('email',
 			array(
 				'label' => __d('z', 'label_email'),
+				'type' => 'email',
 			)
 		);
 		echo $this->Form->hidden('ruhuman',

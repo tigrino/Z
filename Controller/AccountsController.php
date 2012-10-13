@@ -94,7 +94,7 @@ class AccountsController extends ZAppController {
 				//
 				// if the user is admin forward him to the control panel
 				if ( $this->Auth->user('user_admin') == 1 ) {
-					debug(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
+					//debug(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), true ));
 					//return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 				} else {
@@ -128,6 +128,7 @@ class AccountsController extends ZAppController {
 	//
 	// User logout function, simply use Auth
 	public function logout() {
+		$this->Session->setFlash(__d('z','logged_out'), 'default', array(), 'auth');
 		$this->redirect($this->Auth->logout());
 	}
 

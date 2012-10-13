@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z Authentication Plugin for CakePHP\n"
-"POT-Creation-Date: 2012-09-22 23:38+0200\n"
-"PO-Revision-Date: 2012-09-22 23:40+0100\n"
+"POT-Creation-Date: 2012-10-13 21:17+0000\n"
+"PO-Revision-Date: 2012-10-13 23:18+0100\n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Albert 'Tigr' Zenkoff <albert@tigr.net>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Controller/AccountsController.php:36;139
+#: Controller/AccountsController.php:36;142
 msgid "action_requires_login"
 msgstr "Это действие требует входа в систему."
 
@@ -25,164 +25,168 @@ msgstr "Это действие требует входа в систему."
 msgid "logged_in"
 msgstr "Вход в систему выполнен успешно."
 
-#: Controller/AccountsController.php:121
+#: Controller/AccountsController.php:123
 msgid "incorrect_credentials"
 msgstr "Неверное имя или пароль."
 
-#: Controller/AccountsController.php:170
+#: Controller/AccountsController.php:131
+msgid "logged_out"
+msgstr "Выход из системы."
+
+#: Controller/AccountsController.php:173
 msgid "your_account_deleted_success"
 msgstr "Ваша учетная запись удалена. Прощайте!"
 
-#: Controller/AccountsController.php:181
+#: Controller/AccountsController.php:184
 msgid "not_logged_in_reset_password"
 msgstr "Вы не выполнили вход в систему. Может быть, вам надо сбросить пароль?"
 
-#: Controller/AccountsController.php:193;212
+#: Controller/AccountsController.php:196;215
 msgid "credentials_mismatch_logout"
 msgstr "Имя пользователя или пароль неверные. В целях безопасности вы выведены из системы."
 
-#: Controller/AccountsController.php:200;201
+#: Controller/AccountsController.php:203;204
 msgid "passwords_must_match"
 msgstr "Пароли должны быть одинаковыми."
 
-#: Controller/AccountsController.php:203
+#: Controller/AccountsController.php:206
 msgid "passwords_do_not_match"
 msgstr "Пароли различаются."
 
-#: Controller/AccountsController.php:227
+#: Controller/AccountsController.php:230
 msgid "bad_password_choose_another"
 msgstr "Этот пароль не разрешен. Выберите другой, пожалуйста."
 
-#: Controller/AccountsController.php:238
+#: Controller/AccountsController.php:241
 msgid "password_update_success"
 msgstr "Пароль успешно обновлен."
 
-#: Controller/AccountsController.php:242
+#: Controller/AccountsController.php:245
 msgid "password_not_saved_problem"
 msgstr "Возникла проблема при сохранении пароля. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:270;272
+#: Controller/AccountsController.php:273;275
 msgid "incorrect_captcha_try_again"
 msgstr "Код CAPTCHA введен неверно. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:281
+#: Controller/AccountsController.php:284
 msgid "tos_agreement_confirm"
 msgstr "Подтвердите согласие с условиями обслуживания, пожалуйста."
 
-#: Controller/AccountsController.php:291;292
+#: Controller/AccountsController.php:294;295
 msgid "Passwords must match"
 msgstr "Пароли должны совпадать."
 
-#: Controller/AccountsController.php:293
+#: Controller/AccountsController.php:296
 msgid "The passwords did not match up."
 msgstr "Пароли не совпали."
 
-#: Controller/AccountsController.php:307
-#: Controller/ControlsController.php:91;121
+#: Controller/AccountsController.php:310
+#: Controller/ControlsController.php:97;127
 msgid "Registration data validation failure. Please, check your input."
 msgstr "Регистрационные данные не прошли проверку. Пожалуйста, проверьте введенные данные."
 
-#: Controller/AccountsController.php:350
+#: Controller/AccountsController.php:353
 msgid "User created successfully. Please check your email for a validation link."
 msgstr "Пользователь создан. Инструкции высланы на электронную почту."
 
-#: Controller/AccountsController.php:354;358;362;431
+#: Controller/AccountsController.php:357;361;365;434
 msgid "The user could not be saved. Please, try again."
 msgstr "Учетная запись не сохранена. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:435
+#: Controller/AccountsController.php:438
 msgid "Your e-mail was successfully verified."
 msgstr "Ваш адрес электронной почты успешно проверен."
 
-#: Controller/AccountsController.php:438
+#: Controller/AccountsController.php:441
 msgid "User e-mail verification failed."
 msgstr "Адрес электронной почты не прошел проверку."
 
-#: Controller/AccountsController.php:449
+#: Controller/AccountsController.php:452
 msgid "You are already logged in, use this form to change your password."
 msgstr "Вы уже в системе, воспользуйтесь сменой пароля."
 
-#: Controller/AccountsController.php:463
+#: Controller/AccountsController.php:466
 msgid "The CAPTCHA code is incorrect. Please, try again."
 msgstr "Неверный код CAPTCHA, попробуйте заново."
 
-#: Controller/AccountsController.php:465
+#: Controller/AccountsController.php:468
 msgid "CAPTCHA code is incorrect"
 msgstr "Неверный код CAPTCHA."
 
-#: Controller/AccountsController.php:478;480
+#: Controller/AccountsController.php:481;483
 msgid "email_not_registered"
 msgstr "Этот адрес электронной почты не зарегистрирован в системе."
 
-#: Controller/AccountsController.php:526
+#: Controller/AccountsController.php:529
 msgid "Password reset request created successfully. Please check your email."
 msgstr "Запрос на смену пароля создан. Инструкции высланы на электронную почту."
 
-#: Controller/AccountsController.php:529
+#: Controller/AccountsController.php:532
 msgid "The request could not be approved. Please, try again."
 msgstr "Ваш запрос не был одобрен системой. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:550;555;560;565
+#: Controller/AccountsController.php:553;558;563;568
 msgid "Please, enter values to all required fields."
 msgstr "Введите значения во все требуемые поля."
 
-#: Controller/AccountsController.php:551;556;561;566
+#: Controller/AccountsController.php:554;559;564;569
 msgid "Missing a required value."
 msgstr "Отсутствует обязательное для ввода поле."
 
-#: Controller/AccountsController.php:570
+#: Controller/AccountsController.php:573
 msgid "The passwords are different."
 msgstr "Пароли отличны друг от друга."
 
-#: Controller/AccountsController.php:571;572
+#: Controller/AccountsController.php:574;575
 msgid "Passwords must match."
 msgstr "Пароли должны совпадать."
 
-#: Controller/AccountsController.php:583
+#: Controller/AccountsController.php:586
 msgid "Token verification failed."
 msgstr "Жетон не прошел проверку."
 
-#: Controller/AccountsController.php:584
+#: Controller/AccountsController.php:587
 msgid "Missing a correct token."
 msgstr "Не хватает необходимого жетона."
 
-#: Controller/AccountsController.php:595
+#: Controller/AccountsController.php:598
 msgid "Retrieval of user record during password update failed."
 msgstr "Произошел сбой чтения пользовательской информации при обновлении."
 
-#: Controller/AccountsController.php:602
+#: Controller/AccountsController.php:605
 msgid "User password was successfully changed."
 msgstr "Пароль успешно изменен."
 
-#: Controller/AccountsController.php:605
+#: Controller/AccountsController.php:608
 msgid "Password update failed."
 msgstr "Обновление пароля не сработало."
 
-#: Controller/AccountsController.php:649
+#: Controller/AccountsController.php:652
 msgid "bots_are_not_welcome"
 msgstr "Мы не разрешаем программам здесь регистрироваться."
 
-#: Controller/ControlsController.php:35
+#: Controller/ControlsController.php:41
 msgid "action_requires_reauthorization"
 msgstr "Это действие требует авторизации заново."
 
-#: Controller/ControlsController.php:73;110;148
+#: Controller/ControlsController.php:79;116;154
 msgid "account_invalid"
 msgstr "Несуществующая запись пользователя."
 
-#: Controller/ControlsController.php:97;127
+#: Controller/ControlsController.php:103;133
 msgid "account_saved_success"
 msgstr "Учетная запись сохранена."
 
-#: Controller/ControlsController.php:101;131
+#: Controller/ControlsController.php:107;137
 msgid "account_save_problem"
 msgstr "Возникла проблема при сохранении учетной записи. Попробуйте еще раз."
 
-#: Controller/ControlsController.php:152
+#: Controller/ControlsController.php:158
 msgid "account_deleted"
 msgstr "Учетная запись удалена успешно."
 
-#: Controller/ControlsController.php:156
+#: Controller/ControlsController.php:162
 msgid "account_delete_problem"
 msgstr "Возникли проблемы с удалением учетной записи. Попробуйте еще раз."
 
