@@ -95,7 +95,7 @@ class AccountsController extends ZAppController {
 				// if the user is admin forward him to the control panel
 				if ( $this->Auth->user('user_admin') == 1 ) {
 					//debug(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
-					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), true ));
+					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'index'), true ));
 					//return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 				} else {
 					return $this->redirect($this->Auth->redirect());

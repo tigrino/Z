@@ -4,6 +4,7 @@ App::uses('Sanitize', 'Utility');
 App::uses('CakeEmail', 'Network/Email');
 App::uses('Account', 'Z.Model');
 App::import('Vendor', 'Z.PasswordHash');
+App::import('Vendor', 'Z.zpasswordblacklist');
 
 class ControlsController extends ZAppController {
 	public $uses = array('Z.Account');
@@ -54,10 +55,24 @@ class ControlsController extends ZAppController {
 	//
 	// List the users of the system
 	public function index() {
-		return $this->redirect(Router::url( array('action' => 'accounts'), true ));
+		return $this->redirect(Router::url( array('action' => 'dashboard'), true ));
 	}
 	public function dashboard() {
 		$this->set('z_version', Configure::read('z.version'));
+		$this->set('z_token_length', PLUGIN_Z_TOKEN_LENGTH);
+		$this->set('z_hash_cost', PLUGIN_Z_PASSWORD_HASH_COST);
+		$this->set('z_wordlists', z_wordlist_names() );
+
+		$accounts = $this->Account->find('count');
+		$this->set('accounts', $accounts);
+		$accounts_active = $this->Account->find('count', 
+			array(
+		        	'conditions' => array('Account.active' => true)
+			));
+		$this->set('accounts_active', $accounts_active);
+		$tokens = $this->Account->AccountToken->find('count');
+		//debug($tokens);
+		$this->set('tokens', $tokens);
 	}
 	public function cryptotest() {
 	}

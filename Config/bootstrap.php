@@ -38,5 +38,5 @@
 	}
 	//
 	// The current version of the plugin
-	Configure::write("z.version", "0.4.0");
+	Configure::write("z.version", "0.5.0");
 ?>
