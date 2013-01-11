@@ -37,6 +37,7 @@ $this->Html->addCrumb('Password', '/z/accounts/password');
 		<li><?php echo $this->Html->link(__d('z', 'View Account'), array('controller' => 'users', 'action' => 'view'));?></li>
 		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('controller' => 'accounts', 'action' => 'delete', $this->Form->value('Account.id')), null, __d('z', 'Are you sure you want to delete your user account %s?', $this->Form->value('Account.email'))); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Logout'), array('controller' => 'accounts', 'action' => 'logout')); ?> </li>
+		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('/z/js/jquery.min'); ?>

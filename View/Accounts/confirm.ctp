@@ -44,6 +44,7 @@ $this->Html->addCrumb('Confirm', '/z/accounts/confirm');
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Reset account'), array('action' => 'reset'));?></li>
+		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('/z/js/jquery.min'); ?>

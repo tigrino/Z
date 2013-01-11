@@ -48,7 +48,8 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 			array(
 				'hiddenField' => false,
 				'div' => 'required',
-				'label' => __d('z', 'I confirm that I agree to ').$this->Html->link(__d('z', 'the Terms of Service and User Agreement'), array('plugin' => null, 'controller' => 'pages', 'action' => 'tos')),
+				//'label' => __d('z', 'I confirm that I agree to ').$this->Html->link(__d('z', 'the Terms of Service and User Agreement'), array('plugin' => 'z', 'controller' => 'pages', 'action' => 'tos')),
+				'label' => __d('z', 'I confirm that I agree to ').$this->Html->link(__d('z', 'the User Agreement and consent to the use of cookies'), array('action' => 'tos'), array('target' => '_blank')),
 				'error'=>__d('z', 'The acceptance is mandatory.',true)
 				)
 			);
@@ -62,6 +63,7 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Verify e-mail'), array('action' => 'verify'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Reset password'), array('action' => 'reset'));?></li>
+		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('/z/js/jquery.min'); ?>

@@ -41,5 +41,6 @@ $this->Html->addCrumb('Login', '/z/accounts/login');
 		<li><?php echo $this->Html->link(__d('z', 'Reset account'), array('action' => 'reset'));?></li>
 		<!-- li><?php echo $this->Html->link(__d('z', 'Verify e-mail'), array('action' => 'verify'));?></li -->
 		<!-- li><?php echo $this->Html->link(__d('z', 'Confirm password'), array('action' => 'confirm'));?></li -->
+		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>

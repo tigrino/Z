@@ -14,7 +14,7 @@ class AccountsController extends ZAppController {
 	//
 	// executed before each request
 	public function beforeFilter() {
-		$this->Auth->allow(array('captcha', 'login', 'logout', 'register', 'verify', 'reset', 'confirm'));
+		$this->Auth->allow(array('captcha', 'login', 'logout', 'register', 'verify', 'reset', 'confirm', 'tos'));
 		//$this->Auth->allow();
 		return parent::beforeFilter();
 	}
@@ -657,4 +657,7 @@ class AccountsController extends ZAppController {
 		}
 	}
 
+	public function tos() {
+		// Display Terms of Service for this plugin and the use of cookies
+	}
 }

@@ -57,5 +57,6 @@ $this->Html->addCrumb('View', '/z/accounts/view');
 		<?php if ( $user['User']['user_admin'] == 1 ) { ?>
 		<li><?php echo $this->Html->link(__d('z', 'Admin Panel'), array('plugin' => 'z', 'controller' => 'controls', 'action' => 'index')); ?> </li>
 		<?php } ?>
+		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>

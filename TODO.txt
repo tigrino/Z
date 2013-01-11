@@ -1,4 +1,3 @@
- - Split the "Terms of Use" to have dedicated terms and use of cookies okeyed at the creation of the user while the use of the website itself is okeyed at creation of profile or first use of the website
  - Correct PasswordHash to do comparisons with something else than '==' and in constant time
  - Normally we need to detect failures of the RNG... but we do not want to do statistical testing every time, do we?
  - Make SSL configurable (switch off/enforce/combined(like now))

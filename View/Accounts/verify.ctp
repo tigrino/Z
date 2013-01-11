@@ -34,5 +34,6 @@ $this->Html->addCrumb('Verify', '/z/accounts/verify');
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Register'), array('action' => 'register'));?></li>
+		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
