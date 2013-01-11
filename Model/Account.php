@@ -38,6 +38,17 @@ class Account extends ZAppModel {
 	);
 
 	public $hasMany = array(
+		'AccountLogin' => array(
+			'className' => 'Z.AccountLogin',
+			'foreignKey' => false,
+			'conditions' => '1=0',
+			//'conditions' => array('AccountLogin.email' => $data['Account']['email']),
+			'fields' => array('email', 'from_ip', 'created', 'success'),
+			//'order' => '',
+			//'limit' => '1',
+			'recursive' => null,
+			'dependent'    => false
+		),
 		'AccountToken' => array(
 			'className' => 'Z.AccountToken',
 			'foreignKey' => 'account_id',
@@ -68,17 +79,10 @@ class Account extends ZAppModel {
 			//'limit' => '1',
 			'dependent'    => true
 		),
-		'AccountLogin' => array(
-			'className' => 'Z.AccountLogin',
-			'foreignKey' => 'account_id',
-			//'conditions' => '',
-			//'fields' => '',
-			//'order' => '',
-			//'order' => array('Visit.created' => 'desc'),
-			//'limit' => '1',
-			'dependent'    => true
-		),
 	);
+	public function setAccountLoginLimit( $new_limit ) {
+		$this->hasMany['AccountLogin']['limit'] = $new_limit;
+	}
 	public function beforeSave($options = array()) {
 		//debug($this);
 		parent::beforeSave($options);
@@ -87,6 +91,40 @@ class Account extends ZAppModel {
 	public function beforeFind( $queryData ) {
 		//$this->_bindRecentVisit();
 		return parent::beforeFind($queryData);
+	}
+	public function afterFind( $results, $primary = false ) {
+		if (!isset($results[0]['Account'])) {
+			// no results (e.g. count only) - abort
+			return $results;
+		}
+		if (!isset($results[0]['AccountLogin'])) {
+			// no results or no recursion - abort
+			return $results;
+		}
+		$query = array(
+			'conditions' => array(),
+			'recursive' => isset($this->hasMany['AccountLogin']['recursive']) ?
+				($this->recursive - 1) : null,
+			'fields' => $this->hasMany['AccountLogin']['fields'],
+			'limit' => $this->hasMany['AccountLogin']['limit'],
+			'order' => $this->hasMany['AccountLogin']['order'],
+			);
+		//debug($results);
+		foreach ($results as $i => $row) {
+			$query['conditions'] = array('AccountLogin.email' => $row['Account']['email']);
+			$accesses = $this->AccountLogin->find('all', $query);
+			foreach ($accesses as $rowIndex => $subRow) {
+				$access = $subRow['AccountLogin'];
+				unset($subRow['AccountLogin']);
+				// What on Earth would this loop do?
+				//foreach ($subRow as $key => $value) {
+				//	$access[$key] = $value;
+				//}
+				$results[$i]['AccountLogin'][$rowIndex] = $access;
+			}
+		}
+		//debug($results);
+		return $results;
 	}
 
 /*

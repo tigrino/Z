@@ -1,0 +1,13 @@
+0.6.0	Important! The db schema has changed!
+
+	In this version we move to the multiple records for
+	good and bad login attempts to keep track of things.
+	That will perhaps require clean-up of the login 
+	log table later.
+	This requires changing the 'users' view so if you
+	are upgrading, look into the schema (Schema/z.sql),
+	delete the table 'z_account_logins' and the view 
+	'users' and create the new table and all views from
+	the new schema.
+	The new schema provides the same 'users' view as 
+	before, so no code changes required if you rely on it.

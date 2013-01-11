@@ -94,6 +94,9 @@ class ControlsController extends ZAppController {
 			/// Invalid account
 			throw new NotFoundException(__d('z', 'account_invalid'));
 		}
+		$this->Account->recursive = 1;
+		$this->Account->AccountLogin->recursive = -1;
+		$this->Account->setAccountLoginLimit(20); // TODO: should be configurable
 		$this->set('Account', $this->Account->read(null, $id));
 	}
 

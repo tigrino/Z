@@ -145,6 +145,24 @@
 	</table>
 <?php endif; ?>
 
+	<h3><?php echo __d('z', 'Login access log'); ?></h3>
+	<?php if (!empty($Account['AccountLogin'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __d('z', 'Date'); ?></th>
+		<th><?php echo __d('z', 'From IP'); ?></th>
+		<th><?php echo __d('z', 'Success'); ?></th>
+	</tr>
+	<?php foreach ($Account['AccountLogin'] as $AccountLogin): ?>
+		<tr>
+			<td><?php echo $AccountLogin['created']; ?></td>
+			<td><?php echo $AccountLogin['from_ip']; ?></td>
+			<td><?php echo $AccountLogin['success']; ?></td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+	<?php endif; ?>
+
 	<!-- div class="actions">
 		<ul>
 			<li><?php echo $this->Html->link(__d('z', 'New Account Token'), array('action' => 'token')); ?> </li>

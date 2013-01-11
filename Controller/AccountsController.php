@@ -77,15 +77,13 @@ class AccountsController extends ZAppController {
 				/// Logged in successfully
 				$this->Session->setFlash(__d('z', 'logged_in'), 'default', array(), 'auth');
 				$this->Account->id = $this->Auth->user('id');
-				$this->Account->recursive = 0;
-				$saveData = $this->Account->read();
-				//$saveData['Account']['id'] = $this->Auth->user('id');
-				$saveData['AccountLogin']['account_id'] = $this->Auth->user('id');
-				$saveData['AccountLogin']['good_from_ip'] = $this->RequestHandler->getClientIp();
-				$saveData['AccountLogin']['good_login'] = $this->Account->getDataSource()->expression('NOW()');
+				$saveData = array();
+				$saveData['AccountLogin']['email'] = $this->Auth->user('email');
+				$saveData['AccountLogin']['from_ip'] = $this->RequestHandler->getClientIp();
+				$saveData['AccountLogin']['success'] = TRUE;
 				if (! $this->Account->AccountLogin->save($saveData,
 					array(  'fieldList' => array(
-					    'AccountLogin' => array('account_id', 'good_from_ip', 'good_login'),
+					    'AccountLogin' => array('email', 'from_ip', 'success'),
 						),
 						'verify' => true
 					))) {
@@ -94,30 +92,22 @@ class AccountsController extends ZAppController {
 				//
 				// if the user is admin forward him to the control panel
 				if ( $this->Auth->user('user_admin') == 1 ) {
-					//debug(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 					return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'index'), true ));
-					//return $this->redirect(Router::url( array('controller' => 'controls', 'action' => 'accounts'), false ));
 				} else {
 					return $this->redirect($this->Auth->redirect());
 				}
 			} else {
-				if ( !empty($this->request->data['User']['email']) ) {
-					$options = array( 'conditions' => array( 
-						'Account.email' => $this->request->data['User']['email'] ) );
-					if ( $this->Account->find('count', $options) ) {
-						$saveData = $this->Account->find('first', $options);
-						$saveData['AccountLogin']['account_id'] = $saveData['Account']['id'];
-						$saveData['AccountLogin']['bad_from_ip'] = $this->RequestHandler->getClientIp();
-						$saveData['AccountLogin']['bad_login'] = $this->Account->getDataSource()->expression('NOW()');
-						if (! $this->Account->AccountLogin->save($saveData,
-							array(  'fieldList' => array(
-							    'AccountLogin' => array('account_id', 'bad_from_ip', 'bad_login'),
-								),
-								'verify' => true
-							))) {
-							debug($this->Account->AccountLogin->validationErrors);
-						}
-					}
+				$saveData = array();
+				$saveData['AccountLogin']['email'] = $this->request->data['User']['email'];
+				$saveData['AccountLogin']['from_ip'] = $this->RequestHandler->getClientIp();
+				$saveData['AccountLogin']['success'] = FALSE;
+				if (! $this->Account->AccountLogin->save($saveData,
+					array(  'fieldList' => array(
+					    'AccountLogin' => array('email', 'from_ip', 'success'),
+						),
+						'verify' => true
+					))) {
+					debug($this->Account->AccountLogin->validationErrors);
 				}
 				/// Username or password is incorrect
 				$this->Session->setFlash(__d('z', 'incorrect_credentials'), 'default', array(), 'auth');

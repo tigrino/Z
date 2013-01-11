@@ -5,13 +5,15 @@ class AccountLogin extends ZAppModel {
 	public $validationDomain = 'z';
 	public $useTable = 'z_account_logins';
 	public $displayField = 'account_id';
-	public $belongsTo = array( 'Z.Account' );
+        public $belongsTo = array(
+                'Account' => array(
+                        'className' => 'Z.Account',
+                        'foreignKey' => false,
+                        'conditions' => array('`Account`.`email` = `AccountLogin`.`email`'),
+                        'fields' => '',
+                        'order' => ''
+                )
+        );
 	public $validate = array(
-		'account_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'required' => true,
-			),
-		),
 	);
 }
