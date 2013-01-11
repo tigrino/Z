@@ -231,9 +231,11 @@ class AccountsController extends ZAppController {
 					return;
 				}
 				// Ok, update the user's password
-				if ($this->Account->saveAssociated($this->request->data,
+				//debug($this->Account->AccountPassword);
+				if ($this->Account->AccountPassword->save($this->request->data,
 					array(  'fieldList' => array(
-					    'AccountPassword' => array('account_id', 'password'),
+					    //'AccountPassword' => array('account_id', 'password'),
+					    'AccountPassword' => array('password'),
 						),
 						'verify' => true
 					))) {

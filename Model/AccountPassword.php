@@ -70,6 +70,9 @@ class AccountPassword extends ZAppModel {
 	);
 
 	public function notInCommonWordList($check) {
+		if ( (Configure::read('z.use_password_blacklist') !== null) && (! Configure::read('z.use_password_blacklist')) ) {
+			return TRUE;
+		}
 		return ! z_password_listed($check['password']);
 	}
 }

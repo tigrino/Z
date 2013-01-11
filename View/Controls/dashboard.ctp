@@ -9,7 +9,7 @@ App::import('Vendor', 'Z.PasswordHash');
 	<li>mt_getrandmax=<?php echo mt_getrandmax(); ?>
 	<li>token_length=<?php echo $z_token_length; ?>
 	<li>password hash cost=<?php echo $z_hash_cost; ?>
-	<li>word lists: <?php echo implode(', ', $z_wordlists); ?>
+	<li>word lists (used: <?php echo $z_use_password_blacklist?"yes":"no" ?>) : <?php echo implode(', ', $z_wordlists); ?>
 	<li>accounts total=<?php echo $accounts; ?>
 	<li>accounts active=<?php echo $accounts_active; ?>
 	<li>tokens active=<?php echo $tokens; ?>

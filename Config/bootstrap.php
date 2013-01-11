@@ -36,6 +36,12 @@
 			}
 		}
 	}
+
+	//
+	// Use dictionaries to blacklist passwords (in Vendor/wordlists)
+	// Set to FALSE or zero to disable
+	Configure::write("z.use_password_blacklist", 1);
+
 	//
 	// The current version of the plugin
 	Configure::write("z.version", "0.5.0");
