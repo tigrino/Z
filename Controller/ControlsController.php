@@ -8,6 +8,7 @@ App::import('Vendor', 'Z.zpasswordblacklist');
 
 class ControlsController extends ZAppController {
 	public $uses = array('Z.Account');
+	public $helpers = array('Form', 'Html', 'Js');
 	public $paginate = array(
 		'Account' => array(
 			'limit' => 10,
@@ -64,8 +65,8 @@ class ControlsController extends ZAppController {
 		$this->set('z_wordlists', z_wordlist_names() );
 		$this->set('z_use_password_blacklist', Configure::read('z.use_password_blacklist'));
 
-		$accounts = $this->Account->find('count');
-		$this->set('accounts', $accounts);
+		$accounts_total = $this->Account->find('count');
+		$this->set('accounts_total', $accounts_total);
 		$accounts_active = $this->Account->find('count', 
 			array(
 		        	'conditions' => array('Account.active' => true)
@@ -74,6 +75,43 @@ class ControlsController extends ZAppController {
 		$tokens = $this->Account->AccountToken->find('count');
 		//debug($tokens);
 		$this->set('tokens', $tokens);
+
+		$qresults = $this->Account->query("select count(created), date(created) from z_account_logins where success=1 group by day(created);");
+		$logins = array();
+		$logins['good'] = array();
+		$logins['bad'] = array();
+		foreach ($qresults as $i => $row) {
+			foreach ($row as $j => $qres) {
+				array_push($logins['good'], [$qres['date(created)'], $qres['count(created)']]);
+			}
+		}
+		//$logins['good'] = [[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]];
+		$qresults = $this->Account->query("select count(created), date(created) from z_account_logins where success=0 group by day(created);");
+		foreach ($qresults as $i => $row) {
+			foreach ($row as $j => $qres) {
+				array_push($logins['bad'], [$qres['date(created)'], $qres['count(created)']]);
+			}
+		}
+		//debug($logins);
+		$this->set('logins', $logins);
+
+		$accounts = array();
+		$accounts['good'] = array();
+		$accounts['bad'] = array();
+		$qresults = $this->Account->query("select count(created), date(created) from z_accounts where active=1 group by day(created);");
+		foreach ($qresults as $i => $row) {
+			foreach ($row as $j => $qres) {
+				array_push($accounts['good'], [$qres['date(created)'], $qres['count(created)']]);
+			}
+		}
+		$qresults = $this->Account->query("select count(created), date(created) from z_accounts where active=0 group by day(created);");
+		foreach ($qresults as $i => $row) {
+			foreach ($row as $j => $qres) {
+				array_push($accounts['bad'], [$qres['date(created)'], $qres['count(created)']]);
+			}
+		}
+		//debug($accounts);
+		$this->set('accounts', $accounts);
 	}
 	public function cryptotest() {
 	}

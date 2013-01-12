@@ -1,5 +1,12 @@
 To pick up the i18n strings from the plugin use
 ./Console/cake i18n extract --plugin Z --overwrite --extract-core no
 If just ./Console/cake i18n is used, Model strings are not picked.
-
 The "domain" for the plugin i18n must be lowercase, i.e. 'z'.
+
+Make sure your CSS stylesheet does not screw up the rendering
+of the jqplot elements. One example I came across is the legend
+of the plot is a table, so it will pick up customizations of
+the tables. Use this for your table customization in site CSS:
+table:not(.jqplot-table-legend):not(.jqplot-highlighter) {
+	...
+}
