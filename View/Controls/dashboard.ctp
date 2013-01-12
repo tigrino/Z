@@ -101,9 +101,9 @@ $(document).ready(function(){
 			seriesDefaults: {
 				rendererOptions: {
 					smooth: true,
-					animation: {
-						show: true
-					}
+					//animation: {
+					//	show: true
+					//}
 				}
 			},
 			series: [
@@ -160,7 +160,7 @@ $(document).ready(function(){
 					},
 				},
 				yaxis: {
-					label: "Accounts",
+					label: "New accounts",
 					//renderer: $.jqplot.LogAxisRenderer,
 					rendererOptions: {
 						minorTicks: 1
@@ -178,9 +178,9 @@ $(document).ready(function(){
 			seriesDefaults: {
 				rendererOptions: {
 					smooth: true,
-					animation: {
-						show: true
-					}
+					//animation: {
+					//	show: true
+					//}
 				}
 			},
 			series: [

@@ -73,6 +73,28 @@ class AccountsController extends ZAppController {
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 			$this->request->data['User']['email'] = 
 				strtolower( trim( $this->request->data['User']['email'] ) );
+			//
+			// Now verify the history, if a user
+			// is running a brute force - slow down
+			$result = $this->Account->AccountLogin->find('count', 
+				array(
+					'conditions' => array(
+						'AccountLogin.from_ip' => $this->RequestHandler->getClientIp(),
+						'AccountLogin.success' => FALSE,
+						'AccountLogin.created >' => date('Y-m-d H:i:s', strtotime("-300 seconds"))
+						)
+				));
+			if ( $result > 2 ) {
+				sleep($result*3); // the more you try the slower it gets
+				// 180 sec @ *2 = circa 13 tries first 3 minutes
+				// 300 sec @ *2 = circa 18 tries first 5 minutes, top delay at 34 seconds
+				// 180 sec @ *3 = circa 11 tries first 3 minutes
+				// 300 sec @ *3 = circa 14 tries first 5 minutes, top delay at 42 seconds
+				// 180 sec @ square = circa 7 tries first 3 minutes
+				// 300 sec @ square = circa 9 tries first 5 minutes, top delay at 81 seconds
+			}
+			//
+			// Now login
 			if ($this->Auth->login()) {
 				/// Logged in successfully
 				$this->Session->setFlash(__d('z', 'logged_in'), 'default', array(), 'auth');
