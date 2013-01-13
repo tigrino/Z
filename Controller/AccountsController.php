@@ -16,6 +16,8 @@ class AccountsController extends ZAppController {
 	public function beforeFilter() {
 		$this->Auth->allow(array('captcha', 'login', 'logout', 'register', 'verify', 'reset', 'confirm', 'tos'));
 		//$this->Auth->allow();
+		$this->_clean_old_tokens(); // first remove expired tokens
+		$this->_clean_old_registrations(); // remove expired registration requests
 		return parent::beforeFilter();
 	}
 
@@ -650,12 +652,32 @@ class AccountsController extends ZAppController {
 			), true );
 	}
 	protected function _clean_old_registrations( ) {
-		// XXX TODO
 		// Here we need to find all user records that are
 		// - not active
 		// - with e-mail not verified
 		// - with no outstanding e-mail tokens
 		// and delete them.
+		$outstanding = $this->Account->find('all', array(
+				'recursive' => 1,
+				'conditions' => array(
+					'Account.active' => false,
+					'AccountFlag.email_verified' => false,
+					'AccountFlag.deleted' => false
+				)
+			)
+		);
+		foreach ( $outstanding as $i => $outrec ) {
+			debug($outrec);
+			if ( empty($outrec['AccountToken']) ) {
+				//
+				// Cascading is done without using transactions
+				// so we do a transaction manually
+				$dataSource = $this->Account->getDataSource();
+				$dataSource->begin();
+				$this->Account->delete($outrec['Account']['id'], true);
+				$dataSource->commit();
+			}
+		};
 	}
 	protected function _block_robots() {
 		// The forms have a hidden field that is supposed
