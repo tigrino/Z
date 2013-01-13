@@ -5,12 +5,10 @@ class ZAppController extends AppController {
 	public $components = array(
 		'Security' => array(
 			'csrfExpires' => '+1 hour'
-			//'csrfExpires' => '+1 minute'
 		),
 		'Session',
 		'Cookie',
 		'RequestHandler',
-		//'Recaptcha.Recaptcha',
 		'Auth' => array(
 			'loginAction' => array(
 				'controller' => 'accounts',
@@ -26,7 +24,6 @@ class ZAppController extends AppController {
 				'Z.ZUser'
 			)
 		),
-		//'Z.ZRateLimiter'
 	);
 
 	function beforeFilter() {
@@ -44,30 +41,10 @@ class ZAppController extends AppController {
 		$this->set('authUser', $this->Auth->user());
 	}
 
-	public function afterFilter() {
-		parent::afterFilter();
+	//public function afterFilter() {
+	//	parent::afterFilter();
+	//}
 
-		//
-		// Keep a record of a logged in user whereabouts
-		//$this->Session->write('Z.LastURI', $this->request->here);
-		/*$user = $this->Auth->user();
-		$IgnoreControllerList = array( 'pages', 'img' );
-		$location = Router::parse(Router::normalize($this->request->here()));
-		if ( ! in_array( $location['controller'], $IgnoreControllerList ) ) { 
-			$this->loadModel('Visit');
-			$this->Visit->recursive = -1;
-			$visitData = array();
-			if ( ! empty($user) ) {
-				$visitData['Visit']['account_id'] = $user['id'];
-			}
-			$visitData['Visit']['path'] = $this->request->here();
-			$visitData['Visit']['from_ip'] = $this->RequestHandler->getClientIp();
-			if ( ! $this->Visit->save($visitData) ) {
-				debug($this->Visit->validationErrors);
-			}
-			unset($visitData);
-		}*/
-	}
 	// handle errors
 	public function blackhole($type) {
 		if ( $type == 'secure' ) {

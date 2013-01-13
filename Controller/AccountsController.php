@@ -24,14 +24,12 @@ class AccountsController extends ZAppController {
 	//
 	// Redirect index requests
 	public function index() {
-		//return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'index'), true ));
 		return $this->redirect(Router::url( array('action' => 'view'), true ));
 	}
 
 	//
 	// Redirect index requests
 	public function view() {
-		//return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'view'), true ));
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to login
 			/// The requested action requires you to be logged in.
@@ -194,13 +192,11 @@ class AccountsController extends ZAppController {
 	public function password($id=null) {
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to reset password
-			/// You are not logged in, use this form to reset your password.
 			$this->Session->setFlash(__d('z', 'not_logged_in_reset_password'));
 			$this->redirect(array('controller' => 'accounts', 'action' => 'reset', $id));
 		} else {
 			// User is logged in
 			$id = $this->Auth->user('id'); // not set if called without userid
-			//debug($id);
 			if ($this->request->is('post') || $this->request->is('put')) {
 				// user is logged in and submits new password
 				$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
@@ -694,5 +690,6 @@ class AccountsController extends ZAppController {
 
 	public function tos() {
 		// Display Terms of Service for this plugin and the use of cookies
+		// Only the view is used, so nothing to see here
 	}
 }
