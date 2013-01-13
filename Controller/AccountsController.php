@@ -667,7 +667,6 @@ class AccountsController extends ZAppController {
 			)
 		);
 		foreach ( $outstanding as $i => $outrec ) {
-			debug($outrec);
 			if ( empty($outrec['AccountToken']) ) {
 				//
 				// Cascading is done without using transactions
