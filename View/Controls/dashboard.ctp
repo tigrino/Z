@@ -5,6 +5,9 @@ App::import('Vendor', 'Z.PasswordHash');
 echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 echo $this->Html->script('/z/js/jquery.min.js');
 echo $this->Html->script('/z/js/jquery.jqplot.min.js');
+echo $this->Html->script('/z/js/plugins/jqplot.barRenderer.min.js');
+echo $this->Html->script('/z/js/plugins/jqplot.pointLabels.min.js');
+echo $this->Html->script('/z/js/plugins/jqplot.categoryAxisRenderer.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.logAxisRenderer.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.dateAxisRenderer.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.canvasTextRenderer.min.js');
@@ -32,8 +35,8 @@ echo $this->Html->script('/z/js/plugins/jqplot.highlighter.min.js');
 	<?php //debug(json_encode($accounts['good']));?>
 	<?php //debug(json_encode($accounts['bad']));?>
 
-	<div id="logins_chartdiv" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
-	<div id="accounts_chartdiv" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
+	<div id="logins_chartdiv" class="resetcss" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
+	<div id="accounts_chartdiv" class="resetcss" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
 
 </div>
 <div class="actions">
@@ -145,6 +148,16 @@ $(document).ready(function(){
     $accountdata = [<?php echo $acc_good.",".$acc_bad; ?>];
     var jqplot_accounts = $('#accounts_chartdiv').jqplot("accounts_chartdiv", $accountdata,
     		{ 
+			//stackSeries: true,
+			seriesDefaults: {
+				renderer:$.jqplot.BarRenderer,
+				pointLabels: { show: true, stackedValue: false, stackSeries: true },
+				rendererOptions: { barMargin: 30, barPadding: 8 }
+			},
+			series: [
+				{ label: 'Active' },
+				{ label: 'Not activated' }
+			],
 			axesDefaults: {
 				labelRenderer: $.jqplot.CanvasAxisLabelRenderer
 			},
@@ -162,35 +175,20 @@ $(document).ready(function(){
 				yaxis: {
 					label: "New accounts",
 					//renderer: $.jqplot.LogAxisRenderer,
-					rendererOptions: {
-						minorTicks: 1
-					},
+					//rendererOptions: {
+					//	minorTicks: 1
+					//},
 					tickRenderer: $.jqplot.CanvasAxisTickRenderer,
 					tickOptions:{formatString:'%d'},
 					min:0,
 					max: <?php echo ceil(max($max_acc) / 10)*10; ?>,
+					padMin: 0
 				}
 			},
 			highlighter: {
-			        show: true,
+				show: true,
 				sizeAdjust: 7.5
 			},
-			seriesDefaults: {
-				rendererOptions: {
-					smooth: true,
-					//animation: {
-					//	show: true
-					//}
-				}
-			},
-			series: [
-				{
-					label: 'Active'
-				},
-				{
-					label: 'Not activated'
-				}
-			],
 			legend: {
 				show: true,
 				placement: 'inside',
