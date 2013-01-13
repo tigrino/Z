@@ -2,18 +2,18 @@
 App::import('Vendor', 'Z.PasswordHash');
 ?>
 <?php
-echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 echo $this->Html->script('/z/js/jquery.min.js');
 echo $this->Html->script('/z/js/jquery.jqplot.min.js');
-echo $this->Html->script('/z/js/plugins/jqplot.barRenderer.min.js');
-echo $this->Html->script('/z/js/plugins/jqplot.pointLabels.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.categoryAxisRenderer.min.js');
-echo $this->Html->script('/z/js/plugins/jqplot.logAxisRenderer.min.js');
+//echo $this->Html->script('/z/js/plugins/jqplot.logAxisRenderer.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.dateAxisRenderer.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.canvasTextRenderer.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.canvasAxisTickRenderer.js');
 echo $this->Html->script('/z/js/plugins/jqplot.canvasAxisLabelRenderer.min.js');
+echo $this->Html->script('/z/js/plugins/jqplot.barRenderer.min.js');
+echo $this->Html->script('/z/js/plugins/jqplot.pointLabels.min.js');
 echo $this->Html->script('/z/js/plugins/jqplot.highlighter.min.js');
+echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 ?>
 
 <div class="accounts index">
@@ -63,9 +63,11 @@ echo $this->Html->script('/z/js/plugins/jqplot.highlighter.min.js');
 		$log_bad = json_encode($logins['bad']);
 		$max_log['bad'] = max($logins['bad'])[1];
 	}
+	$logtodate = date("Y-m-d", strtotime("+1 day"));
 ?>
 <script>
 $(document).ready(function(){
+    //$.jqplot.config.enablePlugins = true;
     var logindata;
     $logindata = [<?php echo $log_good.",".$log_bad; ?>];
     var jqplot_logins = $('#logins_chartdiv').jqplot("logins_chartdiv", $logindata,
@@ -83,6 +85,7 @@ $(document).ready(function(){
 						formatString:'%Y-%m-%d', 
 						angle: -30
 					},
+					max: "<?php echo $logtodate; ?>"
 				},
 				yaxis: {
 					label: "Login attempts",
@@ -103,10 +106,10 @@ $(document).ready(function(){
 			},
 			seriesDefaults: {
 				rendererOptions: {
-					smooth: true,
 					//animation: {
 					//	show: true
-					//}
+					//},
+					smooth: true
 				}
 			},
 			series: [
@@ -141,6 +144,7 @@ $(document).ready(function(){
 		$acc_bad = json_encode($accounts['bad']);
 		$max_acc['bad'] = max($accounts['bad'])[1];
 	}
+	$acctodate = date("Y-m-d", strtotime("+1 day"));
 ?>
 <script>
 $(document).ready(function(){
@@ -148,11 +152,10 @@ $(document).ready(function(){
     $accountdata = [<?php echo $acc_good.",".$acc_bad; ?>];
     var jqplot_accounts = $('#accounts_chartdiv').jqplot("accounts_chartdiv", $accountdata,
     		{ 
-			//stackSeries: true,
 			seriesDefaults: {
 				renderer:$.jqplot.BarRenderer,
-				pointLabels: { show: true, stackedValue: false, stackSeries: true },
-				rendererOptions: { barMargin: 30, barPadding: 8 }
+				pointLabels: { show: true },
+				rendererOptions: { barWidth:3, barPadding: 4, shadowDepth: 3, shadowOffset:1 }
 			},
 			series: [
 				{ label: 'Active' },
@@ -166,11 +169,12 @@ $(document).ready(function(){
 					label: "Date",
 					renderer:$.jqplot.DateAxisRenderer,
 					tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+					//max: "<?php echo $acctodate; ?>",
 					tickOptions:{
 						//formatString:'%#d %b %Y', 
 						formatString:'%Y-%m-%d', 
 						angle: -30
-					},
+					}
 				},
 				yaxis: {
 					label: "New accounts",
