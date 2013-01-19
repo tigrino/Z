@@ -15,6 +15,14 @@ class AccountPassword extends ZAppModel {
 		),
 	);
 
+	public function beforeValidate($options = array()) {
+		$password_min_len = Configure::read("z.password_min_len");
+		$this->validator()->getField('password')->getRule('minLength')->rule[1] = $password_min_len;
+		//debug($password_min_len);
+		//debug($this->validator()->getField('password')->getRule('minLength'));
+		return true;
+	}
+
 	public function beforeSave($options = array()) {
 		// Hash the password
 		$hasher = new PasswordHash(PLUGIN_Z_PASSWORD_HASH_COST, FALSE);

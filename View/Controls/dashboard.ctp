@@ -24,6 +24,7 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 	<li>mt_getrandmax=<?php echo mt_getrandmax(); ?>
 	<li>token_length=<?php echo $z_token_length; ?>
 	<li>password hash cost=<?php echo $z_hash_cost; ?>
+	<li>password minimal length=<?php echo $z_password_min_len; ?>
 	<li>word lists (used: <?php echo $z_use_password_blacklist?"yes":"no" ?>) : <?php echo implode(', ', $z_wordlists); ?>
 	<li>accounts total=<?php echo $accounts_total; ?>
 	<li>accounts active=<?php echo $accounts_active; ?>

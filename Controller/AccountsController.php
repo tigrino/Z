@@ -218,7 +218,9 @@ class AccountsController extends ZAppController {
 				}
 				// Verify that user password is correct
 				$password_hash = $this->Account->AccountPassword->field('password', array('AccountPassword.account_id' => $id));
-				$hasher = new PasswordHash(PLUGIN_Z_PASSWORD_HASH_COST, FALSE);
+				$hash_cost = Configure::read('z.hash_cost');
+				$hash_cost = $hash_cost ? $hash_cost : PLUGIN_Z_DEFAULT_PASSWORD_HASH_COST;
+				$hasher = new PasswordHash($hash_cost, FALSE);
 				if ( ! $hasher->CheckPassword($this->request->data['AccountPassword']['old_password'], $password_hash) ) {
 					unset($password_hash);
 					unset($hasher);
@@ -336,7 +338,9 @@ class AccountsController extends ZAppController {
 					// User needs sometimes to copy/paste this
 					// do not make the token too long
 					$this->request->data['AccountToken']['purpose'] = PLUGIN_Z_TOKEN_MAIL_VERIFY;
-					$this->request->data['AccountToken']['token'] = z_random_hex(PLUGIN_Z_TOKEN_LENGTH);
+					$token_length = Configure::read('z.token_length');
+					$token_length = $token_length ? $token_length : PLUGIN_Z_DEFAULT_TOKEN_LENGTH;
+					$this->request->data['AccountToken']['token'] = z_random_hex($token_length);
 					$this->request->data['AccountToken']['expires'] = date('Y-m-d H:i:s', strtotime('+4 hours'));
 					$this->_clean_old_tokens();
 					if ( $this->Account->AccountToken->save($this->request->data) ) {
@@ -496,13 +500,15 @@ class AccountsController extends ZAppController {
 				return;
 			} else {
 				// user is found, proceed with token generation
+				$token_length = Configure::read('z.token_length');
+				$token_length = $token_length ? $token_length : PLUGIN_Z_DEFAULT_TOKEN_LENGTH;
 				$data = array( 
 					'AccountToken' => array(
 						'account_id' => $userData['Account']['id'],
 						'purpose' => PLUGIN_Z_TOKEN_RESET_CONFIRM,
 						// User needs sometimes to copy/paste this
 						// do not make the token too long
-						'token' => z_random_hex(PLUGIN_Z_TOKEN_LENGTH),
+						'token' => z_random_hex($token_length),
 						'expires' => date('Y-m-d H:i:s', strtotime('+4 hours'))
 						));
 				$this->Account->AccountToken->create($data);

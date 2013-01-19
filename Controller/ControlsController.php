@@ -60,8 +60,11 @@ class ControlsController extends ZAppController {
 	}
 	public function dashboard() {
 		$this->set('z_version', Configure::read('z.version'));
-		$this->set('z_token_length', PLUGIN_Z_TOKEN_LENGTH);
-		$this->set('z_hash_cost', PLUGIN_Z_PASSWORD_HASH_COST);
+		$this->set('z_token_length', Configure::read('z.token_length'));
+		$this->set('z_hash_cost', Configure::read('z.hash_cost'));
+		//$this->set('z_token_length', PLUGIN_Z_TOKEN_LENGTH);
+		//$this->set('z_hash_cost', PLUGIN_Z_PASSWORD_HASH_COST);
+		$this->set('z_password_min_len', Configure::read('z.password_min_len') );
 		$this->set('z_wordlists', z_wordlist_names() );
 		$this->set('z_use_password_blacklist', Configure::read('z.use_password_blacklist'));
 

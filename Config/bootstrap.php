@@ -4,11 +4,6 @@
 	define('PLUGIN_Z_TOKEN_RESET_CONFIRM',	2);
 
 	//
-	// Cryptography control
-	define('PLUGIN_Z_TOKEN_LENGTH',		32); // in hex characters, 32 = 128 bit
-	define('PLUGIN_Z_PASSWORD_HASH_COST',	10); // logarithmic scale, 4-31
-
-	//
 	// Language configuration
 	if ( !defined('DEFAULT_LANGUAGE') ) {
 		define('DEFAULT_LANGUAGE', 'en');
@@ -38,11 +33,21 @@
 	}
 
 	//
+	// Cryptography control
+	define('PLUGIN_Z_DEFAULT_TOKEN_LENGTH',		32); // in hex characters, 32 = 128 bit
+	Configure::write("z.token_length", PLUGIN_Z_DEFAULT_TOKEN_LENGTH); // in hex characters, 32 = 128 bit
+	define('PLUGIN_Z_DEFAULT_PASSWORD_HASH_COST',	10); // logarithmic scale, 4-31
+	Configure::write("z.hash_cost", PLUGIN_Z_DEFAULT_PASSWORD_HASH_COST); // logarithmic scale, 4-31
+
+	//
+	// Minimal password length
+	Configure::write("z.password_min_len", 12);
+	//
 	// Use dictionaries to blacklist passwords (in Vendor/wordlists)
 	// Set to FALSE or zero to disable
 	Configure::write("z.use_password_blacklist", 1);
 
 	//
 	// The current version of the plugin
-	Configure::write("z.version", "0.6.3");
+	Configure::write("z.version", "0.6.4");
 ?>
