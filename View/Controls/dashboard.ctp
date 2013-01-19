@@ -55,16 +55,25 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 		$max_log['good'] = 0;
 	} else {
 		$log_good = json_encode($logins['good']);
-		$max_log['good'] = max($logins['good'])[1];
+		$numbers = array_map(function($details) {
+			return $details[1];
+		}, $logins['good']);
+		$max_log['good'] = max($numbers);
 	}
 	if ( empty($logins['bad']) ) {
 		$log_bad = '[[null]]';
 		$max_log['bad'] = 0;
 	} else {
 		$log_bad = json_encode($logins['bad']);
-		$max_log['bad'] = max($logins['bad'])[1];
+		$numbers = array_map(function($details) {
+			return $details[1];
+		}, $logins['bad']);
+		$max_log['bad'] = max($numbers);
 	}
 	$logtodate = date("Y-m-d", strtotime("+1 day"));
+	//debug($logins['good']);
+	//debug($logins['bad']);
+	//debug($max_log);
 ?>
 <script>
 $(document).ready(function(){
