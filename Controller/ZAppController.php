@@ -30,7 +30,12 @@ class ZAppController extends AppController {
 		parent::beforeFilter();
 		// Now the basic security setup
 		Security::setHash('sha512');
-		$this->Cookie->secure = false;
+		$cookie_secure = Configure::read('z.cookie_security');
+		if ( ( $cookie_secure != false ) && ( $cookie_secure != true ) ) {
+			$cookie_secure = true;
+			Configure::write("z.cookie_security", $cookie_secure);
+		}
+		$this->Cookie->secure = $cookie_secure;
 		// Enforce SSL on required controllers
 		$location = Router::parse(Router::normalize($this->request->here()));
 		$SecureControllerList = array( 'users', 'accounts', 'controls' );

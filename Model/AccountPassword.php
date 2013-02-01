@@ -25,7 +25,7 @@ class AccountPassword extends ZAppModel {
 
 	public function beforeSave($options = array()) {
 		// Hash the password
-		$hasher = new PasswordHash(PLUGIN_Z_PASSWORD_HASH_COST, FALSE);
+		$hasher = new PasswordHash(Configure::read('z.hash_cost'), FALSE);
 		$this->data['AccountPassword']['password'] = 
 			$hasher->HashPassword($this->data['AccountPassword']['password']);
 		unset( $hasher );

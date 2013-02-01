@@ -46,6 +46,7 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Tokens'), array('action' => 'tokens')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Cryptography tests'), array('action' => 'cryptotest')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Kill all users'), array('action' => 'kill')); ?></li>
 	</ul>
 </div>
 

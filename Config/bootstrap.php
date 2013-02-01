@@ -33,6 +33,11 @@
 	}
 
 	//
+	// Cookie is only over SSL or not
+	define('PLUGIN_Z_DEFAULT_COOKIE_SECURITY', false);
+	Configure::write("z.cookie_security", PLUGIN_Z_DEFAULT_COOKIE_SECURITY);
+
+	//
 	// Cryptography control
 	define('PLUGIN_Z_DEFAULT_TOKEN_LENGTH',		32); // in hex characters, 32 = 128 bit
 	Configure::write("z.token_length", PLUGIN_Z_DEFAULT_TOKEN_LENGTH); // in hex characters, 32 = 128 bit

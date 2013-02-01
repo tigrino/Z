@@ -22,34 +22,45 @@ class ControlsController extends ZAppController {
 	//
 	// executed before each request
 	public function beforeFilter() {
-		// Verify that we are coming from either this
-		// controller or the login page.
-		// As a precaution, if we come from anywhere
-		// else (direct link, page in application)
-		// require a re-authentication.
-		$location = parse_url($this->referer());
-		$normal_url = Router::normalize($location['path']);
-		$from_route = Router::parse($normal_url);
-		//debug($this->referer());
-		//debug($location);
-		//debug($normal_url);
-		//debug($from_route);
-		//return;
-		if ( 
-			($from_route['plugin'] != 'z') ||
-			! ( ($from_route['controller'] == 'controls') ||
-			    ( ($from_route['controller'] == 'accounts') && ($from_route['action'] == 'login') ) )
-			) {
-				$this->Session->setFlash(__d('z', 'action_requires_reauthorization'));
-				$this->redirect($this->Auth->logout());
-		}
 		//
-		// Verify that we have an admin here
-		$id = $this->Auth->user('id');
-		$is_admin = $this->Auth->user('user_admin');
-		if ( empty($id) || ( $is_admin != 1 ) ) {
-			return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'index'), true ));
-		}
+		// First check if the user account system is initialized
+		// and allow init otherwise
+		$accounts_total = $this->Account->find('count');
+		if ( ! $accounts_total ) {
+			$this->Auth->allow(array('init'));
+			if ( ($this->request['action'] != 'init') && ($this->request['action'] != 'kill') ) {
+				return $this->redirect(Router::url( array('action' => 'init'), true ));
+			}
+		} else { // The user management initialized
+			// Verify that we are coming from either this
+			// controller or the login page.
+			// As a precaution, if we come from anywhere
+			// else (direct link, page in application)
+			// require a re-authentication.
+			$location = parse_url($this->referer());
+			$normal_url = Router::normalize($location['path']);
+			$from_route = Router::parse($normal_url);
+			//debug($this->referer());
+			//debug($location);
+			//debug($normal_url);
+			//debug($from_route);
+			//return;
+			if ( 
+				($from_route['plugin'] != 'z') ||
+				! ( ($from_route['controller'] == 'controls') ||
+				    ( ($from_route['controller'] == 'accounts') && ($from_route['action'] == 'login') ) )
+				) {
+					$this->Session->setFlash(__d('z', 'action_requires_reauthorization'));
+					$this->redirect($this->Auth->logout());
+			}
+			//
+			// Verify that we have an admin here
+			$id = $this->Auth->user('id');
+			$is_admin = $this->Auth->user('user_admin');
+			if ( empty($id) || ( $is_admin != 1 ) ) {
+				return $this->redirect(Router::url( array('controller' => 'users', 'action' => 'index'), true ));
+			}
+		} // if user management initialized
 		return parent::beforeFilter();
 	}
 
@@ -223,4 +234,58 @@ class ControlsController extends ZAppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
+
+	//
+	// Initialization of the user management
+	//
+	public function init() {
+		if ($this->request->is('post')) {
+			// Create admin
+			$this->request->data['Account']['email'] =
+				strtolower( trim( $this->request->data['Account']['email'] ) );
+			unset($this->request->data['Account']['id']);
+			unset($this->request->data['AccountPassword']['id']);
+			unset($this->request->data['AccountFlag']['id']);
+			unset($this->request->data['AccountPassword']['salt']);
+			$dataSource = $this->Account->getDataSource();
+			$dataSource->begin();
+			//debug($this->request->data);
+			$this->request->data['Account']['active'] = '1';
+			$this->request->data['AccountFlag']['user_admin'] = '1';
+			$this->request->data['AccountFlag']['agreement_date'] = $this->Account->getDataSource()->expression('NOW()');
+			$this->Account->create($this->request->data);
+			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
+				$dataSource->rollback();
+				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
+				//debug($this->Account->validationErrors);
+				return;
+			}
+			if ($this->Account->saveAll($this->request->data)) {
+				/// The account has been saved
+				//$dataSource->rollback();
+				$dataSource->commit();
+				$this->Session->setFlash(__d('z', 'account_saved_success'));
+				return $this->redirect(Router::url( array('controller' => 'accounts', 'action' => 'login'), true ));
+			} else {
+				$dataSource->rollback();
+				/// The account could not be saved. Please, try again.
+				$this->Session->setFlash(__d('z', 'account_save_problem'));
+			}
+		}
+	}
+
+	//
+	// Initialization of the user management
+	//
+	public function kill() {
+		if ($this->request->is('post')) {
+			$dataSource = $this->Account->getDataSource();
+			$dataSource->begin();
+			// Drop all users
+			$this->Account->deleteAll(array('1 = 1'), true);
+			$dataSource->commit();
+			$this->Session->setFlash(__d('z', 'All users destroyed.'));
+			return $this->redirect(Router::url( array('controller' => 'accounts', 'action' => 'logout'), true ));
+		}
+	}
 }

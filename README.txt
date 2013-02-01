@@ -75,14 +75,13 @@ I install like this:
    Additional configuration is in Plugin/Z/Config/bootstrap.php
 
 3. Use the schemas in the plugin's Config/Schema directory
-   to create the tables and add the first user
-   user name is YOURNAME@EXAMPLE.COM
-   password is 'password'
-   Log in as this admin user and create another admin user
-   that will be your regular admin.
-   Logout and login as the newly created admin.
-   Delete the YOURNAME@EXAMPLE.COM admin user through the user
-   admin panel.
+   to create the tables.
+
+4. Add the first administrator user
+   by going to
+   	http://www.yoursite.com/z/controls/init
+
+5. Login as the newly created admin.
 
 The authentication is done through the standard CakePHP Auth module,
 so you just call on the things like $this->Auth->user() and
@@ -101,4 +100,4 @@ as usual.
 Good luck!
 
 P.S. For extra info on various subjects in software security
-     head over to http://holyhash.wordpress.com/
+     head over to http://holyhash.com/
