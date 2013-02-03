@@ -3,6 +3,12 @@
 	<dl>
 <?php echo $this->Form->create('User'); // Special case - for Auth module ?>
 	<fieldset>
+	<p>
+	<?php echo __d('z', 'Attention! You are about to delete all users from the system! '); ?>
+	<?php echo __d('z', 'This action is not reversible! '); ?>
+	<?php echo __d('z', 'This action will permanently delete every user account here, including administrators. '); ?>
+	<?php echo __d('z', 'If you are totally sure that that is what you want, press the button and say good-bye to your users.'); ?>
+	</p>
 	<?php
 		echo $this->Form->hidden('Account.ruhuman',
 			array(
@@ -13,12 +19,12 @@
 			);
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__d('z', 'Destroy all users!', true));?>
+<?php echo $this->Form->end(__d('z', 'Destroy all user accounts!', true));?>
 </div>
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
-		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 	</ul>
 </div>

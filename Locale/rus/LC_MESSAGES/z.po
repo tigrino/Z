@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z Authentication Plugin for CakePHP\n"
-"POT-Creation-Date: 2012-10-13 21:17+0000\n"
-"PO-Revision-Date: 2012-10-13 23:18+0100\n"
+"POT-Creation-Date: 2013-02-02 10:37+0000\n"
+"PO-Revision-Date: 2013-02-02 13:06+0100\n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Albert 'Tigr' Zenkoff <albert@tigr.net>\n"
 "Language: \n"
@@ -17,180 +17,184 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Controller/AccountsController.php:36;142
+#: Controller/AccountsController.php:36;154
 msgid "action_requires_login"
 msgstr "Это действие требует входа в систему."
 
-#: Controller/AccountsController.php:78
+#: Controller/AccountsController.php:100
 msgid "logged_in"
 msgstr "Вход в систему выполнен успешно."
 
-#: Controller/AccountsController.php:123
+#: Controller/AccountsController.php:135
 msgid "incorrect_credentials"
 msgstr "Неверное имя или пароль."
 
-#: Controller/AccountsController.php:131
+#: Controller/AccountsController.php:143
 msgid "logged_out"
 msgstr "Выход из системы."
 
-#: Controller/AccountsController.php:173
+#: Controller/AccountsController.php:185
 msgid "your_account_deleted_success"
 msgstr "Ваша учетная запись удалена. Прощайте!"
 
-#: Controller/AccountsController.php:184
+#: Controller/AccountsController.php:195
 msgid "not_logged_in_reset_password"
 msgstr "Вы не выполнили вход в систему. Может быть, вам надо сбросить пароль?"
 
-#: Controller/AccountsController.php:196;215
+#: Controller/AccountsController.php:206;227
 msgid "credentials_mismatch_logout"
 msgstr "Имя пользователя или пароль неверные. В целях безопасности вы выведены из системы."
 
-#: Controller/AccountsController.php:203;204
+#: Controller/AccountsController.php:213;214
 msgid "passwords_must_match"
 msgstr "Пароли должны быть одинаковыми."
 
-#: Controller/AccountsController.php:206
+#: Controller/AccountsController.php:216
 msgid "passwords_do_not_match"
 msgstr "Пароли различаются."
 
-#: Controller/AccountsController.php:230
+#: Controller/AccountsController.php:242
 msgid "bad_password_choose_another"
 msgstr "Этот пароль не разрешен. Выберите другой, пожалуйста."
 
-#: Controller/AccountsController.php:241
+#: Controller/AccountsController.php:255
 msgid "password_update_success"
 msgstr "Пароль успешно обновлен."
 
-#: Controller/AccountsController.php:245
+#: Controller/AccountsController.php:259
 msgid "password_not_saved_problem"
 msgstr "Возникла проблема при сохранении пароля. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:273;275
+#: Controller/AccountsController.php:287;289
 msgid "incorrect_captcha_try_again"
 msgstr "Код CAPTCHA введен неверно. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:284
+#: Controller/AccountsController.php:298
 msgid "tos_agreement_confirm"
 msgstr "Подтвердите согласие с условиями обслуживания, пожалуйста."
 
-#: Controller/AccountsController.php:294;295
+#: Controller/AccountsController.php:308;309
 msgid "Passwords must match"
 msgstr "Пароли должны совпадать."
 
-#: Controller/AccountsController.php:296
+#: Controller/AccountsController.php:310
 msgid "The passwords did not match up."
 msgstr "Пароли не совпали."
 
-#: Controller/AccountsController.php:310
-#: Controller/ControlsController.php:97;127
+#: Controller/AccountsController.php:324
+#: Controller/ControlsController.php:168;198;259
 msgid "Registration data validation failure. Please, check your input."
 msgstr "Регистрационные данные не прошли проверку. Пожалуйста, проверьте введенные данные."
 
-#: Controller/AccountsController.php:353
+#: Controller/AccountsController.php:369
 msgid "User created successfully. Please check your email for a validation link."
 msgstr "Пользователь создан. Инструкции высланы на электронную почту."
 
-#: Controller/AccountsController.php:357;361;365;434
+#: Controller/AccountsController.php:373;377;381;450
 msgid "The user could not be saved. Please, try again."
 msgstr "Учетная запись не сохранена. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:438
+#: Controller/AccountsController.php:454
 msgid "Your e-mail was successfully verified."
 msgstr "Ваш адрес электронной почты успешно проверен."
 
-#: Controller/AccountsController.php:441
+#: Controller/AccountsController.php:457
 msgid "User e-mail verification failed."
 msgstr "Адрес электронной почты не прошел проверку."
 
-#: Controller/AccountsController.php:452
+#: Controller/AccountsController.php:468
 msgid "You are already logged in, use this form to change your password."
 msgstr "Вы уже в системе, воспользуйтесь сменой пароля."
 
-#: Controller/AccountsController.php:466
+#: Controller/AccountsController.php:482
 msgid "The CAPTCHA code is incorrect. Please, try again."
 msgstr "Неверный код CAPTCHA, попробуйте заново."
 
-#: Controller/AccountsController.php:468
+#: Controller/AccountsController.php:484
 msgid "CAPTCHA code is incorrect"
 msgstr "Неверный код CAPTCHA."
 
-#: Controller/AccountsController.php:481;483
+#: Controller/AccountsController.php:497;499
 msgid "email_not_registered"
 msgstr "Этот адрес электронной почты не зарегистрирован в системе."
 
-#: Controller/AccountsController.php:529
+#: Controller/AccountsController.php:547
 msgid "Password reset request created successfully. Please check your email."
 msgstr "Запрос на смену пароля создан. Инструкции высланы на электронную почту."
 
-#: Controller/AccountsController.php:532
+#: Controller/AccountsController.php:550
 msgid "The request could not be approved. Please, try again."
 msgstr "Ваш запрос не был одобрен системой. Попробуйте еще раз."
 
-#: Controller/AccountsController.php:553;558;563;568
+#: Controller/AccountsController.php:571;576;581;586
 msgid "Please, enter values to all required fields."
 msgstr "Введите значения во все требуемые поля."
 
-#: Controller/AccountsController.php:554;559;564;569
+#: Controller/AccountsController.php:572;577;582;587
 msgid "Missing a required value."
 msgstr "Отсутствует обязательное для ввода поле."
 
-#: Controller/AccountsController.php:573
+#: Controller/AccountsController.php:591
 msgid "The passwords are different."
 msgstr "Пароли отличны друг от друга."
 
-#: Controller/AccountsController.php:574;575
+#: Controller/AccountsController.php:592;593
 msgid "Passwords must match."
 msgstr "Пароли должны совпадать."
 
-#: Controller/AccountsController.php:586
+#: Controller/AccountsController.php:604
 msgid "Token verification failed."
 msgstr "Жетон не прошел проверку."
 
-#: Controller/AccountsController.php:587
+#: Controller/AccountsController.php:605
 msgid "Missing a correct token."
 msgstr "Не хватает необходимого жетона."
 
-#: Controller/AccountsController.php:598
+#: Controller/AccountsController.php:616
 msgid "Retrieval of user record during password update failed."
 msgstr "Произошел сбой чтения пользовательской информации при обновлении."
 
-#: Controller/AccountsController.php:605
+#: Controller/AccountsController.php:623
 msgid "User password was successfully changed."
 msgstr "Пароль успешно изменен."
 
-#: Controller/AccountsController.php:608
+#: Controller/AccountsController.php:626
 msgid "Password update failed."
 msgstr "Обновление пароля не сработало."
 
-#: Controller/AccountsController.php:652
+#: Controller/AccountsController.php:689
 msgid "bots_are_not_welcome"
 msgstr "Мы не разрешаем программам здесь регистрироваться."
 
-#: Controller/ControlsController.php:41
+#: Controller/ControlsController.php:53
 msgid "action_requires_reauthorization"
 msgstr "Это действие требует авторизации заново."
 
-#: Controller/ControlsController.php:79;116;154
+#: Controller/ControlsController.php:147;187;225
 msgid "account_invalid"
 msgstr "Несуществующая запись пользователя."
 
-#: Controller/ControlsController.php:103;133
+#: Controller/ControlsController.php:174;204;267
 msgid "account_saved_success"
 msgstr "Учетная запись сохранена."
 
-#: Controller/ControlsController.php:107;137
+#: Controller/ControlsController.php:178;208;272
 msgid "account_save_problem"
 msgstr "Возникла проблема при сохранении учетной записи. Попробуйте еще раз."
 
-#: Controller/ControlsController.php:158
+#: Controller/ControlsController.php:229
 msgid "account_deleted"
 msgstr "Учетная запись удалена успешно."
 
-#: Controller/ControlsController.php:162
+#: Controller/ControlsController.php:233
 msgid "account_delete_problem"
 msgstr "Возникли проблемы с удалением учетной записи. Попробуйте еще раз."
 
-#: Controller/ZAppController.php:77
+#: Controller/ControlsController.php:287
+msgid "All users destroyed."
+msgstr "Все пользователи удалены."
+
+#: Controller/ZAppController.php:59
 msgid "authentication_tokens_mismatch"
 msgstr "Несовпадение жетонов безопасности с ожидаемыми."
 
@@ -205,57 +209,64 @@ msgstr "Подтверждение сброса пароля"
 #: View/Accounts/verify.ctp:12
 #: View/Controls/add.ctp:8
 #: View/Controls/edit.ctp:14
+#: View/Controls/init.ctp:8
 msgid "label_email"
 msgstr "Адрес электронной почты"
 
 #: View/Accounts/confirm.ctp:17
-#: View/Accounts/verify.ctp:17
+#: View/Accounts/verify.ctp:18
 msgid "label_token"
 msgstr "Жетон"
 
 #: View/Accounts/confirm.ctp:22
-#: View/Accounts/login.ctp:22
+#: View/Accounts/login.ctp:23
 #: View/Accounts/register.ctp:15
-#: View/Controls/add.ctp:13
+#: View/Controls/add.ctp:14
+#: View/Controls/init.ctp:14
 msgid "label_password"
 msgstr "Пароль"
 
 #: View/Accounts/confirm.ctp:27
 #: View/Accounts/register.ctp:19
+#: View/Controls/init.ctp:19
 msgid "label_password_confirm"
 msgstr "Пароль еще раз"
 
 #: View/Accounts/confirm.ctp:35
-#: View/Accounts/login.ctp:29
+#: View/Accounts/login.ctp:30
 #: View/Accounts/register.ctp:27
-#: View/Accounts/reset.ctp:19
-#: View/Accounts/verify.ctp:24
+#: View/Accounts/reset.ctp:20
+#: View/Accounts/verify.ctp:25
+#: View/Controls/kill.ctp:17
 msgid "Please enter something into the following field if you are not human:"
 msgstr "Введите сюда что-нибудь если Вы не человек:"
 
 #: View/Accounts/confirm.ctp:40
-#: View/Accounts/login.ctp:34
+#: View/Accounts/login.ctp:35
 #: View/Accounts/password.ctp:31
 #: View/Accounts/register.ctp:57
-#: View/Accounts/reset.ctp:41
-#: View/Accounts/verify.ctp:29
-#: View/Controls/add.ctp:36
-#: View/Controls/edit.ctp:39
+#: View/Accounts/reset.ctp:42
+#: View/Accounts/verify.ctp:30
+#: View/Controls/add.ctp:37
+#: View/Controls/edit.ctp:40
+#: View/Controls/init.ctp:33
 msgid "Submit"
 msgstr "Вперед"
 
 #: View/Accounts/confirm.ctp:43
-#: View/Accounts/login.ctp:37
+#: View/Accounts/login.ctp:38
 #: View/Accounts/password.ctp:34
 #: View/Accounts/register.ctp:60
-#: View/Accounts/reset.ctp:44
-#: View/Accounts/verify.ctp:32
+#: View/Accounts/reset.ctp:45
+#: View/Accounts/verify.ctp:33
 #: View/Accounts/view.ctp:52
 #: View/Controls/accounts.ctp:12;50
-#: View/Controls/add.ctp:39
+#: View/Controls/add.ctp:40
 #: View/Controls/cryptotest.ctp:106
-#: View/Controls/dashboard.ctp:11
-#: View/Controls/edit.ctp:42
+#: View/Controls/dashboard.ctp:44
+#: View/Controls/edit.ctp:43
+#: View/Controls/init.ctp:36
+#: View/Controls/kill.ctp:25
 #: View/Controls/tokens.ctp:13;49
 #: View/Controls/view.ctp:106;127
 msgid "Actions"
@@ -264,30 +275,40 @@ msgstr "Действия"
 #: View/Accounts/confirm.ctp:45
 #: View/Accounts/login.ctp:13
 #: View/Accounts/register.ctp:62
-#: View/Accounts/reset.ctp:46
-#: View/Accounts/verify.ctp:34
+#: View/Accounts/reset.ctp:47
+#: View/Accounts/verify.ctp:35
 msgid "Login"
 msgstr "Войти"
 
 #: View/Accounts/confirm.ctp:46
-#: View/Accounts/login.ctp:40
+#: View/Accounts/login.ctp:41
 msgid "Reset account"
 msgstr "Сбросить пароль"
 
-#: View/Accounts/login.ctp:39
+#: View/Accounts/confirm.ctp:47
+#: View/Accounts/login.ctp:44
+#: View/Accounts/password.ctp:40
+#: View/Accounts/register.ctp:65
+#: View/Accounts/reset.ctp:49
+#: View/Accounts/verify.ctp:37
+#: View/Accounts/view.ctp:60
+msgid "User Agreement"
+msgstr "Соглашение"
+
+#: View/Accounts/login.ctp:40
 #: View/Accounts/register.ctp:8
-#: View/Accounts/verify.ctp:35
+#: View/Accounts/verify.ctp:36
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: View/Accounts/login.ctp:41
+#: View/Accounts/login.ctp:42
 #: View/Accounts/register.ctp:63
 #: View/Accounts/verify.ctp:8
 msgid "Verify e-mail"
 msgstr "Подтвердить адрес"
 
-#: View/Accounts/login.ctp:42
-#: View/Accounts/reset.ctp:47
+#: View/Accounts/login.ctp:43
+#: View/Accounts/reset.ctp:48
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
 
@@ -303,7 +324,7 @@ msgstr "Учетная Запись"
 #: View/Accounts/password.ctp:38
 #: View/Accounts/view.ctp:55
 #: View/Controls/accounts.ctp:29
-#: View/Controls/edit.ctp:45
+#: View/Controls/edit.ctp:46
 #: View/Controls/tokens.ctp:28
 #: View/Controls/view.ctp:109;141
 msgid "Delete"
@@ -321,31 +342,33 @@ msgid "Logout"
 msgstr "Выход"
 
 #: View/Accounts/register.ctp:30
-#: View/Accounts/reset.ctp:22
+#: View/Accounts/reset.ctp:23
 msgid "Enter the given code: "
 msgstr "Введите предоставленный код:"
 
 #: View/Accounts/register.ctp:36
-#: View/Accounts/reset.ctp:28
+#: View/Accounts/reset.ctp:29
 msgid "into the following field:"
 msgstr "в следующее поле:"
 
 #: View/Accounts/register.ctp:44
-#: View/Accounts/reset.ctp:36
+#: View/Accounts/reset.ctp:37
 msgid "The validation of the CAPTCHA code did not succeed."
 msgstr "Проверка кода CAPTCHA не прошла."
 
 #: View/Accounts/register.ctp:51
+#: View/Controls/init.ctp:27
 msgid "I confirm that I agree to "
 msgstr "Я подтверждаю своё согласие на "
 
 #: View/Accounts/register.ctp:51
-#: View/Controls/add.ctp:30
-msgid "the Terms of Service and User Agreement"
-msgstr "Условия Обслуживания и Пользовательское Соглашение"
+#: View/Controls/init.ctp:27
+msgid "the User Agreement and consent to the use of cookies"
+msgstr "условия Пользовательского Соглашения и использование cookie"
 
 #: View/Accounts/register.ctp:52
-#: View/Controls/add.ctp:31
+#: View/Controls/add.ctp:32
+#: View/Controls/init.ctp:28
 msgid "The acceptance is mandatory."
 msgstr "Принятие обязательно."
 
@@ -430,7 +453,8 @@ msgid "New Account"
 msgstr "Создать"
 
 #: View/Controls/accounts.ctp:53
-#: View/Controls/add.ctp:43
+#: View/Controls/add.ctp:44
+#: View/Controls/dashboard.ctp:47
 #: View/Controls/tokens.ctp:2
 #: View/Controls/view.ctp:112;116
 msgid "Tokens"
@@ -438,6 +462,7 @@ msgstr "Жетоны"
 
 #: View/Controls/accounts.ctp:54
 #: View/Controls/cryptotest.ctp:108
+#: View/Controls/kill.ctp:27
 msgid "Dashboard"
 msgstr "Панель управления"
 
@@ -445,24 +470,30 @@ msgstr "Панель управления"
 msgid "Add Account"
 msgstr "Создать учетную запись пользователя"
 
-#: View/Controls/add.ctp:18
-#: View/Controls/edit.ctp:24
+#: View/Controls/add.ctp:19
+#: View/Controls/edit.ctp:25
 msgid "label_activate"
 msgstr "Активировать"
 
-#: View/Controls/add.ctp:23
-#: View/Controls/edit.ctp:29
+#: View/Controls/add.ctp:24
+#: View/Controls/edit.ctp:30
 msgid "label_user_admin"
 msgstr "Администратор"
 
-#: View/Controls/add.ctp:30
+#: View/Controls/add.ctp:31
 msgid "I confirm that the user agrees to "
 msgstr "Я подтверждаю согласие пользователя на "
 
-#: View/Controls/add.ctp:42
+#: View/Controls/add.ctp:31
+msgid "the Terms of Service and User Agreement"
+msgstr "Условия Обслуживания и Пользовательское Соглашение"
+
+#: View/Controls/add.ctp:43
 #: View/Controls/cryptotest.ctp:109
-#: View/Controls/dashboard.ctp:14
-#: View/Controls/edit.ctp:46
+#: View/Controls/dashboard.ctp:46
+#: View/Controls/edit.ctp:47
+#: View/Controls/init.ctp:38
+#: View/Controls/kill.ctp:28
 #: View/Controls/tokens.ctp:51
 #: View/Controls/view.ctp:110
 msgid "Accounts"
@@ -472,29 +503,61 @@ msgstr "Пользователи"
 msgid "Accounts Control Dashboard - Cryptography Tests"
 msgstr "Панель управления - криптографические тесты"
 
-#: View/Controls/dashboard.ctp:5
+#: View/Controls/dashboard.ctp:22
 msgid "Settings and Dashboard"
 msgstr "Настройки и панель управления"
 
-#: View/Controls/dashboard.ctp:13
+#: View/Controls/dashboard.ctp:48
 msgid "Cryptography tests"
 msgstr "Тесты шифрования"
+
+#: View/Controls/dashboard.ctp:49
+msgid "Kill all users"
+msgstr "Стереть всех"
 
 #: View/Controls/edit.ctp:5
 msgid "Edit Account"
 msgstr "Изменить"
 
-#: View/Controls/edit.ctp:19
+#: View/Controls/edit.ctp:20
 msgid "label_password_new_or_empty"
 msgstr "Новый пароль (или оставьте поле пустым чтобы не менять)"
 
-#: View/Controls/edit.ctp:34
+#: View/Controls/edit.ctp:35
 msgid "label_user_deleted"
 msgstr "Удален"
 
-#: View/Controls/edit.ctp:45
+#: View/Controls/edit.ctp:46
 msgid "Are you sure you want to permanently delete accout # %s?"
 msgstr "Вы уверены, что хотите удалить учетную запись № %s?"
+
+#: View/Controls/init.ctp:4
+msgid "Initialization: create Administrator user"
+msgstr "Инициализация: создать пользователя Администратора"
+
+#: View/Controls/kill.ctp:2
+msgid "Destroy all user records? Action is not reversible!"
+msgstr "Стереть все учётные записи? Это действие не обратимо!"
+
+#: View/Controls/kill.ctp:7
+msgid "Attention! You are about to delete all users from the system! "
+msgstr "Внимание! Вы собираетесь удалить все учетные записи всех пользователей!"
+
+#: View/Controls/kill.ctp:8
+msgid "This action is not reversible! "
+msgstr "Это действие не обратимо!"
+
+#: View/Controls/kill.ctp:9
+msgid "This action will permanently delete every user account here, including administrators. "
+msgstr "Это действие сотрёт окончательно и бесповоротно все учетные записи всех пользователей, включая администраторов."
+
+#: View/Controls/kill.ctp:10
+msgid "If you are totally sure that that is what you want, press the button and say good-bye to your users."
+msgstr "Если вы абсолютно уверены, что это именно то, что вам надо, жмите на кнопку и прощайтесь с пользователями."
+
+#: View/Controls/kill.ctp:22
+msgid "Destroy all user accounts!"
+msgstr "Уничтожить всех пользователей!"
 
 #: View/Controls/view.ctp:9
 msgid "Email"
@@ -556,7 +619,23 @@ msgstr "Цель"
 msgid "Expires"
 msgstr "Срок действия"
 
-#: View/Controls/view.ctp:150
+#: View/Controls/view.ctp:148
+msgid "Login access log"
+msgstr "Журнал входов в систему"
+
+#: View/Controls/view.ctp:152
+msgid "Date"
+msgstr "Дата"
+
+#: View/Controls/view.ctp:153
+msgid "From IP"
+msgstr "Адрес IP"
+
+#: View/Controls/view.ctp:154
+msgid "Success"
+msgstr "Успешность"
+
+#: View/Controls/view.ctp:168
 msgid "New Account Token"
 msgstr "Создать жетон"
 
@@ -585,13 +664,6 @@ msgstr "Этот адрес уже зарегистрирован в систе�
 msgid "tos_agreement_required"
 msgstr "Согласие с условиями обслуживания обязательно."
 
-#: Model/AccountLogin.php:validation
-#: for field account_id
-#: Model/AccountToken.php:validation
-#: token
-msgid "notempty"
-msgstr "Это поле не может быть пустым."
-
 #: Model/AccountPassword.php:validation
 #: for field password
 msgid "password_empty_not_allowed"
@@ -616,6 +688,11 @@ msgstr "Этот пароль слишком часто встречается. 
 #: for field account_id;validation purpose
 msgid "numeric"
 msgstr "Это поле должно содержать число."
+
+#: Model/AccountToken.php:validation
+#: for field token
+msgid "notempty"
+msgstr "Это поле не может быть пустым."
 
 #~ msgid "password_existential_fault_logout"
 #~ msgstr ""

@@ -24,7 +24,7 @@
 			array(
 				'hiddenField' => false,
 				'div' => 'required',
-				'label' => __d('z', 'I confirm that I agree to ').$this->Html->link(__d('z', 'the User Agreement and consent to the use of cookies'), array('action' => 'tos'), array('target' => '_blank')),
+				'label' => __d('z', 'I confirm that I agree to ').$this->Html->link(__d('z', 'the User Agreement and consent to the use of cookies'), array('controller' => 'accounts', 'action' => 'tos'), array('target' => '_blank')),
 				'error'=>__d('z', 'The acceptance is mandatory.',true)
 				)
 			);
@@ -35,6 +35,7 @@
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 	</ul>
 </div>

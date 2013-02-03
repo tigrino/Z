@@ -52,6 +52,7 @@
 		<li><?php echo $this->Html->link(__d('z', 'New Account'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Tokens'), array('action' => 'tokens')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
+		<li><?php echo $this->Html->link(__d('z', 'Kill all users'), array('action' => 'kill')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Logout'), array('controller' => 'accounts', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
