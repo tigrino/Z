@@ -12,15 +12,16 @@ $this->Html->addCrumb('Login', '/z/accounts/login');
 	<fieldset>
 		<legend><?php echo __d('z', 'Login'); ?></legend>
 	<?php
-		echo $this->Form->input('email',
+		echo $this->Form->input('alias',
 			array(
-				'label' => __d('z', 'label_email'),
-				'type' => 'email',
+				'label' => __d('z', 'label_user_alias_or_email'),
+				'div' => 'required'
 			)
 		);
 		echo $this->Form->input('password',
 			array(
 				'label' => __d('z', 'label_password'),
+				'div' => 'required'
 			)
 		);
 		echo $this->Form->hidden('Account.ruhuman',
@@ -41,6 +42,5 @@ $this->Html->addCrumb('Login', '/z/accounts/login');
 		<li><?php echo $this->Html->link(__d('z', 'Reset account'), array('action' => 'reset'));?></li>
 		<!-- li><?php echo $this->Html->link(__d('z', 'Verify e-mail'), array('action' => 'verify'));?></li -->
 		<!-- li><?php echo $this->Html->link(__d('z', 'Confirm password'), array('action' => 'confirm'));?></li -->
-		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>

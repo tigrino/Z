@@ -20,21 +20,6 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 <?php //debug($this); ?>
 <?php //debug($z_wordlists); ?>
 	<h2><?php echo __d('z', 'Settings and Dashboard'); ?></h2>
-	<li>version=<?php echo $z_version; ?>
-	<li>mt_getrandmax=<?php echo mt_getrandmax(); ?>
-	<li>token_length=<?php echo $z_token_length; ?>
-	<li>password hash cost=<?php echo $z_hash_cost; ?>
-	<li>password minimal length=<?php echo $z_password_min_len; ?>
-	<li>word lists (used: <?php echo $z_use_password_blacklist?"yes":"no" ?>) : <?php echo implode(', ', $z_wordlists); ?>
-	<li>accounts total=<?php echo $accounts_total; ?>
-	<li>accounts active=<?php echo $accounts_active; ?>
-	<li>tokens active=<?php echo $tokens; ?>
-	<?php //debug(json_encode($logins['good']));?>
-	<?php //debug(json_encode($logins['bad']));?>
-	<?php //debug(max($logins['good']));?>
-	<?php //debug(max($logins['bad']));?>
-	<?php //debug(json_encode($accounts['good']));?>
-	<?php //debug(json_encode($accounts['bad']));?>
 
 	<div id="logins_chartdiv" class="resetcss" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
 	<div id="accounts_chartdiv" class="resetcss" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
@@ -43,22 +28,43 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Tokens'), array('action' => 'tokens')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Cryptography tests'), array('action' => 'cryptotest')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Kill all users'), array('action' => 'kill')); ?></li>
 	</ul>
+	<li>version=<?php echo $z_version; ?>
+	<li>mt_getrandmax=<?php echo mt_getrandmax(); ?>
+	<li>token_length=<?php echo $z_token_length; ?>
+	<li>password hash cost=<?php echo $z_hash_cost; ?>
+	<li>password minimal length=<?php echo $z_password_min_len; ?>
+	<li>word lists (used: <?php echo $z_use_password_blacklist?"yes":"no" ?>) : <br /><?php echo implode(', <br />', $z_wordlists); ?>
+	<li>accounts total=<?php echo $accounts_total; ?>
+	<li>accounts active=<?php echo $accounts_active; ?>
+	<li>tokens active=<?php echo $tokens; ?>
+	<li>login attempts=<?php echo $logins_total; ?>
+	<li>login failures=<?php echo $logins_failed; ?>
+	<?php //debug(json_encode($logins['good']));?>
+	<?php //debug(json_encode($logins['bad']));?>
+	<?php //debug(max($logins['good']));?>
+	<?php //debug(max($logins['bad']));?>
+	<?php //debug(json_encode($accounts['good']));?>
+	<?php //debug(json_encode($accounts['bad']));?>
 </div>
 
 <?php
+	// Service function becasue of old PHP versions
+	function return_first($details) {
+		return $details[1];
+	}
+
 	if ( empty($logins['good']) ) {
 		$log_good = '[[null]]';
 		$max_log['good'] = 0;
 	} else {
 		$log_good = json_encode($logins['good']);
-		$numbers = array_map(function($details) {
-			return $details[1];
-		}, $logins['good']);
+		$numbers = array_map("return_first", $logins['good']);
 		$max_log['good'] = max($numbers);
 	}
 	if ( empty($logins['bad']) ) {
@@ -66,9 +72,7 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 		$max_log['bad'] = 0;
 	} else {
 		$log_bad = json_encode($logins['bad']);
-		$numbers = array_map(function($details) {
-			return $details[1];
-		}, $logins['bad']);
+		$numbers = array_map("return_first", $logins['bad']);
 		$max_log['bad'] = max($numbers);
 	}
 	$logtodate = date("Y-m-d", strtotime("+1 day"));
@@ -146,14 +150,16 @@ $(document).ready(function(){
 		$max_acc['good'] = 0;
 	} else {
 		$acc_good = json_encode($accounts['good']);
-		$max_acc['good'] = max($accounts['good'])[1];
+		$maxes = max($accounts['good']);
+		$max_acc['good'] = $maxes[1];
 	}
 	if ( empty($accounts['bad']) ) {
 		$acc_bad = '[[null]]';
 		$max_acc['bad'] = 0;
 	} else {
 		$acc_bad = json_encode($accounts['bad']);
-		$max_acc['bad'] = max($accounts['bad'])[1];
+		$maxes = max($accounts['bad']);
+		$max_acc['bad'] = $maxes[1];
 	}
 	$acctodate = date("Y-m-d", strtotime("+1 day"));
 ?>
@@ -180,7 +186,7 @@ $(document).ready(function(){
 					label: "Date",
 					renderer:$.jqplot.DateAxisRenderer,
 					tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-					//max: "<?php echo $acctodate; ?>",
+					max: "<?php echo $acctodate; ?>",
 					tickOptions:{
 						//formatString:'%#d %b %Y', 
 						formatString:'%Y-%m-%d', 

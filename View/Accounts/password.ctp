@@ -9,22 +9,25 @@ $this->Html->addCrumb('Password', '/z/accounts/password');
 		<legend><?php echo __d('z', 'Change Password'); ?></legend>
 	<?php
 		echo $this->Form->input('Account.id');
-		echo $this->Form->hidden('Account.email');
+		echo $this->Form->hidden('AccountPassword.email');
 		echo $this->Form->input('AccountPassword.id');
 		echo $this->Form->input('AccountPassword.old_password',
                         array(
                                 'type' => 'password',
-				'div' => 'required'
+				'div' => 'required',
+				'label' => __d('z', 'label_old_password')
                         ));
 		echo $this->Form->input('AccountPassword.password',
 			array(
                                 'type' => 'password',
-				'div' => 'required'
+				'div' => 'required',
+				'label' => __d('z', 'label_new_password')
 			));
 		echo $this->Form->input('AccountPassword.confirm_password',
                         array(
                                 'type' => 'password',
-				'div' => 'required'
+				'div' => 'required',
+				'label' => __d('z', 'label_password_confirm')
                         ));
 	?>
 	</fieldset>
@@ -37,8 +40,8 @@ $this->Html->addCrumb('Password', '/z/accounts/password');
 		<li><?php echo $this->Html->link(__d('z', 'View Account'), array('controller' => 'users', 'action' => 'view'));?></li>
 		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('controller' => 'accounts', 'action' => 'delete', $this->Form->value('Account.id')), null, __d('z', 'Are you sure you want to delete your user account %s?', $this->Form->value('Account.email'))); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Logout'), array('controller' => 'accounts', 'action' => 'logout')); ?> </li>
-		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('/z/js/jquery.min'); ?>
-<?php echo $this->Html->script('/z/js/passwordstrength'); ?>
+<?php //echo $this->Html->script('/z/js/passwordstrength'); ?>
+<?php echo $this->element('password_strength_indicator'); ?>

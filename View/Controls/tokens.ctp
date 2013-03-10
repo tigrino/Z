@@ -5,7 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('account_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('Account.email', 'Email'); ?></th>
+			<th><?php echo $this->Paginator->sort('AccountPassword.email', 'Email'); ?></th>
 			<th><?php echo $this->Paginator->sort('purpose'); ?></th>
 			<th><?php echo $this->Paginator->sort('expires'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -18,7 +18,7 @@
 		<td><?php echo h($token['AccountToken']['id']); ?>&nbsp;</td>
 		<td><?php echo $this->Html->link(h($token['AccountToken']['account_id']), 
 			array('action' => 'view', $token['Account']['id'])); ?>&nbsp;</td>
-		<td><?php echo $this->Html->link(h($token['Account']['email']),
+		<td><?php echo $this->Html->link(h($token['AccountPassword']['email']),
 			array('action' => 'view', $token['Account']['id'])); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['purpose']); ?>&nbsp;</td>
 		<td><?php echo h($token['AccountToken']['expires']); ?>&nbsp;</td>
@@ -48,6 +48,7 @@
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?></li>
 	</ul>
 </div>

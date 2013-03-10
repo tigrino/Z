@@ -1,12 +1,14 @@
 <div class="accounts index">
 	<h2><?php echo __d('z', 'Accounts List'); ?></h2>
+	<?php //debug($accounts); ?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('active', 'Active'); ?></th>
-			<th><?php echo $this->Paginator->sort('AccountFlag.user_admin', 'Admin'); ?></th>
-			<th><?php echo $this->Paginator->sort('AccountFlag.deleted', 'Deleted'); ?></th>
+			<th><?php echo $this->Paginator->sort('alias'); ?></th>
+			<th><?php echo $this->Paginator->sort('AccountPassword.email', 'Email'); ?></th>
+			<th><?php echo $this->Paginator->sort('active', 'Act'); ?></th>
+			<th><?php echo $this->Paginator->sort('AccountFlag.user_admin', 'Adm'); ?></th>
+			<th><?php echo $this->Paginator->sort('AccountFlag.deleted', 'Del'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __d('z', 'Actions'); ?></th>
@@ -16,7 +18,9 @@
 	<tr>
 		<td><?php echo $this->Html->link(h($account['Account']['id']),
 			array('action' => 'view', $account['Account']['id'])); ?>&nbsp;</td>
-		<td><?php echo $this->Html->link(h($account['Account']['email']),
+		<td><?php echo $this->Html->link(h($account['Account']['alias']),
+			array('action' => 'view', $account['Account']['slug'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(h($account['AccountPassword']['email']),
 			array('action' => 'view', $account['Account']['id'])); ?>&nbsp;</td>
 		<td><?php echo h($account['Account']['active']); ?>&nbsp;</td>
 		<td><?php echo h($account['AccountFlag']['user_admin']); ?>&nbsp;</td>
@@ -49,9 +53,9 @@
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
+		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'New Account'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Tokens'), array('action' => 'tokens')); ?></li>
-		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Kill all users'), array('action' => 'kill')); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Logout'), array('controller' => 'accounts', 'action' => 'logout')); ?> </li>
 	</ul>

@@ -45,7 +45,7 @@ class AccountsController extends ZAppController {
 				// user actually does not exist
 				// but maybe he was blocked? Log him out.
 				$this->redirect($this->Auth->logout());
-				//throw new NotFoundException(__('Invalid user'));
+				//throw new NotFoundException(__('error_invalid_user'));
 			}
 			$this->set('user', $this->User->read(null, $id));
 		}
@@ -71,8 +71,8 @@ class AccountsController extends ZAppController {
 			// Check the dummy field is empty
 			if ( $this->_block_robots() ) return;
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
-			$this->request->data['User']['email'] = 
-				strtolower( trim( $this->request->data['User']['email'] ) );
+			//debug($this->request->data);
+			//$login_name = strtolower( trim( $this->request->data['User']['alias'] ) );
 			//
 			// Now verify the history, if a user
 			// is running a brute force - slow down
@@ -84,6 +84,7 @@ class AccountsController extends ZAppController {
 						'AccountLogin.created >' => date('Y-m-d H:i:s', strtotime("-300 seconds"))
 						)
 				));
+			//debug($result);
 			if ( $result > 2 ) {
 				sleep($result*3); // the more you try the slower it gets
 				// 180 sec @ *2 = circa 13 tries first 3 minutes
@@ -97,6 +98,7 @@ class AccountsController extends ZAppController {
 			// Now login
 			if ($this->Auth->login()) {
 				/// Logged in successfully
+				//debug($this->Auth->user);
 				$this->Session->setFlash(__d('z', 'logged_in'), 'default', array(), 'auth');
 				$this->Account->id = $this->Auth->user('id');
 				$saveData = array();
@@ -109,7 +111,7 @@ class AccountsController extends ZAppController {
 						),
 						'verify' => true
 					))) {
-					debug($this->Account->AccountLogin->validationErrors);
+					//debug($this->Account->AccountLogin->validationErrors);
 				}
 				//
 				// if the user is admin forward him to the control panel
@@ -120,7 +122,7 @@ class AccountsController extends ZAppController {
 				}
 			} else {
 				$saveData = array();
-				$saveData['AccountLogin']['email'] = $this->request->data['User']['email'];
+				$saveData['AccountLogin']['email'] = $this->request->data['User']['alias'];
 				$saveData['AccountLogin']['from_ip'] = $this->RequestHandler->getClientIp();
 				$saveData['AccountLogin']['success'] = FALSE;
 				if (! $this->Account->AccountLogin->save($saveData,
@@ -129,7 +131,7 @@ class AccountsController extends ZAppController {
 						),
 						'verify' => true
 					))) {
-					debug($this->Account->AccountLogin->validationErrors);
+					//debug($this->Account->AccountLogin->validationErrors);
 				}
 				/// Username or password is incorrect
 				$this->Session->setFlash(__d('z', 'incorrect_credentials'), 'default', array(), 'auth');
@@ -199,7 +201,7 @@ class AccountsController extends ZAppController {
 			$id = $this->Auth->user('id'); // not set if called without userid
 			if ($this->request->is('post') || $this->request->is('put')) {
 				// user is logged in and submits new password
-				$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
+				//$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
 				// Data verification for correctness and expectations
 				if ( $this->request->data['Account']['id'] != $id ) {
 					/// Login data mismatch, you have been logged out for security reasons.
@@ -286,7 +288,7 @@ class AccountsController extends ZAppController {
 				/// The CAPTCHA code is incorrect. Please, try again.
 				$this->Session->setFlash(__d('z', 'incorrect_captcha_try_again'));
 				$this->request->data['Account']['captcha'] = '';
-				$this->Account->invalidate('captcha', __d('z', 'incorrect_captcha_try_again', true));
+				$this->Account->invalidate('captcha', __d('z', 'captcha_incorrect', true));
 				return;
 			}
 			//
@@ -305,23 +307,23 @@ class AccountsController extends ZAppController {
 			// since the model does not have a rule for this
 			if ($this->request->data['AccountPassword']['password'] != 
 				$this->request->data['AccountPassword']['confirm_password']) {
-				$this->Account->AccountPassword->invalidate('password', __d('z', 'Passwords must match', true));
-				$this->Account->AccountPassword->invalidate('confirm_password', __d('z', 'Passwords must match', true));
-				$this->Session->setFlash(__d('z', 'The passwords did not match up.'));
+				$this->Account->AccountPassword->invalidate('password', __d('z', 'passwords_must_match', true));
+				$this->Account->AccountPassword->invalidate('confirm_password', __d('z', 'passwords_must_match', true));
+				$this->Session->setFlash(__d('z', 'passwords_did_not_match'));
 				$this->request->data['Account']['captcha'] = '';
 				return;
 			}
 			//
 			// And now validate the rest and create the account
-			$this->request->data['Account']['email'] = 
-				strtolower( trim( $this->request->data['Account']['email'] ) );
+			$this->request->data['AccountPassword']['email'] = 
+				strtolower( trim( $this->request->data['AccountPassword']['email'] ) );
 			unset($this->request->data['Account']['id']);
 			unset($this->request->data['AccountPassword']['id']);
 			$this->request->data['Account']['active'] = 0;
 			$this->request->data['AccountFlag']['agreement_date'] = $this->Account->getDataSource()->expression('NOW()');
 			$this->Account->create($this->request->data);
 			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
-				$this->Session->setFlash(__d('z', 'Registration data validation failure. Please, check your input.'));
+				$this->Session->setFlash(__d('z', 'registration_data_validation_failure'));
 				$this->request->data['Account']['captcha'] = '';
 				return;
 			}
@@ -347,14 +349,14 @@ class AccountsController extends ZAppController {
 						$dataSource->commit();
 						$fromurl = Router::url( array('action' => 'register'), true );
 						$url = Router::url( array('action' => 'verify'), true );
-						$urltoken = $url.'/t:'.$this->data['AccountToken']['token'].'/n:'.$this->data['Account']['email'].'';
+						$urltoken = $url.'/t:'.$this->data['AccountToken']['token'].'/n:'.$this->data['AccountPassword']['email'].'';
 						$frommail = Configure::read('Z.email_from');
 						$sitename = Configure::read('Z.site_title');
 						// and send an e-mail to the user
 						$email = new CakeEmail();
 						$email->viewVars(array(
 							'sitename' => $sitename,
-							'email' => $this->data['Account']['email'],
+							'email' => $this->data['AccountPassword']['email'],
 							'fromurl' => $fromurl,
 							'token' => $this->data['AccountToken']['token'],
 							'url' => $url,
@@ -363,22 +365,22 @@ class AccountsController extends ZAppController {
 						$email->emailFormat('text');
 						$email->template('Z.verify', 'Z.comeclick');
 						$email->from(array($frommail => $sitename));
-						$email->to($this->data['Account']['email']);
+						$email->to($this->data['AccountPassword']['email']);
 						$email->subject('Confirm Registration for ' . $sitename);
 						$email->send();
-						$this->Session->setFlash(__d('z', 'User created successfully. Please check your email for a validation link.'));
+						$this->Session->setFlash(__d('z', 'user_created_successfully_check_email'));
 						$this->redirect(array('action' => 'verify'));
 					} else {
 						$dataSource->rollback();
-						$this->Session->setFlash(__d('z', 'The user could not be saved. Please, try again.'));
+						$this->Session->setFlash(__d('z', 'user_not_saved'));
 					}
 				} else {
 					$dataSource->rollback();
-					$this->Session->setFlash(__d('z', 'The user could not be saved. Please, try again.'));
+					$this->Session->setFlash(__d('z', 'user_not_saved'));
 				}
 			} else {
 				$dataSource->rollback();
-				$this->Session->setFlash(__d('z', 'The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__d('z', 'user_not_saved'));
 			}
 		}
 		$this->request->data['AccountPassword']['password'] = '';
@@ -400,9 +402,9 @@ class AccountsController extends ZAppController {
 			//
 			// Check the dummy field is empty
 			if ( $this->_block_robots() ) return;
-			$this->request->data['Account']['email'] = 
-				strtolower( trim( $this->request->data['Account']['email'] ) );
-			$email = $this->request->data['Account']['email'];
+			$this->request->data['AccountPassword']['email'] = 
+				strtolower( trim( $this->request->data['AccountPassword']['email'] ) );
+			$email = $this->request->data['AccountPassword']['email'];
 			$token = $this->request->data['AccountToken']['token'];
 		} else {
 			$token = null;
@@ -410,51 +412,75 @@ class AccountsController extends ZAppController {
 		$this->_clean_old_tokens(); // first remove expired tokens
 		$this->_clean_old_registrations(); // remove expired registration requests
 		if ( !empty($token) ) {
+			$this->Account->recursive = 0;
 			$result = $this->Account->AccountToken->find('first', array(
+				'recursive' => 0,
 				'conditions' => array(
 					'AccountToken.token' => $token,
 					'AccountToken.purpose' => PLUGIN_Z_TOKEN_MAIL_VERIFY,
-					'Account.email' => $email,
+					//'AccountPassword.email' => $email,
 					//'Token.expires >=' => date('Y-m-d H:i:s')
 					)
 				));
+			//$result = $this->Account->AccountToken->find('first',array(
+			//	'joins' => array(
+			//		array(
+			//			'table' => 'z_passwords',
+			//			'alias' => 'AccountPassword',
+			//			'type' => 'LEFT',
+			//			'conditions' => array(
+			//				'AccountPassword.account_id = Account.id'
+			//			)
+			//		)
+			//	),
+			//	'conditions' => array(
+			//		'AccountToken.token' => $token,
+			//		'AccountToken.purpose' => PLUGIN_Z_TOKEN_MAIL_VERIFY,
+			//		'AccountPassword.email' => $email,
+			//	),
+			//	//'fields' => array('AccountPassword.*', 'Account.*', 'AccountToken.*'),
+			//));
 			if ( !empty($result) ) {
 				$this->Account->id = $result['AccountToken']['account_id'];
 				$this->Account->recursive = 0;
 				$this->Account->read();
-				$data = array(
-					'Account' => array(
-						'id' => $this->Account->data['Account']['id'],
-						'active' => 1
-					),
-					'AccountFlag' => array(
-						'id' => $this->Account->data['AccountFlag']['id'],
-						'account_id' => $this->Account->data['Account']['id'],
-						'email_verified' => 1,
-						'email_verified_date' => $this->Account->getDataSource()->expression('NOW()')
-					)
-				);
-				$this->Account->create($data);
-				$options = array(
-					'fieldList' => array(
+				if ( $this->Account->data['AccountPassword']['email'] == $email ) {
+					$data = array(
 						'Account' => array(
-							'active'
+							'id' => $this->Account->data['Account']['id'],
+							'active' => 1
 						),
 						'AccountFlag' => array(
-							'email_verified',
-							'email_verified_date'
+							'id' => $this->Account->data['AccountFlag']['id'],
+							'account_id' => $this->Account->data['Account']['id'],
+							'email_verified' => 1,
+							'email_verified_date' => $this->Account->getDataSource()->expression('NOW()')
 						)
-					)
-				);
-				if (! $this->Account->saveAssociated(null, $options) ) {
-					$this->Session->setFlash(__d('z', 'The user could not be saved. Please, try again.'));
-					return;
+					);
+					$this->Account->create($data);
+					$options = array(
+						'fieldList' => array(
+							'Account' => array(
+								'active'
+							),
+							'AccountFlag' => array(
+								'email_verified',
+								'email_verified_date'
+							)
+						)
+					);
+					if (! $this->Account->saveAssociated(null, $options) ) {
+						$this->Session->setFlash(__d('z', 'user_not_saved'));
+						return;
+					}
+					$this->Account->AccountToken->delete($result['AccountToken']['id']);
+					$this->Session->setFlash(__d('z', 'email_verify_success'));
+					$this->redirect(array('action' => 'login'));
+				} else {
+					$this->Session->setFlash(__d('z', 'email_verify_fail'));
 				}
-				$this->Account->AccountToken->delete($result['AccountToken']['id']);
-				$this->Session->setFlash(__d('z', 'Your e-mail was successfully verified.'));
-				$this->redirect(array('action' => 'login'));
 			} else {
-				$this->Session->setFlash(__d('z', 'User e-mail verification failed.'));
+				$this->Session->setFlash(__d('z', 'email_verify_fail'));
 			}
 		}
 	}
@@ -465,7 +491,7 @@ class AccountsController extends ZAppController {
 		if ( $this->Auth->user('id') ) {
 			// User logged in, forward to change password
 			$id = $this->Auth->user('id');
-			$this->Session->setFlash(__d('z', 'You are already logged in, use this form to change your password.'));
+			$this->Session->setFlash(__d('z', 'already_logged_in_change_password'));
 			$this->redirect(array('action' => 'password'));
 		}
 		if ($this->request->is('post')) {
@@ -479,17 +505,17 @@ class AccountsController extends ZAppController {
 			if ( (! $this->Session->check('captcha_code')) ||
 				($this->Session->check('captcha_code') && 
 				($this->request->data['Account']['captcha'] != $this->Session->read('captcha_code'))) ) {
-				$this->Session->setFlash(__d('z', 'The CAPTCHA code is incorrect. Please, try again.'));
+				$this->Session->setFlash(__d('z', 'incorrect_captcha_try_again'));
 				$this->request->data['Account']['captcha'] = '';
-				$this->Account->invalidate('captcha', __d('z', 'CAPTCHA code is incorrect', true));
+				$this->Account->invalidate('captcha', __d('z', 'captcha_incorrect', true));
 				return;
 			}
-			$this->request->data['Account']['email'] = 
-				strtolower( trim( $this->request->data['Account']['email'] ) );
+			$this->request->data['AccountPassword']['email'] = 
+				strtolower( trim( $this->request->data['AccountPassword']['email'] ) );
 			// Find the user record by email
 			$this->Account->recursive = 0; // prevent loading any hasMany rows
 			$userData = $this->Account->find( 'first', array(
-				'conditions' => array('Account.email' => $this->request->data['Account']['email'])
+				'conditions' => array('AccountPassword.email' => $this->request->data['AccountPassword']['email'])
 				));
 			if ( ! is_array( $userData ) ) {
 				// user was not found
@@ -525,14 +551,14 @@ class AccountsController extends ZAppController {
 				if ( $this->Account->AccountToken->save(null, $options) ) {
 					$fromurl = Router::url( array('action' => 'reset'), true );
 					$url = Router::url( array('action' => 'confirm'), true );
-					$urltoken = $url.'/t:'.$data['AccountToken']['token'].'/n:'.$this->request->data['Account']['email'].'';
+					$urltoken = $url.'/t:'.$data['AccountToken']['token'].'/n:'.$this->request->data['AccountPassword']['email'].'';
 					$frommail = Configure::read('Z.email_from');
 					$sitename = Configure::read('Z.site_title');
 					// and send an e-mail to the user
 					$email = new CakeEmail();
 					$email->viewVars(array(
 						'sitename' => $sitename,
-						'email' => $this->request->data['Account']['email'],
+						'email' => $this->request->data['AccountPassword']['email'],
 						'fromurl' => $fromurl,
 						'token' => $data['AccountToken']['token'],
 						'url' => $url,
@@ -541,13 +567,13 @@ class AccountsController extends ZAppController {
 					$email->emailFormat('text');
 					$email->template('Z.reset', 'Z.comeclick');
 					$email->from(array($frommail => $sitename));
-					$email->to($this->request->data['Account']['email']);
+					$email->to($this->request->data['AccountPassword']['email']);
 					$email->subject('Confirm Password Reset for Your Account at ' . $sitename);
 					$email->send();
-					$this->Session->setFlash(__d('z', 'Password reset request created successfully. Please check your email.'));
+					$this->Session->setFlash(__d('z', 'reset_success_check_email'));
 					$this->redirect(array('action' => 'confirm'));
 				} else {
-					$this->Session->setFlash(__d('z', 'The request could not be approved. Please, try again.'));
+					$this->Session->setFlash(__d('z', 'reset_request_fail'));
 				}
 			}
 		}
@@ -561,48 +587,48 @@ class AccountsController extends ZAppController {
 			// Check the dummy field is empty
 			if ( $this->_block_robots() ) return;
 			$this->request->data = Sanitize::clean($this->request->data, array('encode' => false));
-			$this->request->data['Account']['email'] = 
-				strtolower( trim( $this->request->data['Account']['email'] ) );
-			$email = $this->request->data['Account']['email'];
+			$this->request->data['AccountPassword']['email'] = 
+				strtolower( trim( $this->request->data['AccountPassword']['email'] ) );
+			$email = $this->request->data['AccountPassword']['email'];
 			$token = $this->request->data['AccountToken']['token'];
 			$password1 = $this->request->data['AccountPassword']['password'];
 			$password2 = $this->request->data['AccountPassword']['password_confirm'];
 			if ( empty($token) ) {
-				$this->Session->setFlash(__d('z', 'Please, enter values to all required fields.'));
-				$this->Account->AccountToken->invalidate('token', __d('z', 'Missing a required value.'), true);
+				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Account->AccountToken->invalidate('token', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( empty($email) ) {
-				$this->Session->setFlash(__d('z', 'Please, enter values to all required fields.'));
-				$this->Account->invalidate('email', __d('z', 'Missing a required value.'), true);
+				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Account->invalidate('email', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( empty($password1) ) {
-				$this->Session->setFlash(__d('z', 'Please, enter values to all required fields.'));
-				$this->Account->AccountPassword->invalidate('password', __d('z', 'Missing a required value.'), true);
+				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Account->AccountPassword->invalidate('password', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( empty($password2) ) {
-				$this->Session->setFlash(__d('z', 'Please, enter values to all required fields.'));
-				$this->Account->AccountPassword->invalidate('password_confirm', __d('z', 'Missing a required value.'), true);
+				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Account->AccountPassword->invalidate('password_confirm', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( !($password1 === $password2) ) {
-				$this->Session->setFlash(__d('z', 'The passwords are different.'));
-				$this->Account->AccountPassword->invalidate('password', __d('z', 'Passwords must match.'), true);
-				$this->Account->AccountPassword->invalidate('password_confirm', __d('z', 'Passwords must match.'), true);
+				$this->Session->setFlash(__d('z', 'passwords_differ'));
+				$this->Account->AccountPassword->invalidate('password', __d('z', 'passwords_must_match'), true);
+				$this->Account->AccountPassword->invalidate('password_confirm', __d('z', 'passwords_must_match'), true);
 				return;
 			}
 			$result = $this->Account->AccountToken->find('first', array(
 				'conditions' => array(
 					'AccountToken.token' => $token,
-					'Account.email' => $email,
+					//'AccountPassword.email' => $email,
 					'AccountToken.purpose' => PLUGIN_Z_TOKEN_RESET_CONFIRM
 					)
 				));
 			if ( empty($result) ) {
-				$this->Session->setFlash(__d('z', 'Token verification failed.'));
-				$this->Account->AccountToken->invalidate('token', __d('z', 'Missing a correct token.'), true);
+				$this->Session->setFlash(__d('z', 'token_verify_fail'));
+				$this->Account->AccountToken->invalidate('token', __d('z', 'token_incorrect'), true);
 				return;
 			}
 			$token_id = $result['AccountToken']['id'];
@@ -613,22 +639,27 @@ class AccountsController extends ZAppController {
 			));
 			if ( empty($result) ) {
 				// something is terminally wrong
-				$this->Session->setFlash(__d('z', 'Retrieval of user record during password update failed.'));
+				$this->Session->setFlash(__d('z', 'internal_error_password_retrieval_failed'));
+				return;
+			}
+			if ( $result['AccountPassword']['email'] != $email ) {
+				$this->Session->setFlash(__d('z', 'token_verify_fail'));
+				$this->Account->AccountPassword->invalidate('email', __d('z', 'email_incorrect'), true);
 				return;
 			}
 			$result['AccountPassword']['password'] = $password1;
 			//unset($result['AccountPassword']['salt']);
 			if ( $this->Account->AccountPassword->save($result) ) {
 				$this->Account->AccountToken->delete($token_id);
-				$this->Session->setFlash(__d('z', 'User password was successfully changed.'));
+				$this->Session->setFlash(__d('z', 'password_change_success'));
 				$this->redirect(array('action' => 'login'));
 			} else {
-				$this->Session->setFlash(__d('z', 'Password update failed.'));
+				$this->Session->setFlash(__d('z', 'password_change_fail'));
 			}
 		} else {
 			if (isset($this->passedArgs['t']) && isset($this->passedArgs['n'])){
 				$this->passedArgs = Sanitize::clean($this->passedArgs, array('encode' => false));
-				$this->request->data['Account']['email'] = $this->passedArgs['n'];
+				$this->request->data['AccountPassword']['email'] = $this->passedArgs['n'];
 				$this->request->data['AccountToken']['token'] = $this->passedArgs['t'];
 			}
 		}

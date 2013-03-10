@@ -6,9 +6,9 @@
 			<?php echo h($Account['Account']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __d('z', 'Email'); ?></dt>
+		<dt><?php echo __d('z', 'Alias'); ?></dt>
 		<dd>
-			<?php echo h($Account['Account']['email']); ?>
+			<?php echo h($Account['Account']['alias']); echo ' ('; echo h($Account['Account']['slug']); echo ')'; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __d('z', 'Active'); ?></dt>
@@ -38,6 +38,10 @@
 		<dd>
 	<?php echo $Account['AccountPassword']['account_id']; ?>
 &nbsp;</dd>
+		<dt><?php echo __d('z', 'Email'); ?></dt>
+		<dd>
+			<?php echo h($Account['AccountPassword']['email']); ?>
+		</dd>
 		<dt><?php echo __d('z', 'Password'); ?></dt>
 		<dd>
 	<?php echo String::truncate($Account['AccountPassword']['password'], 30); ?>
@@ -106,7 +110,7 @@
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Edit'), array('action' => 'edit', $Account['Account']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('action' => 'delete', $Account['Account']['id']), null, __d('z', 'Are you sure you want to delete # %s?', $Account['Account']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__d('z', 'Delete'), array('action' => 'delete', $this->Form->value('Account.id')), null, __d('z', 'Are you sure you want to permanently delete account "%s" (#%s)?', $Account['Account']['alias'], $Account['Account']['id'])); ?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Accounts'), array('action' => 'accounts')); ?> </li>
 		<li><?php echo $this->Html->link(__d('z', 'New Account'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__d('z', 'Tokens'), array('action' => 'tokens')); ?> </li>

@@ -1,3 +1,25 @@
+1.0.0	Important! The db schema has changed!
+
+	This is the release that is now live.
+	Many small changes went into it but nothing
+	so much ground-breaking, just usig it in 
+	a real system helps with making it useful :)
+
+0.7.0	Important! The db schema has changed!
+
+	I give up on the idea to not use a user name. For
+	one, you do not always get an e-mail address from
+	third parties. For another, the users seem perplexed
+	by the idea of not having a user name from the start.
+	We shall be more conventional from now on.
+
+	E-mail is a part of the password identification
+	table as the one means of authentication we control.
+	The user name is the main attribute of the account
+	(the user id stays as the primary key). The user view
+	will include both the user name and a slug so we can
+	have uniform addressing throughout the application.
+
 0.6.0	Important! The db schema has changed!
 
 	In this version we move to the multiple records for

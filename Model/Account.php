@@ -5,39 +5,63 @@ App::uses('ZAppModel', 'Z.Model');
 class Account extends ZAppModel {
 	public $validationDomain = 'z';
 	public $useTable='z_accounts';
-	public $displayField = 'email';
+	public $displayField = 'alias';
 	public $actsAs = array(
 		'Z.RandomId' => array(
 			'id_field' => 'id',
 			'id_length' => 19
 		),
+		'Slugged' => array(
+                        'unique' => true,
+                        'label' => 'alias',
+			'overwrite' => false,
+			'mode' => 'slug',
+			'case' => 'low'
+                        ),
+
 	);
 
 	public $validate = array(
-		'maxLength' => array(
-			'rule'    => array('maxLength', 255),
-			'message' => 'email_max_length %d'
-		),
-		'minLength' => array(
-			'rule'    => array('minLength', 5),
-			'message' => 'email_min_length %d'
-		),
-		'email' => array(
-			'email' => array(
-				'rule' => array('email'),
-				'message' => 'email_need_valid_email',
-				'allowEmpty' => false,
-				'required' => true,
+		'alias' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		'unique' => array(
-				'rule' => 'isUnique',
+			'minlength' => array(
+				'rule' => array('minlength', 4),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'unique' => array(
+					'rule' => 'isUnique',
+					'required' => true,
+					'message' => 'profile_name_already_exists'
+			),
+			'alphanumeric' => array(
+				'rule' => 'alphaNumeric',
 				'required' => true,
-				'message' => 'email_already_registered'
 			),
 		),
 	);
 
 	public $hasMany = array(
+		'AccountToken' => array(
+			'className' => 'Z.AccountToken',
+			'foreignKey' => 'account_id',
+			//'conditions' => '',
+			//'fields' => '',
+			//'order' => '',
+			//'order' => array('Visit.created' => 'desc'),
+			//'limit' => '1',
+			'dependent'    => true
+		),
 		'AccountLogin' => array(
 			'className' => 'Z.AccountLogin',
 			'foreignKey' => false,
@@ -49,16 +73,6 @@ class Account extends ZAppModel {
 			'recursive' => null,
 			'dependent'    => false
 		),
-		'AccountToken' => array(
-			'className' => 'Z.AccountToken',
-			'foreignKey' => 'account_id',
-			//'conditions' => '',
-			//'fields' => '',
-			//'order' => '',
-			//'order' => array('Visit.created' => 'desc'),
-			//'limit' => '1',
-			'dependent'    => true
-		)
 	);
 	public $hasOne = array(
 		'AccountPassword' => array(
@@ -111,7 +125,7 @@ class Account extends ZAppModel {
 			);
 		//debug($results);
 		foreach ($results as $i => $row) {
-			$query['conditions'] = array('AccountLogin.email' => $row['Account']['email']);
+			$query['conditions'] = array('AccountLogin.email' => $row['AccountPassword']['email']);
 			$accesses = $this->AccountLogin->find('all', $query);
 			foreach ($accesses as $rowIndex => $subRow) {
 				$access = $subRow['AccountLogin'];

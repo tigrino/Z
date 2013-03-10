@@ -3,7 +3,7 @@ Hello and thank you for using <?php echo $sitename; ?>!
 This email has been sent from <?php echo $fromurl; ?> 
 
 You have received this email because this email address
-was used during registration for our website and recently
+was used during registration at our website and recently
 someone (possibly you) requested to reset the password
 to your account.
 If you did not request a password reset, please disregard this

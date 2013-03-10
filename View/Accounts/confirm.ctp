@@ -7,9 +7,10 @@ $this->Html->addCrumb('Confirm', '/z/accounts/confirm');
 	<fieldset>
 		<legend><?php echo __d('z', 'Confirm Password Reset'); ?></legend>
 	<?php
-		echo $this->Form->input('email',
+		echo $this->Form->input('AccountPassword.email',
 			array(
 				'label' => __d('z', 'label_email'),
+				'div' => 'required'
 			)
 		);
 		echo $this->Form->input('AccountToken.token',
@@ -44,7 +45,6 @@ $this->Html->addCrumb('Confirm', '/z/accounts/confirm');
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Reset account'), array('action' => 'reset'));?></li>
-		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('/z/js/jquery.min'); ?>

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Z Authentication Plugin for CakePHP\n"
-"POT-Creation-Date: 2012-10-13 21:17+0000\n"
+"POT-Creation-Date: 2013-02-18 19:22+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Albert Zenkoff <albert@zenkoff.com>\n"
 "Language-Team: Albert 'Tigr' Zenkoff <albert@tigr.net>\n"
@@ -16,180 +16,185 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Controller/AccountsController.php:36;142
+#: Controller/AccountsController.php:36;156
 msgid "action_requires_login"
 msgstr "The requested action requires login."
 
-#: Controller/AccountsController.php:78
+#: Controller/AccountsController.php:102
 msgid "logged_in"
 msgstr "Logged in"
 
-#: Controller/AccountsController.php:123
+#: Controller/AccountsController.php:137
 msgid "incorrect_credentials"
 msgstr "User name or password is incorrect."
 
-#: Controller/AccountsController.php:131
+#: Controller/AccountsController.php:145
 msgid "logged_out"
 msgstr "Logged out."
 
-#: Controller/AccountsController.php:173
+#: Controller/AccountsController.php:187
 msgid "your_account_deleted_success"
 msgstr "Your account was successfully deleted. Good-bye!"
 
-#: Controller/AccountsController.php:184
+#: Controller/AccountsController.php:197
 msgid "not_logged_in_reset_password"
 msgstr "You are not logged in. Please, use this form to reset your password."
 
-#: Controller/AccountsController.php:196;215
+#: Controller/AccountsController.php:208;229
 msgid "credentials_mismatch_logout"
 msgstr "The user name or password mismatch. You have been logged out for security reasons."
 
-#: Controller/AccountsController.php:203;204
+#: Controller/AccountsController.php:215;216;310;311;618;619
 msgid "passwords_must_match"
 msgstr "The passwords must match."
 
-#: Controller/AccountsController.php:206
+#: Controller/AccountsController.php:218
 msgid "passwords_do_not_match"
 msgstr "The passwords do not match."
 
-#: Controller/AccountsController.php:230
+#: Controller/AccountsController.php:244
 msgid "bad_password_choose_another"
 msgstr "The password is not allowed. Please, choose a different password."
 
-#: Controller/AccountsController.php:241
+#: Controller/AccountsController.php:257
 msgid "password_update_success"
 msgstr "Password successfully updated."
 
-#: Controller/AccountsController.php:245
+#: Controller/AccountsController.php:261
 msgid "password_not_saved_problem"
 msgstr "Password was not saved. Please, try again."
 
-#: Controller/AccountsController.php:273;275
+#: Controller/AccountsController.php:289;508
 msgid "incorrect_captcha_try_again"
 msgstr "The CAPTCHA code was incorrect. Please, try again."
 
-#: Controller/AccountsController.php:284
+#: Controller/AccountsController.php:291;510
+#: View/Accounts/register.ctp:50
+#: View/Accounts/reset.ctp:41
+msgid "captcha_incorrect"
+msgstr "The CAPTCHA code you entered is incorrect. Please, try again."
+
+#: Controller/AccountsController.php:300
 msgid "tos_agreement_confirm"
 msgstr "Please, confirm your agreement to the Terms of Service."
 
-#: Controller/AccountsController.php:294;295
-msgid "Passwords must match"
-msgstr "Passwords must match"
+#: Controller/AccountsController.php:312
+msgid "passwords_did_not_match"
+msgstr "The passwords do not match."
 
-#: Controller/AccountsController.php:296
-msgid "The passwords did not match up."
-msgstr "The passwords did not match up."
-
-#: Controller/AccountsController.php:310
-#: Controller/ControlsController.php:97;127
-msgid "Registration data validation failure. Please, check your input."
+#: Controller/AccountsController.php:326
+msgid "registration_data_validation_failure"
 msgstr "Registration data validation failure. Please, check your input."
 
-#: Controller/AccountsController.php:353
-msgid "User created successfully. Please check your email for a validation link."
-msgstr "User created successfully. Please check your email for a validation link."
+#: Controller/AccountsController.php:371
+msgid "user_created_successfully_check_email"
+msgstr "The user was created successfully. Please, check your email for a validation link. The email may take a while to arrive."
 
-#: Controller/AccountsController.php:357;361;365;434
-msgid "The user could not be saved. Please, try again."
-msgstr "The user could not be saved. Please, try again."
+#: Controller/AccountsController.php:375;379;383;473
+msgid "user_not_saved"
+msgstr "User could not be saved. Please, try again."
 
-#: Controller/AccountsController.php:438
-msgid "Your e-mail was successfully verified."
-msgstr "Your e-mail was successfully verified."
+#: Controller/AccountsController.php:477
+msgid "email_verify_success"
+msgstr "Your email address was successfully verified. Please, log in."
 
-#: Controller/AccountsController.php:441
-msgid "User e-mail verification failed."
-msgstr "User e-mail verification failed."
+#: Controller/AccountsController.php:480;483
+msgid "email_verify_fail"
+msgstr "Email verification has failed. Please, check your input and try again."
 
-#: Controller/AccountsController.php:452
-msgid "You are already logged in, use this form to change your password."
-msgstr "You are already logged in, use this form to change your password."
+#: Controller/AccountsController.php:494
+msgid "already_logged_in_change_password"
+msgstr "You are already logged in. Please, use this form to change your password."
 
-#: Controller/AccountsController.php:466
-msgid "The CAPTCHA code is incorrect. Please, try again."
-msgstr "The CAPTCHA code is incorrect. Please, try again."
-
-#: Controller/AccountsController.php:468
-msgid "CAPTCHA code is incorrect"
-msgstr "CAPTCHA code is incorrect"
-
-#: Controller/AccountsController.php:481;483
+#: Controller/AccountsController.php:523;525
 msgid "email_not_registered"
 msgstr "This e-mail address is not registered."
 
-#: Controller/AccountsController.php:529
-msgid "Password reset request created successfully. Please check your email."
-msgstr "Password reset request created successfully. Please check your email."
-
-#: Controller/AccountsController.php:532
-msgid "The request could not be approved. Please, try again."
-msgstr "The request could not be approved. Please, try again."
-
-#: Controller/AccountsController.php:553;558;563;568
-msgid "Please, enter values to all required fields."
-msgstr "Please, enter values to all required fields."
-
-#: Controller/AccountsController.php:554;559;564;569
-msgid "Missing a required value."
-msgstr "Missing a required value."
-
 #: Controller/AccountsController.php:573
-msgid "The passwords are different."
+msgid "reset_success_check_email"
+msgstr "The password reset request was created successfully. Please, check your email for a validation link. The email may take a while to arrive."
+
+#: Controller/AccountsController.php:576
+msgid "reset_request_fail"
+msgstr "The password reset request was not approved. Please, check your input and try again."
+
+#: Controller/AccountsController.php:597;602;607;612
+msgid "missing_required_field"
+msgstr "Missing a required value. Please, make sure all required fields are filled in and try again."
+
+#: Controller/AccountsController.php:598;603;608;613
+msgid "required_field"
+msgstr "This field is required. Please, enter the required data."
+
+#: Controller/AccountsController.php:617
+msgid "passwords_differ"
 msgstr "The passwords are different."
 
-#: Controller/AccountsController.php:574;575
-msgid "Passwords must match."
-msgstr "Passwords must match."
+#: Controller/AccountsController.php:630;646
+msgid "token_verify_fail"
+msgstr "Token verification has failed. Please, check your input and try again."
 
-#: Controller/AccountsController.php:586
-msgid "Token verification failed."
-msgstr "Token verification failed."
+#: Controller/AccountsController.php:631
+msgid "token_incorrect"
+msgstr "The token you entered is incorrect."
 
-#: Controller/AccountsController.php:587
-msgid "Missing a correct token."
-msgstr "Missing a correct token."
+#: Controller/AccountsController.php:642
+msgid "internal_error_password_retrieval_failed"
+msgstr "Internal error. The password retrieval has failed during an update. Please, resubmit your date once more."
 
-#: Controller/AccountsController.php:598
-msgid "Retrieval of user record during password update failed."
-msgstr "Retrieval of user record during password update failed."
+#: Controller/AccountsController.php:647
+msgid "email_incorrect"
+msgstr "The email you entered is incorrect."
 
-#: Controller/AccountsController.php:605
-msgid "User password was successfully changed."
-msgstr "User password was successfully changed."
+#: Controller/AccountsController.php:654
+msgid "password_change_success"
+msgstr "Password successfully updated."
 
-#: Controller/AccountsController.php:608
-msgid "Password update failed."
-msgstr "Password update failed."
+#: Controller/AccountsController.php:657
+msgid "password_change_fail"
+msgstr "Password change did not succeed. Please, try again."
 
-#: Controller/AccountsController.php:652
+#: Controller/AccountsController.php:720
 msgid "bots_are_not_welcome"
 msgstr "We do not accept registrations from bots."
 
-#: Controller/ControlsController.php:41
+#: Controller/ControlsController.php:53
 msgid "action_requires_reauthorization"
 msgstr "The requested action requires re-authorization."
 
-#: Controller/ControlsController.php:79;116;154
+#: Controller/ControlsController.php:164;206;246
 msgid "account_invalid"
 msgstr "Invalid account."
 
-#: Controller/ControlsController.php:103;133
+#: Controller/ControlsController.php:187;220
+msgid "Registration data validation failure. Please, check your input."
+msgstr "Registration data validation failure. Please, check your input."
+
+#: Controller/ControlsController.php:193;226;295
 msgid "account_saved_success"
 msgstr "Account was successfully saved."
 
-#: Controller/ControlsController.php:107;137
+#: Controller/ControlsController.php:197;230;301
 msgid "account_save_problem"
 msgstr "Account was not saved. Please, try again."
 
-#: Controller/ControlsController.php:158
+#: Controller/ControlsController.php:250
 msgid "account_deleted"
 msgstr "Account was successfully deleted."
 
-#: Controller/ControlsController.php:162
+#: Controller/ControlsController.php:254
 msgid "account_delete_problem"
 msgstr "There was a problem saving the account. Please, try again."
 
-#: Controller/ZAppController.php:77
+#: Controller/ControlsController.php:311
+msgid "This function is disabled in the code."
+msgstr "This function is disabled in the code."
+
+#: Controller/ControlsController.php:318
+msgid "All users destroyed."
+msgstr "All users destroyed."
+
+#: Controller/ZAppController.php:59
 msgid "authentication_tokens_mismatch"
 msgstr "Authentication tokens mismatch. Please, try again."
 
@@ -198,272 +203,326 @@ msgid "Confirm Password Reset"
 msgstr "Confirm Password Reset"
 
 #: View/Accounts/confirm.ctp:12
-#: View/Accounts/login.ctp:17
-#: View/Accounts/register.ctp:10
-#: View/Accounts/reset.ctp:12
+#: View/Accounts/register.ctp:13
+#: View/Accounts/reset.ctp:15
 #: View/Accounts/verify.ctp:12
-#: View/Controls/add.ctp:8
-#: View/Controls/edit.ctp:14
+#: View/Accounts/view.ctp:27
+#: View/Controls/add.ctp:13
+#: View/Controls/edit.ctp:19
+#: View/Controls/init.ctp:13
 msgid "label_email"
 msgstr "Email"
 
-#: View/Accounts/confirm.ctp:17
-#: View/Accounts/verify.ctp:17
+#: View/Accounts/confirm.ctp:18
+#: View/Accounts/verify.ctp:18
 msgid "label_token"
 msgstr "Token"
 
-#: View/Accounts/confirm.ctp:22
-#: View/Accounts/login.ctp:22
-#: View/Accounts/register.ctp:15
-#: View/Controls/add.ctp:13
+#: View/Accounts/confirm.ctp:23
+#: View/Accounts/login.ctp:23
+#: View/Accounts/register.ctp:21
+#: View/Controls/add.ctp:19
+#: View/Controls/init.ctp:19
 msgid "label_password"
 msgstr "Password"
 
-#: View/Accounts/confirm.ctp:27
-#: View/Accounts/register.ctp:19
+#: View/Accounts/confirm.ctp:28
+#: View/Accounts/password.ctp:30
+#: View/Accounts/register.ctp:25
+#: View/Controls/init.ctp:24
 msgid "label_password_confirm"
-msgstr "Confirm password"
+msgstr "Confirm new password"
 
-#: View/Accounts/confirm.ctp:35
-#: View/Accounts/login.ctp:29
-#: View/Accounts/register.ctp:27
-#: View/Accounts/reset.ctp:19
-#: View/Accounts/verify.ctp:24
+#: View/Accounts/confirm.ctp:36
+#: View/Accounts/login.ctp:31
+#: View/Accounts/register.ctp:33
+#: View/Accounts/reset.ctp:24
+#: View/Accounts/verify.ctp:25
+#: View/Controls/kill.ctp:17
 msgid "Please enter something into the following field if you are not human:"
 msgstr "Please enter something into the following field if you are not human:"
 
-#: View/Accounts/confirm.ctp:40
-#: View/Accounts/login.ctp:34
-#: View/Accounts/password.ctp:31
-#: View/Accounts/register.ctp:57
-#: View/Accounts/reset.ctp:41
-#: View/Accounts/verify.ctp:29
-#: View/Controls/add.ctp:36
-#: View/Controls/edit.ctp:39
+#: View/Accounts/confirm.ctp:41
+#: View/Accounts/login.ctp:36
+#: View/Accounts/password.ctp:34
+#: View/Accounts/register.ctp:63
+#: View/Accounts/reset.ctp:46
+#: View/Accounts/verify.ctp:30
+#: View/Controls/add.ctp:42
+#: View/Controls/edit.ctp:45
+#: View/Controls/init.ctp:38
 msgid "Submit"
 msgstr "Submit"
 
-#: View/Accounts/confirm.ctp:43
-#: View/Accounts/login.ctp:37
-#: View/Accounts/password.ctp:34
-#: View/Accounts/register.ctp:60
-#: View/Accounts/reset.ctp:44
-#: View/Accounts/verify.ctp:32
-#: View/Accounts/view.ctp:52
-#: View/Controls/accounts.ctp:12;50
-#: View/Controls/add.ctp:39
+#: View/Accounts/confirm.ctp:44
+#: View/Accounts/login.ctp:39
+#: View/Accounts/password.ctp:37
+#: View/Accounts/register.ctp:66
+#: View/Accounts/reset.ctp:49
+#: View/Accounts/verify.ctp:33
+#: View/Accounts/view.ctp:51
+#: View/Controls/accounts.ctp:13;53
+#: View/Controls/add.ctp:45
 #: View/Controls/cryptotest.ctp:106
-#: View/Controls/dashboard.ctp:11
-#: View/Controls/edit.ctp:42
+#: View/Controls/dashboard.ctp:29
+#: View/Controls/edit.ctp:48
+#: View/Controls/init.ctp:41
+#: View/Controls/kill.ctp:25
 #: View/Controls/tokens.ctp:13;49
-#: View/Controls/view.ctp:106;127
+#: View/Controls/view.ctp:110;131
 msgid "Actions"
 msgstr "Actions"
 
-#: View/Accounts/confirm.ctp:45
+#: View/Accounts/confirm.ctp:46
 #: View/Accounts/login.ctp:13
-#: View/Accounts/register.ctp:62
-#: View/Accounts/reset.ctp:46
-#: View/Accounts/verify.ctp:34
+#: View/Accounts/register.ctp:68
+#: View/Accounts/reset.ctp:51
+#: View/Accounts/verify.ctp:35
 msgid "Login"
 msgstr "Login"
 
-#: View/Accounts/confirm.ctp:46
-#: View/Accounts/login.ctp:40
+#: View/Accounts/confirm.ctp:47
+#: View/Accounts/login.ctp:42
 msgid "Reset account"
 msgstr "Reset account"
 
-#: View/Accounts/login.ctp:39
+#: View/Accounts/confirm.ctp:48
+#: View/Accounts/login.ctp:45
+#: View/Accounts/register.ctp:71
+#: View/Accounts/reset.ctp:53
+#: View/Accounts/verify.ctp:37
+msgid "User Agreement"
+msgstr "User Agreement"
+
+#: View/Accounts/login.ctp:17
+msgid "label_user_alias_or_email"
+msgstr "User name or e-mail address"
+
+#: View/Accounts/login.ctp:41
 #: View/Accounts/register.ctp:8
-#: View/Accounts/verify.ctp:35
+#: View/Accounts/verify.ctp:36
 msgid "Register"
 msgstr "Register"
 
-#: View/Accounts/login.ctp:41
-#: View/Accounts/register.ctp:63
+#: View/Accounts/login.ctp:43
+#: View/Accounts/register.ctp:69
 #: View/Accounts/verify.ctp:8
 msgid "Verify e-mail"
 msgstr "Verify e-mail"
 
-#: View/Accounts/login.ctp:42
-#: View/Accounts/reset.ctp:47
+#: View/Accounts/login.ctp:44
+#: View/Accounts/reset.ctp:52
 msgid "Confirm password"
 msgstr "Confirm password"
 
 #: View/Accounts/password.ctp:9
-#: View/Accounts/view.ctp:54
 msgid "Change Password"
 msgstr "Change Password"
 
-#: View/Accounts/password.ctp:37
+#: View/Accounts/password.ctp:18
+msgid "label_old_password"
+msgstr "Old password"
+
+#: View/Accounts/password.ctp:24
+msgid "label_new_password"
+msgstr "New password"
+
+#: View/Accounts/password.ctp:40
 msgid "View Account"
 msgstr "View Account"
 
-#: View/Accounts/password.ctp:38
-#: View/Accounts/view.ctp:55
-#: View/Controls/accounts.ctp:29
-#: View/Controls/edit.ctp:45
+#: View/Accounts/password.ctp:41
+#: View/Controls/accounts.ctp:32
+#: View/Controls/edit.ctp:51
 #: View/Controls/tokens.ctp:28
-#: View/Controls/view.ctp:109;141
+#: View/Controls/view.ctp:113;145
 msgid "Delete"
 msgstr "Delete"
 
-#: View/Accounts/password.ctp:38
-#: View/Accounts/view.ctp:55
+#: View/Accounts/password.ctp:41
+#: View/Accounts/view.ctp:54
 msgid "Are you sure you want to delete your user account %s?"
 msgstr "Are you sure you want to delete your user account %s?"
 
-#: View/Accounts/password.ctp:39
-#: View/Accounts/view.ctp:56
-#: View/Controls/accounts.ctp:55
+#: View/Accounts/password.ctp:42
+#: View/Accounts/view.ctp:55
+#: View/Controls/accounts.ctp:59
 msgid "Logout"
 msgstr "Logout"
 
-#: View/Accounts/register.ctp:30
-#: View/Accounts/reset.ctp:22
+#: View/Accounts/register.ctp:10
+#: View/Controls/add.ctp:8
+#: View/Controls/edit.ctp:14
+#: View/Controls/init.ctp:8
+msgid "label_user_alias"
+msgstr "User name"
+
+#: View/Accounts/register.ctp:36
+#: View/Accounts/reset.ctp:27
 msgid "Enter the given code: "
 msgstr "Enter the given code: "
 
-#: View/Accounts/register.ctp:36
-#: View/Accounts/reset.ctp:28
+#: View/Accounts/register.ctp:42
+#: View/Accounts/reset.ctp:33
 msgid "into the following field:"
 msgstr "into the following field:"
 
-#: View/Accounts/register.ctp:44
-#: View/Accounts/reset.ctp:36
-msgid "The validation of the CAPTCHA code did not succeed."
-msgstr "The validation of the CAPTCHA code did not succeed."
-
-#: View/Accounts/register.ctp:51
+#: View/Accounts/register.ctp:57
+#: View/Controls/init.ctp:32
 msgid "I confirm that I agree to "
 msgstr "I confirm that I agree to "
 
-#: View/Accounts/register.ctp:51
-#: View/Controls/add.ctp:30
-msgid "the Terms of Service and User Agreement"
-msgstr "the Terms of Service and User Agreement"
+#: View/Accounts/register.ctp:57
+#: View/Controls/init.ctp:32
+msgid "the User Agreement and consent to the use of cookies"
+msgstr "the User Agreement and consent to the use of cookies"
 
-#: View/Accounts/register.ctp:52
-#: View/Controls/add.ctp:31
+#: View/Accounts/register.ctp:58
+#: View/Controls/add.ctp:37
+#: View/Controls/init.ctp:33
 msgid "The acceptance is mandatory."
 msgstr "The acceptance is mandatory."
 
-#: View/Accounts/register.ctp:64
+#: View/Accounts/register.ctp:70
 #: View/Accounts/reset.ctp:8
 msgid "Reset password"
 msgstr "Reset password"
 
+#: View/Accounts/reset.ctp:10
+msgid "You can only reset a password when you registered with your e-mail here. If you registered with some other means, this form will not work for you."
+msgstr "You can only reset a password when you registered with your e-mail here. If you registered with some other means, this form will not work for you."
+
 #: View/Accounts/view.ctp:6
 #: View/Controls/view.ctp:2
 msgid "User"
-msgstr "User Account"
+msgstr "Your account"
 
-#: View/Accounts/view.ctp:14
-#: View/Controls/view.ctp:4;33;58;120
-msgid "Id"
-msgstr "Id"
+#: View/Accounts/view.ctp:15
+msgid "get your gravatar at gravatar.com"
+msgstr "This image is your gravatar. You can get or change your gravatar at the website gravatar.com ..."
 
-#: View/Accounts/view.ctp:19
-#: View/Controls/view.ctp:19;45;94;125
+#: View/Accounts/view.ctp:21
+#: View/Controls/view.ctp:9
+msgid "Alias"
+msgstr "User name"
+
+#: View/Accounts/view.ctp:33
+#: View/Controls/view.ctp:19;49;98;129
 msgid "Created"
 msgstr "Created"
 
-#: View/Accounts/view.ctp:24
-#: View/Controls/view.ctp:24;49;98;126
+#: View/Accounts/view.ctp:38
+#: View/Controls/view.ctp:24;53;102;130
 msgid "Modified"
 msgstr "Modified"
 
-#: View/Accounts/view.ctp:29
-msgid "Last Login"
-msgstr "Last Login"
+#: View/Accounts/view.ctp:43
+msgid "Last login"
+msgstr "Last login"
 
-#: View/Accounts/view.ctp:34;44
-msgid "From"
-msgstr "From"
+#: View/Accounts/view.ctp:53
+msgid "Change password"
+msgstr "Change password"
 
-#: View/Accounts/view.ctp:39
-msgid "Last Failed Login"
-msgstr "Last Failed Login"
+#: View/Accounts/view.ctp:54
+msgid "Delete your account"
+msgstr "Delete your account"
 
-#: View/Accounts/view.ctp:58
-msgid "Admin Panel"
-msgstr "Admin Panel"
+#: View/Accounts/view.ctp:57
+msgid "Admin panel"
+msgstr "Admin panel"
 
 #: View/Controls/accounts.ctp:2
 msgid "Accounts List"
 msgstr "Accounts List"
 
-#: View/Controls/accounts.ctp:27
+#: View/Controls/accounts.ctp:30
 msgid "View"
 msgstr "View"
 
-#: View/Controls/accounts.ctp:28
-#: View/Controls/view.ctp:108
+#: View/Controls/accounts.ctp:31
+#: View/Controls/view.ctp:112
 msgid "Edit"
 msgstr "Edit"
 
-#: View/Controls/accounts.ctp:29
+#: View/Controls/accounts.ctp:32
 #: View/Controls/tokens.ctp:28
-#: View/Controls/view.ctp:109;141
+#: View/Controls/view.ctp:145
 msgid "Are you sure you want to delete # %s?"
 msgstr "Are you sure you want to delete # %s?"
 
-#: View/Controls/accounts.ctp:37
+#: View/Controls/accounts.ctp:40
 #: View/Controls/tokens.ctp:36
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 
-#: View/Controls/accounts.ctp:43
+#: View/Controls/accounts.ctp:46
 #: View/Controls/tokens.ctp:42
 msgid "previous"
 msgstr "previous"
 
-#: View/Controls/accounts.ctp:45
+#: View/Controls/accounts.ctp:48
 #: View/Controls/tokens.ctp:44
 msgid "next"
 msgstr "next"
 
-#: View/Controls/accounts.ctp:52
-#: View/Controls/view.ctp:111
+#: View/Controls/accounts.ctp:55
+#: View/Controls/cryptotest.ctp:108
+#: View/Controls/dashboard.ctp:31
+#: View/Controls/init.ctp:43
+#: View/Controls/kill.ctp:27
+#: View/Controls/tokens.ctp:51
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: View/Controls/accounts.ctp:56
+#: View/Controls/view.ctp:115
 msgid "New Account"
 msgstr "New Account"
 
-#: View/Controls/accounts.ctp:53
-#: View/Controls/add.ctp:43
+#: View/Controls/accounts.ctp:57
+#: View/Controls/add.ctp:49
+#: View/Controls/dashboard.ctp:33
 #: View/Controls/tokens.ctp:2
-#: View/Controls/view.ctp:112;116
+#: View/Controls/view.ctp:116;120
 msgid "Tokens"
 msgstr "Tokens"
 
-#: View/Controls/accounts.ctp:54
-#: View/Controls/cryptotest.ctp:108
-msgid "Dashboard"
-msgstr "Dashboard"
+#: View/Controls/accounts.ctp:58
+#: View/Controls/dashboard.ctp:35
+msgid "Kill all users"
+msgstr "Kill all users"
 
 #: View/Controls/add.ctp:4
 msgid "Add Account"
 msgstr "Add Account"
 
-#: View/Controls/add.ctp:18
-#: View/Controls/edit.ctp:24
+#: View/Controls/add.ctp:24
+#: View/Controls/edit.ctp:30
 msgid "label_activate"
 msgstr "Active"
 
-#: View/Controls/add.ctp:23
-#: View/Controls/edit.ctp:29
+#: View/Controls/add.ctp:29
+#: View/Controls/edit.ctp:35
 msgid "label_user_admin"
 msgstr "User Administrator"
 
-#: View/Controls/add.ctp:30
+#: View/Controls/add.ctp:36
 msgid "I confirm that the user agrees to "
 msgstr "I confirm that the user agrees to "
 
-#: View/Controls/add.ctp:42
+#: View/Controls/add.ctp:36
+msgid "the Terms of Service and User Agreement"
+msgstr "the Terms of Service and User Agreement"
+
+#: View/Controls/add.ctp:48
 #: View/Controls/cryptotest.ctp:109
-#: View/Controls/dashboard.ctp:14
-#: View/Controls/edit.ctp:46
-#: View/Controls/tokens.ctp:51
-#: View/Controls/view.ctp:110
+#: View/Controls/dashboard.ctp:32
+#: View/Controls/edit.ctp:52
+#: View/Controls/init.ctp:44
+#: View/Controls/kill.ctp:28
+#: View/Controls/tokens.ctp:52
+#: View/Controls/view.ctp:114
 msgid "Accounts"
 msgstr "Accounts"
 
@@ -471,11 +530,11 @@ msgstr "Accounts"
 msgid "Accounts Control Dashboard - Cryptography Tests"
 msgstr "Accounts Control Dashboard - Cryptography Tests"
 
-#: View/Controls/dashboard.ctp:5
+#: View/Controls/dashboard.ctp:22
 msgid "Settings and Dashboard"
 msgstr "Settings and Dashboard"
 
-#: View/Controls/dashboard.ctp:13
+#: View/Controls/dashboard.ctp:34
 msgid "Cryptography tests"
 msgstr "Cryptography tests"
 
@@ -483,113 +542,181 @@ msgstr "Cryptography tests"
 msgid "Edit Account"
 msgstr "Edit Account"
 
-#: View/Controls/edit.ctp:19
+#: View/Controls/edit.ctp:24
 msgid "label_password_new_or_empty"
 msgstr "New password (or leave empty for no change)"
 
-#: View/Controls/edit.ctp:34
+#: View/Controls/edit.ctp:40
 msgid "label_user_deleted"
 msgstr "User Deleted"
 
-#: View/Controls/edit.ctp:45
-msgid "Are you sure you want to permanently delete accout # %s?"
-msgstr "Are you sure you want to permanently delete account # %s?"
+#: View/Controls/edit.ctp:51
+#: View/Controls/view.ctp:113
+msgid "Are you sure you want to permanently delete account \"%s\" (#%s)?"
+msgstr "Are you sure you want to permanently delete account \"%s\" (#%s)?"
 
-#: View/Controls/view.ctp:9
-msgid "Email"
-msgstr "Email"
+#: View/Controls/init.ctp:4
+msgid "Initialization: create Administrator user"
+msgstr "Initialization: create Administrator user"
+
+#: View/Controls/kill.ctp:2
+msgid "Destroy all user records? Action is not reversible!"
+msgstr "Destroy all user records? Action is not reversible!"
+
+#: View/Controls/kill.ctp:7
+msgid "Attention! You are about to delete all users from the system! "
+msgstr "Attention! You are about to delete all users from the system! "
+
+#: View/Controls/kill.ctp:8
+msgid "This action is not reversible! "
+msgstr "This action is not reversible! "
+
+#: View/Controls/kill.ctp:9
+msgid "This action will permanently delete every user account here, including administrators. "
+msgstr "This action will permanently delete every user account here, including administrators. "
+
+#: View/Controls/kill.ctp:10
+msgid "If you are totally sure that that is what you want, press the button and say good-bye to your users."
+msgstr "If you are totally sure that that is what you want, press the button and say good-bye to your users."
+
+#: View/Controls/kill.ctp:22
+msgid "Destroy all user accounts!"
+msgstr "Destroy all user accounts!"
+
+#: View/Controls/view.ctp:4;33;62;124
+msgid "Id"
+msgstr "Id"
 
 #: View/Controls/view.ctp:14
 msgid "Active"
 msgstr "Active"
 
-#: View/Controls/view.ctp:30;41
+#: View/Controls/view.ctp:30;45
 msgid "Password"
 msgstr "Password"
 
-#: View/Controls/view.ctp:37;62;121
+#: View/Controls/view.ctp:37;66;125
 msgid "Account Id"
 msgstr "Account Id"
 
-#: View/Controls/view.ctp:55
+#: View/Controls/view.ctp:41
+msgid "Email"
+msgstr "Email"
+
+#: View/Controls/view.ctp:59
 msgid "Flags"
 msgstr "Flags"
 
-#: View/Controls/view.ctp:66
+#: View/Controls/view.ctp:70
 msgid "User Admin"
 msgstr "User Admin"
 
-#: View/Controls/view.ctp:70
+#: View/Controls/view.ctp:74
 msgid "Agreement"
 msgstr "Agreement"
 
-#: View/Controls/view.ctp:74
+#: View/Controls/view.ctp:78
 msgid "Agreement Date"
 msgstr "Agreement Date"
 
-#: View/Controls/view.ctp:78
+#: View/Controls/view.ctp:82
 msgid "Email Verified"
 msgstr "Email Verified"
 
-#: View/Controls/view.ctp:82
+#: View/Controls/view.ctp:86
 msgid "Email Verified Date"
 msgstr "Email Verified Date"
 
-#: View/Controls/view.ctp:86
+#: View/Controls/view.ctp:90
 msgid "Deleted"
 msgstr "Deleted"
 
-#: View/Controls/view.ctp:90
+#: View/Controls/view.ctp:94
 msgid "Deleted Date"
 msgstr "Deleted Date"
 
-#: View/Controls/view.ctp:122
+#: View/Controls/view.ctp:126
 msgid "Token"
 msgstr "Token"
 
-#: View/Controls/view.ctp:123
+#: View/Controls/view.ctp:127
 msgid "Purpose"
 msgstr "Purpose"
 
-#: View/Controls/view.ctp:124
+#: View/Controls/view.ctp:128
 msgid "Expires"
 msgstr "Expires"
 
-#: View/Controls/view.ctp:150
+#: View/Controls/view.ctp:152
+msgid "Login access log"
+msgstr "Login access log"
+
+#: View/Controls/view.ctp:156
+msgid "Date"
+msgstr "Date"
+
+#: View/Controls/view.ctp:157
+msgid "From IP"
+msgstr "From IP"
+
+#: View/Controls/view.ctp:158
+msgid "Success"
+msgstr "Success"
+
+#: View/Controls/view.ctp:172
 msgid "New Account Token"
 msgstr "New Account Token"
 
-#: Model/Account.php:validation
-#: for field maxLength
-msgid "email_max_length %d"
-msgstr "The e-mail address must be less than %d characters long."
+#: View/Elements/password_strength_indicator.ctp:120
+msgid "Password strength: "
+msgstr "Password strength: "
 
 #: Model/Account.php:validation
-#: for field minLength
-msgid "email_min_length %d"
+#: for field alias
+#: Model/AccountToken.php:validation
+#: token
+msgid "notempty"
+msgstr "This field cannot be left empty."
+
+#: Model/Account.php:validation
+#: for field alias
+msgid "minlength"
 msgstr "The e-mail address must be at least %d characters long."
 
 #: Model/Account.php:validation
-#: for field email
-msgid "email_need_valid_email"
-msgstr "Please, enter a valid e-mail address."
+#: for field alias
+msgid "profile_name_already_exists"
+msgstr "The profile name already exists."
 
 #: Model/Account.php:validation
-#: for field email
-msgid "email_already_registered"
-msgstr "This e-mail address is already registered."
+#: for field alias
+msgid "alphanumeric"
+msgstr "This value may contain only alphabet characters and digits."
 
 #: Model/AccountFlag.php:validation
 #: for field agreement
 msgid "tos_agreement_required"
 msgstr "Your agreement to the Terms of Service is required."
 
-#: Model/AccountLogin.php:validation
-#: for field account_id
-#: Model/AccountToken.php:validation
-#: token
-msgid "notempty"
-msgstr "This field cannot be left empty."
+#: Model/AccountPassword.php:validation
+#: for field email
+msgid "email_need_valid_email"
+msgstr "Please, enter a valid e-mail address."
+
+#: Model/AccountPassword.php:validation
+#: for field email
+msgid "email_max_length %d"
+msgstr "The e-mail address must be less than %d characters long."
+
+#: Model/AccountPassword.php:validation
+#: for field email
+msgid "email_min_length %d"
+msgstr "The e-mail address must be at least %d characters long."
+
+#: Model/AccountPassword.php:validation
+#: for field email
+msgid "email_already_registered"
+msgstr "This e-mail address is already registered."
 
 #: Model/AccountPassword.php:validation
 #: for field password
@@ -615,6 +742,80 @@ msgstr "This password is too common. Please, choose another password."
 #: for field account_id;validation purpose
 msgid "numeric"
 msgstr "This value must be numeric."
+
+#~ msgid "The CAPTCHA code is incorrect. Please, try again."
+#~ msgstr "The CAPTCHA code is incorrect. Please, try again."
+
+#~ msgid "The validation of the CAPTCHA code did not succeed."
+#~ msgstr "The validation of the CAPTCHA code did not succeed."
+
+#~ msgid "User password was successfully changed."
+#~ msgstr "User password was successfully changed."
+
+#~ msgid "Password update failed."
+#~ msgstr "Password update failed."
+
+#~ msgid "Retrieval of user record during password update failed."
+#~ msgstr "Retrieval of user record during password update failed."
+
+#~ msgid "Token verification failed."
+#~ msgstr "Token verification failed."
+
+#~ msgid "Missing a correct email."
+#~ msgstr "Missing a correct email."
+
+#~ msgid "Passwords must match."
+#~ msgstr "Passwords must match."
+
+#~ msgid "Missing a correct token."
+#~ msgstr "Missing a correct token."
+
+#~ msgid "Please, enter values to all required fields."
+#~ msgstr "Please, enter values to all required fields."
+
+#~ msgid "The request could not be approved. Please, try again."
+#~ msgstr "The request could not be approved. Please, try again."
+
+#~ msgid "CAPTCHA code is incorrect"
+#~ msgstr "CAPTCHA code is incorrect"
+
+#~ msgid ""
+#~ "Password reset request created successfully. Please check your email. E-"
+#~ "mail may take a while to arrive."
+#~ msgstr ""
+#~ "Password reset request created successfully. Please check your email. E-"
+#~ "mail may take a while to arrive."
+
+#~ msgid "You are already logged in, use this form to change your password."
+#~ msgstr "You are already logged in, use this form to change your password."
+
+#~ msgid "The user could not be saved. Please, try again."
+#~ msgstr "The user could not be saved. Please, try again."
+
+#~ msgid "Your e-mail was successfully verified."
+#~ msgstr "Your e-mail was successfully verified."
+
+#~ msgid "User e-mail verification failed."
+#~ msgstr "User e-mail verification failed."
+
+#, fuzzy
+#~ msgid ""
+#~ "User created successfully. Please check your email for a validation link. "
+#~ "E-mail may take a while to arrive."
+#~ msgstr ""
+#~ "User created successfully. Please check your email for a validation link."
+
+#~ msgid "The passwords did not match up."
+#~ msgstr "The passwords did not match up."
+
+#~ msgid "Last Failed Login"
+#~ msgstr "Last Failed Login"
+
+#~ msgid "From"
+#~ msgstr "From"
+
+#~ msgid "label_alias"
+#~ msgstr "User name"
 
 #~ msgid "password_existential_fault_logout"
 #~ msgstr ""

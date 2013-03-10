@@ -1,6 +1,6 @@
+ - Allow user to change alias and e-mail
  - Correct PasswordHash to do comparisons with something else than '==' and in constant time
  - Normally we need to detect failures of the RNG... but we do not want to do statistical testing every time, do we?
- - Make SSL configurable (switch off/enforce/combined(like now))
  - Add a component for filtering and immediately comparing the length to return whether filtering affected an input string. This will make checking for invalid input characters and throwing errors easy. Otherwise "clean" may change your password and you would not know.
  - Make the login slowdown configurable from UI
  - Add capability (a button?) to clean up the old log entries for login attempts

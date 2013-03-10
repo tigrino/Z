@@ -6,11 +6,15 @@ $this->Html->addCrumb('Reset', '/z/accounts/reset');
 <?php echo $this->Form->create('Account');?>
 	<fieldset>
 		<legend><?php echo __d('z', 'Reset password'); ?></legend>
+		<p>
+		<?php echo __d('z', 'You can only reset a password when you registered with your e-mail here. If you registered with some other means, this form will not work for you.'); ?>
+		</p>
 	<?php
-		echo $this->Form->input('email',
+		echo $this->Form->input('AccountPassword.email',
 			array(
 				'label' => __d('z', 'label_email'),
 				'type' => 'email',
+				'div' => 'required'
 			)
 		);
 		echo $this->Form->hidden('ruhuman',
@@ -34,7 +38,7 @@ $this->Html->addCrumb('Reset', '/z/accounts/reset');
 				'autocomplete'=>'off',
 				'label'=> $captcha_label,
 				'class'=>'',
-				'error'=>__d('z', 'The validation of the CAPTCHA code did not succeed.',true)
+				'error'=>__d('z', 'captcha_incorrect',true)
 				)
 			);
 	?>
@@ -46,6 +50,5 @@ $this->Html->addCrumb('Reset', '/z/accounts/reset');
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Confirm password'), array('action' => 'confirm'));?></li>
-		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>

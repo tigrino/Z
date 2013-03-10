@@ -46,7 +46,7 @@
 
 	//
 	// Minimal password length
-	Configure::write("z.password_min_len", 12);
+	Configure::write("z.password_min_len", 7);
 	//
 	// Use dictionaries to blacklist passwords (in Vendor/wordlists)
 	// Set to FALSE or zero to disable
@@ -54,5 +54,5 @@
 
 	//
 	// The current version of the plugin
-	Configure::write("z.version", "0.6.4");
+	Configure::write("z.version", "1.0.0");
 ?>

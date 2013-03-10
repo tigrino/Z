@@ -7,7 +7,7 @@ $this->Html->addCrumb('Verify', '/z/accounts/verify');
 	<fieldset>
 		<legend><?php echo __d('z', 'Verify e-mail'); ?></legend>
 	<?php
-		echo $this->Form->input('Account.email',
+		echo $this->Form->input('AccountPassword.email',
 			array(
 				'label' => __d('z', 'label_email'),
 				'type' => 'email',
@@ -34,6 +34,5 @@ $this->Html->addCrumb('Verify', '/z/accounts/verify');
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Register'), array('action' => 'register'));?></li>
-		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>

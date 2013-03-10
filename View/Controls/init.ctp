@@ -3,7 +3,12 @@
 	<fieldset>
 		<legend><?php echo __d('z', 'Initialization: create Administrator user'); ?></legend>
 	<?php
-		echo $this->Form->input('email',
+		echo $this->Form->input('alias',
+			array(
+				'label' => __d('z', 'label_user_alias'),
+			)
+		);
+		echo $this->Form->input('AccountPassword.email',
 			array(
 				'label' => __d('z', 'label_email'),
 				'type' => 'email',

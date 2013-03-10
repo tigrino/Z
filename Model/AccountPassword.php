@@ -5,7 +5,7 @@ App::import('Vendor', 'Z.PasswordHash');
 
 class AccountPassword extends ZAppModel {
 	public $validationDomain = 'z';
-	public $useTable = 'z_account_passwords';
+	public $useTable = 'z_passwords';
 	var $name = 'AccountPassword';
 	public $displayField = 'password';
 	var $actsAs = array(
@@ -37,6 +37,27 @@ class AccountPassword extends ZAppModel {
  * @var array
  */
 	public $validate = array(
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
+				'message' => 'email_need_valid_email',
+				'allowEmpty' => false,
+				'required' => true,
+			),
+			'maxLength' => array(
+				'rule'    => array('maxLength', 255),
+				'message' => 'email_max_length %d'
+			),
+			'minLength' => array(
+				'rule'    => array('minLength', 5),
+				'message' => 'email_min_length %d'
+			),
+			'unique' => array(
+					'rule' => 'isUnique',
+					'required' => true,
+					'message' => 'email_already_registered'
+			),
+		),
 		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),

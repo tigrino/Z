@@ -7,7 +7,13 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 	<fieldset>
 		<legend><?php echo __d('z', 'Register'); ?></legend>
 	<?php
-		echo $this->Form->input('email', array('label' => __d('z', 'label_email'), 'type' => 'email'));
+		echo $this->Form->input('alias', array('label' => __d('z', 'label_user_alias')));
+		echo $this->Form->input('AccountPassword.email', 
+			array(
+				'label' => __d('z', 'label_email'), 
+				'type' => 'email', 
+				'div' => 'required'
+			));
 		echo $this->Form->input('AccountPassword.password',
 			array(
                                 'type' => 'password',
@@ -41,7 +47,7 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 				'autocomplete'=>'off',
 				'label'=> $captcha_label,
 				'class'=>'',
-				'error'=>__d('z', 'The validation of the CAPTCHA code did not succeed.',true)
+				'error'=>__d('z', 'captcha_incorrect',true)
 				)
 			);
 		echo $this->Form->input('AccountFlag.agreement', 
@@ -62,8 +68,8 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 		<li><?php echo $this->Html->link(__d('z', 'Login'), array('action' => 'login'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Verify e-mail'), array('action' => 'verify'));?></li>
 		<li><?php echo $this->Html->link(__d('z', 'Reset password'), array('action' => 'reset'));?></li>
-		<li><?php echo $this->Html->link(__d('z', 'User Agreement'), array('action' => 'tos'));?></li>
 	</ul>
 </div>
 <?php echo $this->Html->script('/z/js/jquery.min'); ?>
-<?php echo $this->Html->script('/z/js/passwordstrength'); ?>
+<?php //echo $this->Html->script('/z/js/passwordstrength'); ?>
+<?php echo $this->element('password_strength_indicator'); ?>

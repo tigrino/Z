@@ -24,12 +24,14 @@ What's so different?
    auto-incremented where I think it is of no importance.
    The practice of using UUID for a user id is just wrong, the UUID
    is not unpredictable.
- - The user is identified by an email address. Internally, a user has
-   also an ID but the external identifier is the email address.
-   I think nowadays that's the accepted standard and it works for
-   using external authentication as well (think Facebook/Google etc.)
-   We simply do not need the user name (the name still can be part of
-   the user profile on your site).
+ - Originally the user was identified only by an email address. 
+   Internally, a user always has also an ID but the external identifier 
+   is basically indpendent. Unfortunately, it turns out users are
+   not comfortable without a user name. Although that's kind of
+   useless but they do insist on having an alias, a nickname, a
+   user name to identify themselves to the system. Also, some
+   external systems only supply user name. So we have to stick
+   with user names and also keep the e-mail for verification.
  - The user registration is confirmed by e-mail. There is a lot that
    can be done here but let's face it - that's the accepted practice.
  - If any strange behavior is detected, the user is logged out 

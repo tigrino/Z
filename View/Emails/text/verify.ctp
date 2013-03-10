@@ -3,7 +3,7 @@ Hello and welcome to <?php echo $sitename; ?>!
 This email has been sent from <?php echo $fromurl; ?> 
 
 You have received this email because this email address
-was used during registration for our website.
+was used during registration at our website.
 If you did not register at our website, please disregard this
 email. You do not need to unsubscribe or take any further action.
 The subscription will automatically expire and be expunged.

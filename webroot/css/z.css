@@ -1,0 +1,45 @@
+.passwordStrengthLabel { 
+    font-size: 12px;
+    background: white; 
+    margin: 0; 
+    padding: 0;
+    width: 360px; 
+} 
+ 
+.passwordStrengthBar { 
+    background: white; 
+    border: 1px solid #777777; 
+    margin: 3px 0; 
+    padding: 0;
+    width: 180px; 
+    clear:none;
+    display:block;
+    float:right;
+} 
+ 
+.passwordStrengthBar div { 
+    height: 5px; 
+    width: 0; 
+    margin:0;
+    padding:0;
+    clear:none;
+} 
+ 
+.passwordStrengthBar div.strong { 
+    /*background-color: #32cd32; */
+    background-color: green; 
+} 
+ 
+.passwordStrengthBar div.medium { 
+    background-color: yellow; 
+} 
+ 
+.passwordStrengthBar div.weak { 
+    background-color: orange; 
+} 
+ 
+.passwordStrengthBar div.useless { 
+    background-color: red; 
+} 
+
+
