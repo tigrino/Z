@@ -16,7 +16,7 @@ echo $this->Html->script('/z/js/plugins/jqplot.highlighter.min.js');
 echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 ?>
 
-<div class="accounts index">
+<div class="controls index">
 <?php //debug($this); ?>
 <?php //debug($z_wordlists); ?>
 	<h2><?php echo __d('z', 'Settings and Dashboard'); ?></h2>
@@ -25,7 +25,7 @@ echo $this->Html->css('/z/js/jquery.jqplot.min.css');
 	<div id="accounts_chartdiv" class="resetcss" style="height:400px;width:500px; margin:auto; text-align:left;"></div>
 
 </div>
-<div class="actions">
+<div class="controls actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>

@@ -33,7 +33,7 @@ class AccountsController extends ZAppController {
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to login
 			/// The requested action requires you to be logged in.
-			$this->Session->setFlash(__d('z', 'action_requires_login'));
+			$this->Session->setFlash(__d('z', 'action_requires_login'), 'flash_bad', array(), 'auth');
 			$this->redirect(array('action' => 'login'));
 		} else {
 			// User is logged in
@@ -99,7 +99,7 @@ class AccountsController extends ZAppController {
 			if ($this->Auth->login()) {
 				/// Logged in successfully
 				//debug($this->Auth->user);
-				$this->Session->setFlash(__d('z', 'logged_in'), 'default', array(), 'auth');
+				$this->Session->setFlash(__d('z', 'logged_in'), 'flash_good', array(), 'auth');
 				$this->Account->id = $this->Auth->user('id');
 				$saveData = array();
 				$saveData['AccountLogin']['email'] = $this->Auth->user('email');
@@ -134,7 +134,7 @@ class AccountsController extends ZAppController {
 					//debug($this->Account->AccountLogin->validationErrors);
 				}
 				/// Username or password is incorrect
-				$this->Session->setFlash(__d('z', 'incorrect_credentials'), 'default', array(), 'auth');
+				$this->Session->setFlash(__d('z', 'incorrect_credentials'), 'flash_bad', array(), 'auth');
 			}
 		}
 	}
@@ -142,7 +142,7 @@ class AccountsController extends ZAppController {
 	//
 	// User logout function, simply use Auth
 	public function logout() {
-		$this->Session->setFlash(__d('z','logged_out'), 'default', array(), 'auth');
+		$this->Session->setFlash(__d('z','logged_out'), 'flash_good', array(), 'auth');
 		$this->redirect($this->Auth->logout());
 	}
 
@@ -153,7 +153,7 @@ class AccountsController extends ZAppController {
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in
 			/// The requested action requires you to be logged in.
-			$this->Session->setFlash(__d('z', 'action_requires_login'));
+			$this->Session->setFlash(__d('z','action_requires_login'), 'flash_bad', array(), 'auth');
 			$this->redirect(array('controller' => 'accounts', 'action' => 'login'));
 		} else {
 			$this->Account->id = $this->Auth->user('id');
@@ -184,7 +184,7 @@ class AccountsController extends ZAppController {
 			);
 			$this->Account->saveAssociated(null, $options);
 			/// The user account has been deleted. Bye.
-			$this->Session->setFlash(__d('z', 'your_account_deleted_success'));
+			$this->Session->setFlash(__d('z', 'your_account_deleted_success'), 'flash_good');
 			$this->redirect($this->Auth->logout());
 		}
 	}
@@ -194,7 +194,7 @@ class AccountsController extends ZAppController {
 	public function password($id=null) {
 		if ( ! $this->Auth->user('id') ) {
 			// User is not logged in, forward to reset password
-			$this->Session->setFlash(__d('z', 'not_logged_in_reset_password'));
+			$this->Session->setFlash(__d('z', 'not_logged_in_reset_password'), 'flash_bad');
 			$this->redirect(array('controller' => 'accounts', 'action' => 'reset', $id));
 		} else {
 			// User is logged in
@@ -205,7 +205,7 @@ class AccountsController extends ZAppController {
 				// Data verification for correctness and expectations
 				if ( $this->request->data['Account']['id'] != $id ) {
 					/// Login data mismatch, you have been logged out for security reasons.
-					$this->Session->setFlash(__d('z', 'credentials_mismatch_logout'));
+					$this->Session->setFlash(__d('z', 'credentials_mismatch_logout'), 'flash_bad');
 					$this->redirect($this->Auth->logout());
 					return; // just in case :)
 				}
@@ -215,7 +215,7 @@ class AccountsController extends ZAppController {
 					$this->Account->AccountPassword->invalidate('password', __d('z', 'passwords_must_match'), true);
 					$this->Account->AccountPassword->invalidate('confirm_password', __d('z', 'passwords_must_match'), true);
 					/// The passwords did not match up.
-					$this->Session->setFlash(__d('z', 'passwords_do_not_match'));
+					$this->Session->setFlash(__d('z', 'passwords_do_not_match'), 'flash_bad');
 					return;
 				}
 				// Verify that user password is correct
@@ -226,7 +226,7 @@ class AccountsController extends ZAppController {
 				if ( ! $hasher->CheckPassword($this->request->data['AccountPassword']['old_password'], $password_hash) ) {
 					unset($password_hash);
 					unset($hasher);
-					$this->Session->setFlash(__d('z', 'credentials_mismatch_logout'));
+					$this->Session->setFlash(__d('z', 'credentials_mismatch_logout'), 'flash_bad');
 					$this->redirect($this->Auth->logout());
 					return; // just in case :)
 				}
@@ -241,7 +241,7 @@ class AccountsController extends ZAppController {
 				if (! $this->Account->AccountPassword->validates(
 					array('fieldList' => array('password')))) {
 					/// Password validation failure. Please, choose a different password.
-					$this->Session->setFlash(__d('z', 'bad_password_choose_another'));
+					$this->Session->setFlash(__d('z', 'bad_password_choose_another'), 'flash_bad');
 					return;
 				}
 				// Ok, update the user's password
@@ -254,11 +254,11 @@ class AccountsController extends ZAppController {
 						'verify' => true
 					))) {
 					/// Your password has been updated.
-					$this->Session->setFlash(__d('z', 'password_update_success'));
+					$this->Session->setFlash(__d('z', 'password_update_success'), 'flash_good');
 					$this->redirect(array('controller' => 'users', 'action' => 'index'));
 				} else {
 					/// The new password could not be saved. Please, try again.
-					$this->Session->setFlash(__d('z', 'password_not_saved_problem'));
+					$this->Session->setFlash(__d('z', 'password_not_saved_problem'), 'flash_bad');
 				}
 			} else {
 				// 'get' request
@@ -286,7 +286,7 @@ class AccountsController extends ZAppController {
 				($this->Session->check('captcha_code') && 
 				($this->request->data['Account']['captcha'] != $this->Session->read('captcha_code'))) ) {
 				/// The CAPTCHA code is incorrect. Please, try again.
-				$this->Session->setFlash(__d('z', 'incorrect_captcha_try_again'));
+				$this->Session->setFlash(__d('z', 'incorrect_captcha_try_again'), 'flash_bad');
 				$this->request->data['Account']['captcha'] = '';
 				$this->Account->invalidate('captcha', __d('z', 'captcha_incorrect', true));
 				return;
@@ -297,7 +297,7 @@ class AccountsController extends ZAppController {
 			// so a Validate does not catch it
 			if ( empty($this->request->data['AccountFlag']['agreement']) ) {
 				/// Please, confirm your agreement to Terms of Service.
-				$this->Session->setFlash(__d('z', 'tos_agreement_confirm'));
+				$this->Session->setFlash(__d('z', 'tos_agreement_confirm'), 'flash_bad');
 				$this->Account->AccountFlag->invalidate('agreement');
 				$this->request->data['Account']['captcha'] = '';
 				return;
@@ -309,7 +309,7 @@ class AccountsController extends ZAppController {
 				$this->request->data['AccountPassword']['confirm_password']) {
 				$this->Account->AccountPassword->invalidate('password', __d('z', 'passwords_must_match', true));
 				$this->Account->AccountPassword->invalidate('confirm_password', __d('z', 'passwords_must_match', true));
-				$this->Session->setFlash(__d('z', 'passwords_did_not_match'));
+				$this->Session->setFlash(__d('z', 'passwords_did_not_match'), 'flash_bad');
 				$this->request->data['Account']['captcha'] = '';
 				return;
 			}
@@ -323,7 +323,7 @@ class AccountsController extends ZAppController {
 			$this->request->data['AccountFlag']['agreement_date'] = $this->Account->getDataSource()->expression('NOW()');
 			$this->Account->create($this->request->data);
 			if (! $this->Account->saveAll($this->request->data, array('validate' => 'only'))) {
-				$this->Session->setFlash(__d('z', 'registration_data_validation_failure'));
+				$this->Session->setFlash(__d('z', 'registration_data_validation_failure'), 'flash_bad');
 				$this->request->data['Account']['captcha'] = '';
 				return;
 			}
@@ -368,19 +368,19 @@ class AccountsController extends ZAppController {
 						$email->to($this->data['AccountPassword']['email']);
 						$email->subject('Confirm Registration for ' . $sitename);
 						$email->send();
-						$this->Session->setFlash(__d('z', 'user_created_successfully_check_email'));
+						$this->Session->setFlash(__d('z', 'user_created_successfully_check_email'), 'flash_good');
 						$this->redirect(array('action' => 'verify'));
 					} else {
 						$dataSource->rollback();
-						$this->Session->setFlash(__d('z', 'user_not_saved'));
+						$this->Session->setFlash(__d('z', 'user_not_saved'), 'flash_bad');
 					}
 				} else {
 					$dataSource->rollback();
-					$this->Session->setFlash(__d('z', 'user_not_saved'));
+					$this->Session->setFlash(__d('z', 'user_not_saved'), 'flash_bad');
 				}
 			} else {
 				$dataSource->rollback();
-				$this->Session->setFlash(__d('z', 'user_not_saved'));
+				$this->Session->setFlash(__d('z', 'user_not_saved'), 'flash_bad');
 			}
 		}
 		$this->request->data['AccountPassword']['password'] = '';
@@ -470,17 +470,17 @@ class AccountsController extends ZAppController {
 						)
 					);
 					if (! $this->Account->saveAssociated(null, $options) ) {
-						$this->Session->setFlash(__d('z', 'user_not_saved'));
+						$this->Session->setFlash(__d('z', 'user_not_saved'), 'flash_bad');
 						return;
 					}
 					$this->Account->AccountToken->delete($result['AccountToken']['id']);
-					$this->Session->setFlash(__d('z', 'email_verify_success'));
+					$this->Session->setFlash(__d('z', 'email_verify_success'), 'flash_good');
 					$this->redirect(array('action' => 'login'));
 				} else {
-					$this->Session->setFlash(__d('z', 'email_verify_fail'));
+					$this->Session->setFlash(__d('z', 'email_verify_fail'), 'flash_bad');
 				}
 			} else {
-				$this->Session->setFlash(__d('z', 'email_verify_fail'));
+				$this->Session->setFlash(__d('z', 'email_verify_fail'), 'flash_bad');
 			}
 		}
 	}
@@ -491,7 +491,7 @@ class AccountsController extends ZAppController {
 		if ( $this->Auth->user('id') ) {
 			// User logged in, forward to change password
 			$id = $this->Auth->user('id');
-			$this->Session->setFlash(__d('z', 'already_logged_in_change_password'));
+			$this->Session->setFlash(__d('z', 'already_logged_in_change_password'), 'flash_bad');
 			$this->redirect(array('action' => 'password'));
 		}
 		if ($this->request->is('post')) {
@@ -505,7 +505,7 @@ class AccountsController extends ZAppController {
 			if ( (! $this->Session->check('captcha_code')) ||
 				($this->Session->check('captcha_code') && 
 				($this->request->data['Account']['captcha'] != $this->Session->read('captcha_code'))) ) {
-				$this->Session->setFlash(__d('z', 'incorrect_captcha_try_again'));
+				$this->Session->setFlash(__d('z', 'incorrect_captcha_try_again'), 'flash_bad');
 				$this->request->data['Account']['captcha'] = '';
 				$this->Account->invalidate('captcha', __d('z', 'captcha_incorrect', true));
 				return;
@@ -520,7 +520,7 @@ class AccountsController extends ZAppController {
 			if ( ! is_array( $userData ) ) {
 				// user was not found
 				/// The e-mail address is not registered.
-				$this->Session->setFlash(__d('z', 'email_not_registered'));
+				$this->Session->setFlash(__d('z', 'email_not_registered'), 'flash_bad');
 				$this->request->data['Account']['captcha'] = '';
 				$this->Account->invalidate('email', __d('z', 'email_not_registered', true));
 				return;
@@ -570,10 +570,10 @@ class AccountsController extends ZAppController {
 					$email->to($this->request->data['AccountPassword']['email']);
 					$email->subject('Confirm Password Reset for Your Account at ' . $sitename);
 					$email->send();
-					$this->Session->setFlash(__d('z', 'reset_success_check_email'));
+					$this->Session->setFlash(__d('z', 'reset_success_check_email'), 'flash_good');
 					$this->redirect(array('action' => 'confirm'));
 				} else {
-					$this->Session->setFlash(__d('z', 'reset_request_fail'));
+					$this->Session->setFlash(__d('z', 'reset_request_fail'), 'flash_bad');
 				}
 			}
 		}
@@ -594,27 +594,27 @@ class AccountsController extends ZAppController {
 			$password1 = $this->request->data['AccountPassword']['password'];
 			$password2 = $this->request->data['AccountPassword']['password_confirm'];
 			if ( empty($token) ) {
-				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Session->setFlash(__d('z', 'missing_required_field'), 'flash_bad');
 				$this->Account->AccountToken->invalidate('token', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( empty($email) ) {
-				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Session->setFlash(__d('z', 'missing_required_field'), 'flash_bad');
 				$this->Account->invalidate('email', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( empty($password1) ) {
-				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Session->setFlash(__d('z', 'missing_required_field'), 'flash_bad');
 				$this->Account->AccountPassword->invalidate('password', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( empty($password2) ) {
-				$this->Session->setFlash(__d('z', 'missing_required_field'));
+				$this->Session->setFlash(__d('z', 'missing_required_field'), 'flash_bad');
 				$this->Account->AccountPassword->invalidate('password_confirm', __d('z', 'required_field'), true);
 				return;
 			}
 			if ( !($password1 === $password2) ) {
-				$this->Session->setFlash(__d('z', 'passwords_differ'));
+				$this->Session->setFlash(__d('z', 'passwords_differ'), 'flash_bad');
 				$this->Account->AccountPassword->invalidate('password', __d('z', 'passwords_must_match'), true);
 				$this->Account->AccountPassword->invalidate('password_confirm', __d('z', 'passwords_must_match'), true);
 				return;
@@ -627,7 +627,7 @@ class AccountsController extends ZAppController {
 					)
 				));
 			if ( empty($result) ) {
-				$this->Session->setFlash(__d('z', 'token_verify_fail'));
+				$this->Session->setFlash(__d('z', 'token_verify_fail'), 'flash_bad');
 				$this->Account->AccountToken->invalidate('token', __d('z', 'token_incorrect'), true);
 				return;
 			}
@@ -639,11 +639,11 @@ class AccountsController extends ZAppController {
 			));
 			if ( empty($result) ) {
 				// something is terminally wrong
-				$this->Session->setFlash(__d('z', 'internal_error_password_retrieval_failed'));
+				$this->Session->setFlash(__d('z', 'internal_error_password_retrieval_failed'), 'flash_bad');
 				return;
 			}
 			if ( $result['AccountPassword']['email'] != $email ) {
-				$this->Session->setFlash(__d('z', 'token_verify_fail'));
+				$this->Session->setFlash(__d('z', 'token_verify_fail'), 'flash_bad');
 				$this->Account->AccountPassword->invalidate('email', __d('z', 'email_incorrect'), true);
 				return;
 			}
@@ -651,10 +651,10 @@ class AccountsController extends ZAppController {
 			//unset($result['AccountPassword']['salt']);
 			if ( $this->Account->AccountPassword->save($result) ) {
 				$this->Account->AccountToken->delete($token_id);
-				$this->Session->setFlash(__d('z', 'password_change_success'));
+				$this->Session->setFlash(__d('z', 'password_change_success'), 'flash_good');
 				$this->redirect(array('action' => 'login'));
 			} else {
-				$this->Session->setFlash(__d('z', 'password_change_fail'));
+				$this->Session->setFlash(__d('z', 'password_change_fail'), 'flash_bad');
 			}
 		} else {
 			if (isset($this->passedArgs['t']) && isset($this->passedArgs['n'])){
@@ -717,7 +717,7 @@ class AccountsController extends ZAppController {
 		// dealing with an overzealous robot.
 		if ( !empty($this->request->data['Account']['ruhuman']) ) {
 			/// We do not accept registrations from bots.
-			$this->Session->setFlash(__d('z', 'bots_are_not_welcome'));
+			$this->Session->setFlash(__d('z', 'bots_are_not_welcome'), 'flash_bad');
 			$this->redirect(array('plugin' => null, 'controller' => 'pages', 'action' => 'index'));
 			return true; // just in case
 		} else {

@@ -2,7 +2,7 @@
 App::import('Vendor', 'Z.PasswordHash');
 App::import('Vendor', 'Z.zrandom');
 ?>
-<div class="accounts index">
+<div class="controls index">
 	<h2><?php echo __d('z', 'Accounts Control Dashboard - Cryptography Tests'); ?></h2>
 <h3>Hash and random speed</h3>
 <table cellpadding="0" cellspacing="0">
@@ -102,7 +102,7 @@ for ($i = 4; $i <= 16; $i+=2) {
 ?>
 </table>
 </div>
-<div class="actions">
+<div class="controls actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>

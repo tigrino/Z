@@ -43,7 +43,7 @@ $this->Html->addCrumb('Reset', '/z/accounts/reset');
 			);
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__d('z', 'Submit'));?>
+<?php echo $this->Form->end(__d('z', 'Request a reset'));?>
 </div>
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>

@@ -1,4 +1,4 @@
-<div class="tokens index">
+<div class="controls index">
 	<h2><?php echo __d('z', 'Tokens'); ?></h2>
 	<?php //debug($tokens); ?>
 	<table cellpadding="0" cellspacing="0">
@@ -45,7 +45,7 @@
 	?>
 	</div>
 </div>
-<div class="actions">
+<div class="controls actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>

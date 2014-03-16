@@ -11,6 +11,16 @@ $this->Html->addCrumb('Login', '/z/accounts/login');
 <?php echo $this->Form->create('User'); // Special case - for Auth module ?>
 	<fieldset>
 		<legend><?php echo __d('z', 'Login'); ?></legend>
+	<p><?php 
+		echo __d('z', 'Forgot you password?'); 
+		echo " ";
+		echo $this->Html->link(__d('z', 'Request a password reset'), array('action' => 'reset'));
+	?>!</p>
+	<p><?php
+		echo __d('z', 'Not registered yet?'); 
+		echo " ";
+		echo $this->Html->link(__d('z', 'Register now'), array('action' => 'register'));
+	?>!</p>
 	<?php
 		echo $this->Form->input('alias',
 			array(
@@ -33,7 +43,7 @@ $this->Html->addCrumb('Login', '/z/accounts/login');
 			);
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__d('z', 'Submit', true));?>
+<?php echo $this->Form->end(__d('z', 'Log in', true));?>
 </div>
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>

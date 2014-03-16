@@ -1,4 +1,4 @@
-<div class="Accounts view">
+<div class="controls view">
 <h2><?php  echo __d('z', 'Destroy all user records? Action is not reversible!'); ?></h2>
 	<dl>
 <?php echo $this->Form->create('User'); // Special case - for Auth module ?>
@@ -21,7 +21,7 @@
 	</fieldset>
 <?php echo $this->Form->end(__d('z', 'Destroy all user accounts!', true));?>
 </div>
-<div class="actions">
+<div class="controls actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Dashboard'), array('action' => 'dashboard')); ?></li>

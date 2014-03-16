@@ -1,4 +1,4 @@
-<div class="Accounts view">
+<div class="controls view">
 <h2><?php  echo __d('z', 'User'); ?></h2>
 	<dl>
 		<dt><?php echo __d('z', 'Id'); ?></dt>
@@ -106,7 +106,7 @@
 		</dl>
 	<?php endif; ?>
 </div>
-<div class="actions">
+<div class="controls actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__d('z', 'Edit'), array('action' => 'edit', $Account['Account']['id'])); ?> </li>

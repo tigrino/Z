@@ -4,7 +4,7 @@
  */
 App::uses('Debugger', 'Utility');
 
-$this->assign('title', __('User Agreement for Account Management'));
+$this->assign('title', __('Terms of Service and User Agreement'));
 ?>
 
 <h2><?php echo $this->fetch('title'); ?></h2>

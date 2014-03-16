@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-02-27 20:14+0000\n"
+"POT-Creation-Date: 2013-04-09 20:37+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -217,7 +217,7 @@ msgid "label_token"
 msgstr ""
 
 #: View/Accounts/confirm.ctp:23
-#: View/Accounts/login.ctp:23
+#: View/Accounts/login.ctp:33
 #: View/Accounts/register.ctp:21
 #: View/Controls/add.ctp:19
 #: View/Controls/init.ctp:19
@@ -232,7 +232,7 @@ msgid "label_password_confirm"
 msgstr ""
 
 #: View/Accounts/confirm.ctp:36
-#: View/Accounts/login.ctp:31
+#: View/Accounts/login.ctp:41
 #: View/Accounts/register.ctp:33
 #: View/Accounts/reset.ctp:24
 #: View/Accounts/verify.ctp:25
@@ -241,10 +241,7 @@ msgid "Please enter something into the following field if you are not human:"
 msgstr ""
 
 #: View/Accounts/confirm.ctp:41
-#: View/Accounts/login.ctp:36
 #: View/Accounts/password.ctp:34
-#: View/Accounts/register.ctp:63
-#: View/Accounts/reset.ctp:46
 #: View/Accounts/verify.ctp:30
 #: View/Controls/add.ctp:42
 #: View/Controls/edit.ctp:45
@@ -253,7 +250,7 @@ msgid "Submit"
 msgstr ""
 
 #: View/Accounts/confirm.ctp:44
-#: View/Accounts/login.ctp:39
+#: View/Accounts/login.ctp:49
 #: View/Accounts/password.ctp:37
 #: View/Accounts/register.ctp:66
 #: View/Accounts/reset.ctp:49
@@ -280,27 +277,48 @@ msgid "Login"
 msgstr ""
 
 #: View/Accounts/confirm.ctp:47
-#: View/Accounts/login.ctp:42
+#: View/Accounts/login.ctp:52
 msgid "Reset account"
 msgstr ""
 
+#: View/Accounts/login.ctp:15
+msgid "Forgot you password?"
+msgstr ""
+
 #: View/Accounts/login.ctp:17
+msgid "Request a password reset"
+msgstr ""
+
+#: View/Accounts/login.ctp:20
+msgid "Not registered yet?"
+msgstr ""
+
+#: View/Accounts/login.ctp:22
+#: View/Accounts/register.ctp:63
+msgid "Register now"
+msgstr ""
+
+#: View/Accounts/login.ctp:27
 msgid "label_user_alias_or_email"
 msgstr ""
 
-#: View/Accounts/login.ctp:41
+#: View/Accounts/login.ctp:46
+msgid "Log in"
+msgstr ""
+
+#: View/Accounts/login.ctp:51
 #: View/Accounts/register.ctp:8
 #: View/Accounts/verify.ctp:36
 msgid "Register"
 msgstr ""
 
-#: View/Accounts/login.ctp:43
+#: View/Accounts/login.ctp:53
 #: View/Accounts/register.ctp:69
 #: View/Accounts/verify.ctp:8
 msgid "Verify e-mail"
 msgstr ""
 
-#: View/Accounts/login.ctp:44
+#: View/Accounts/login.ctp:54
 #: View/Accounts/reset.ctp:52
 msgid "Confirm password"
 msgstr ""
@@ -380,6 +398,10 @@ msgstr ""
 
 #: View/Accounts/reset.ctp:10
 msgid "You can only reset a password when you registered with your e-mail here. If you registered with some other means, this form will not work for you."
+msgstr ""
+
+#: View/Accounts/reset.ctp:46
+msgid "Request a reset"
 msgstr ""
 
 #: View/Accounts/view.ctp:6

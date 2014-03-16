@@ -1,4 +1,4 @@
-<div class="Accounts form">
+<div class="controls form">
 <?php echo $this->Form->create('Account'); ?>
 	<fieldset>
 		<legend><?php echo __d('z', 'Add Account'); ?></legend>
@@ -41,7 +41,7 @@
 	</fieldset>
 <?php echo $this->Form->end(__d('z', 'Submit')); ?>
 </div>
-<div class="actions">
+<div class="controls actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
 	<ul>
 

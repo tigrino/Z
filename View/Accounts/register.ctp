@@ -60,7 +60,7 @@ $this->Html->addCrumb('Register', '/z/accounts/register');
 			);
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__d('z', 'Submit'));?>
+<?php echo $this->Form->end(__d('z', 'Register now'));?>
 </div>
 <div class="actions">
 	<h3><?php echo __d('z', 'Actions'); ?></h3>
